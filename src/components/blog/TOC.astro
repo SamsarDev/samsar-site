@@ -1,0 +1,37 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{toc.length > 0 && (
+  <nav
+    aria-label="Tabla de contenidos"
+    class="p-5 rounded-xl border border-[var(--border-base)] bg-[var(--bg-surface)] text-xs"
+  >
+    <p class="font-display font-bold text-[var(--text-primary)] uppercase tracking-wider mb-3">
+      En este artículo
+    </p>
+    <ul class="space-y-2 font-sans">
+      {toc.map((item) => (
+        <li class:list={[item.depth === 3 ? 'pl-3 border-l border-[var(--border-base)]/60' : '']}>
+          <a
+            href={`#${item.slug}`}
+            class="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors focus-visible:outline-none focus-visible:underline block py-0.5 leading-relaxed"
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
