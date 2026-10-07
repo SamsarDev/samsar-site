@@ -13,6 +13,7 @@ Punto de entrada para estándares de código, trabajo colaborativo con agentes d
 | [`03-definition-of-done.md`](03-definition-of-done.md) | Lista de verificación rigurosa para declarar una tarea como terminada y lista para merge. | Antes de dar por finalizada cualquier tarea de `docs/05-tasks/`. |
 | [`04-glossary.md`](04-glossary.md) | Glosario técnico de términos de arquitectura, estándares web y conceptos del proyecto. | Al encontrar términos como SSG, Islands, FOUC, Zod o WCAG. |
 | [`05-troubleshooting.md`](05-troubleshooting.md) | Diagnóstico y solución rápida para los 5 problemas más comunes del stack técnico. | Cuando `bun run check` o `bun run build` arrojen errores o la pantalla parpadee. |
+| [`06-security-and-branch-protection.md`](06-security-and-branch-protection.md) | Guía de protección de ramas en GitHub, workflows de CI y modelo de defensa en capas. | Al configurar el repositorio o auditar permisos y pipelines de contribución. |
 
 ---
 

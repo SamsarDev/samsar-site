@@ -1,0 +1,17 @@
+# Dueño principal y revisor obligatorio de todo el proyecto
+* @SamsarDev
+
+# Configuración crítica, pipelines y automatización
+/.github/ @SamsarDev
+/package.json @SamsarDev
+/bun.lock @SamsarDev
+/astro.config.mjs @SamsarDev
+/tsconfig.json @SamsarDev
+/AGENTS.md @SamsarDev
+/CLAUDE.md @SamsarDev
+
+# Archivo histórico protegido
+/docs/99-reference/ @SamsarDev
+
+# Código fuente y componentes
+/src/ @SamsarDev
