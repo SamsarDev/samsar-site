@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/portfolio/ProjectCard.astro';
+import Chip from '../../components/ui/Chip.astro';
+
+const allProjects = await getCollection('projects');
+
+const filterTabs = [
+  { label: 'Todos', href: '/proyectos', active: true },
+  { label: 'Profesionales', href: '/proyectos/professional', active: false },
+  { label: 'Open Source', href: '/proyectos/open-source', active: false },
+  { label: 'Juegos', href: '/proyectos/game', active: false },
+  { label: 'Experimentos IA', href: '/proyectos/ai-experiment', active: false },
+];
+---
+
+<BaseLayout
+  title="Catálogo de Proyectos | Samsar"
+  description="Expositor de iniciativas de ingeniería, plataformas cloud, sistemas multi-agente y videojuegos."
+>
+  <main class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <header class="mb-12">
+        <p class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2">
+          Iniciativas & Software
+        </p>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">
+          Proyectos
+        </h1>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">
+          Arquitecturas de producción, proyectos de código abierto, experiencias lúdicas formativas y experimentos de inteligencia artificial.
+        </p>
+
+        <!-- Barra de filtros estáticos -->
+        <nav aria-label="Filtrar proyectos por tipo" class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[var(--border-base)]">
+          {filterTabs.map((tab) => (
+            <a href={tab.href} class="focus-visible:outline-none">
+              <Chip
+                variant="category"
+                class={tab.active ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : ''}
+              >
+                {tab.label}
+              </Chip>
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <section aria-label="Listado de proyectos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {allProjects.map((project) => (
+          <ProjectCard project={project} />
+        ))}
+      </section>
+    </div>
+  </main>
+</BaseLayout>
