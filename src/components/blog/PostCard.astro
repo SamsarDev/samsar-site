@@ -4,26 +4,16 @@ import Card from '../ui/Card.astro';
 import Chip from '../ui/Chip.astro';
 import { formatDate } from '../../utils/formatDate';
 import { calculateReadingTime } from '../../utils/readingTime';
-import type { MockPost } from '../../data/featuredPosts';
-
 interface Props {
-  post: CollectionEntry<'blog'> | MockPost;
+  post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
 
-const isEntry = 'data' in post;
-
-const title = isEntry ? post.data.title : post.title;
-const description = isEntry ? post.data.description : post.description;
-const pubDate = isEntry ? post.data.pubDate : new Date();
-const formattedDate = isEntry ? formatDate(pubDate) : post.publishDate;
-const category = isEntry ? post.data.category : post.category;
-const tags = isEntry ? post.data.tags : [];
-const url = `/blog/${isEntry ? post.id : post.slug}`;
-const readingTime = isEntry
-  ? calculateReadingTime(post.body || '')
-  : post.readingTime;
+const { title, description, pubDate, category, tags } = post.data;
+const formattedDate = formatDate(pubDate);
+const url = `/blog/${post.id}`;
+const readingTime = calculateReadingTime(post.body || '');
 
 const categoryMeta: Record<string, { label: string; colorClass: string }> = {
   'samsar-dev': {
@@ -52,7 +42,7 @@ const meta = categoryMeta[category] || {
       <span class:list={['text-xs font-mono font-medium px-2 py-0.5 rounded-full border', meta.colorClass]}>
         {meta.label}
       </span>
-      <time datetime={isEntry ? pubDate.toISOString() : undefined} class="text-xs text-[var(--text-muted)] font-mono">
+      <time datetime={pubDate.toISOString()} class="text-xs text-[var(--text-muted)] font-mono">
         {formattedDate}
       </time>
     </div>

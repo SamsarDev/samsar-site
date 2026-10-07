@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/blog/PostCard.astro';
+import Button from '../../../components/ui/Button.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+  const uniqueTags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts
+      .filter((post) => post.data.tags.includes(tag))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+    return {
+      params: { tag },
+      props: { tag, posts: filteredPosts },
+    };
+  });
+}
+
+interface Props {
+  tag: string;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Artículos con etiqueta #${tag} | Blog Samsar`}
+  description={`Publicaciones y guías técnicas etiquetadas con #${tag}`}
+>
+  <main class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="mb-12">
+        <Button href="/blog" variant="ghost" size="sm" class="mb-6">
+          ← Volver al blog
+        </Button>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-3">
+          <span>Etiqueta</span>
+          <span>•</span>
+          <span>{posts.length} {posts.length === 1 ? 'publicación' : 'publicaciones'}</span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
+          #{tag}
+        </h1>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </main>
+</BaseLayout>
