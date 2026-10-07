@@ -8,11 +8,11 @@ Punto de entrada para el desarrollo práctico de **Samsar | Sitio web personal**
 
 | Fase | Directorio | Objetivo Principal | Estado |
 |---|---|---|---|
-| **Fase 1: Fundación** | [`01-foundation/`](01-foundation/) | Inicializar Astro 6, Tailwind v4, tokens semánticos, BaseLayout, ThemeToggle y navegación responsive. | **En curso** |
-| **Fase 2: Páginas Core** | `02-core-pages/` | Construir la Landing Page (`/`), Sobre mí (`/sobre-mi`), Experiencia laboral (`/experiencia`), Contacto (`/contacto`) y 404. | Planificada |
-| **Fase 3: Ecosistema Blog** | `03-blog/` | Configurar Content Layer API, índice `/blog`, vistas de categoría y lectura MDX con TOC y syntax highlighting. | Planificada |
-| **Fase 4: Catálogo Proyectos** | `04-projects/` | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | Planificada |
-| **Fase 5: Producción & SEO** | `05-production/` | Generación de RSS, Sitemap, optimización Lighthouse > 95 y configuración de Cloudflare Pages. | Planificada |
+| **Fase 1: Fundación** | [`01-foundation/`](01-foundation/) | Inicializar Astro 6, Tailwind v4, tokens semánticos, BaseLayout, ThemeToggle y navegación responsive. | **Listo** |
+| **Fase 2: Landing Page** | [`02-landing/`](02-landing/) | Construir átomos de UI (Button, Card, Chip, Badge), Hero, Pilares, Sobre el proyecto, Destacados y CTA. | **Listo para implementar** |
+| **Fase 3: Ecosistema Blog** | [`03-blog/`](03-blog/) | Configurar Content Layer API, índice `/blog`, vistas de categoría y lectura MDX con TOC y syntax highlighting. | Planificada |
+| **Fase 4: Catálogo Proyectos** | [`04-portfolio/`](04-portfolio/) | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | Planificada |
+| **Fase 5: Producción & SEO** | [`05-polish/`](05-polish/) | Generación de RSS, Sitemap, optimización Lighthouse > 95 y configuración de Cloudflare Pages. | Planificada |
 
 ---
 
