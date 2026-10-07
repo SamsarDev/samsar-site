@@ -1,0 +1,73 @@
+MIT License
+
+Copyright (c) 2026 Samuel Sarmientos (Samsar)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+TRADEMARK, IDENTITY & BRANDING EXCLUSION
+==============================================================================
+
+The MIT License above applies strictly to the source code and underlying
+software architecture. It explicitly DOES NOT grant permission to use the trade
+names, personal names, trademarks, service marks, logos, or personal identity
+associated with this project.
+
+Specifically, the following names, identifiers, and any confusingly similar
+variations are strictly reserved and may NOT be used to endorse, promote, host,
+or brand any product, fork, website, or service derived from this software
+without prior written authorization:
+
+  - "Samuel Sarmientos"
+  - "Samsar"
+  - "Samsar|Dev"
+  - "Samsar|IA"
+  - "Samsar|Games"
+
+Any clone, fork, or public deployment of this repository must replace, remove,
+or substitute these identifiers, personal biographies, avatars, and related
+branding assets with the distributor's own original identity.
+
+Retaining the copyright notice required by the MIT License above is not a
+violation of this exclusion.
+
+==============================================================================
+SCOPE OF THIS LICENSE
+==============================================================================
+
+Covered by the MIT License (source code and software architecture):
+  - src/components/ui/, layout/, blog/, landing/, islands/
+  - src/layouts/, src/pages/ (templates and logic), src/utils/, src/styles/
+  - Configuration files (astro.config.mjs, package.json, tsconfig.json, etc.)
+  - AGENTS.md, CLAUDE.md, README.md and the examples/ directory
+
+NOT covered by the MIT License:
+  - Decorative Maya SVG assets in src/components/maya/
+    -> All rights reserved. Used under a single-use license.
+       See src/components/maya/NOTICE.md
+  - Documentation: docs/, DESIGN.md, SKILL.md
+    -> CC BY-NC 4.0. See LICENSE-DOCS
+  - Site content: blog posts, project descriptions, page texts, own images
+    -> CC BY-NC-ND 4.0. See LICENSE-CONTENT
+  - Names, logos and identity listed in the exclusion above
+    -> Reserved.
+  - Third-party material
+    -> Keeps its own license (dependencies, fonts, icon sets such as Astro,
+       Vue, Tailwind CSS, Space Grotesk, Manrope, JetBrains Mono, Lucide or
+       Phosphor). Check each package or font file for its terms.

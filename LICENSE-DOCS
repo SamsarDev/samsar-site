@@ -1,0 +1,68 @@
+LICENCIA DE LA DOCUMENTACIÓN
+============================
+
+Copyright (c) 2026 Samuel Sarmientos (Samsar)
+
+La documentación de este repositorio descrita a continuación se publica bajo la
+licencia Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0).
+
+  Resumen:  https://creativecommons.org/licenses/by-nc/4.0/deed.es
+  Texto legal completo:  https://creativecommons.org/licenses/by-nc/4.0/legalcode.es
+
+El texto legal vinculante es el publicado por Creative Commons en el enlace
+anterior. Lo que sigue es una guía de alcance; no lo sustituye ni modifica.
+
+
+1. QUÉ CUBRE ESTA LICENCIA
+--------------------------
+
+  - Carpeta docs/ completa (incluida docs/99-reference/)
+  - DESIGN.md
+  - SKILL.md
+
+Los archivos AGENTS.md, CLAUDE.md, README.md y la carpeta examples/ NO están
+aquí: se rigen por la licencia MIT del archivo LICENSE.
+
+
+2. QUÉ PUEDES HACER
+-------------------
+
+Puedes copiar, redistribuir, adaptar y crear obras derivadas a partir de la
+documentación, siempre que:
+
+  - Atribución:   des el crédito adecuado a "Samuel Sarmientos / Samsar",
+                  incluyas un enlace a la licencia e indiques si hiciste
+                  cambios.
+  - NoComercial:  no lo uses con fines comerciales.
+
+Ejemplos de uso permitido: enseñar con ella en clases gratuitas, adaptarla a
+tu propio proyecto educativo, traducirla, usarla en un taller sin costo.
+
+
+3. QUÉ NO PUEDES HACER
+----------------------
+
+Uso comercial de la documentación, incluyendo sin limitarse a:
+
+  - Incluirla en cursos, talleres, bootcamps o programas de pago.
+  - Venderla, o venderla empaquetada con otros productos o servicios.
+  - Usarla como material de un servicio de consultoría o capacitación con costo.
+
+La misión de este proyecto es ofrecer educación tecnológica de forma gratuita.
+Si tu uso involucra cobrar a las personas que acceden al material, necesitas
+autorización escrita previa.
+
+
+4. MARCA E IDENTIDAD
+--------------------
+
+El nombre y la identidad reservados en el archivo LICENSE (sección "Trademark,
+Identity & Branding Exclusion") aplican también a la documentación. Si adaptas
+estos documentos, reemplaza esa identidad por la tuya e indica la atribución
+correspondiente.
+
+
+5. CONTACTO
+-----------
+
+Para permisos fuera de los descritos aquí: samsar.dev@gmail.com

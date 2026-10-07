@@ -1,0 +1,97 @@
+LICENCIA DEL CONTENIDO
+======================
+
+Copyright (c) 2026 Samuel Sarmientos (Samsar)
+
+El contenido de este repositorio descrito a continuación se publica bajo la
+licencia Creative Commons Atribución-NoComercial-SinDerivadas 4.0 Internacional
+(CC BY-NC-ND 4.0).
+
+  Resumen:  https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es
+  Texto legal completo:  https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.es
+
+El texto legal vinculante es el publicado por Creative Commons en el enlace
+anterior. Lo que sigue es una guía de alcance y permisos adicionales; no
+sustituye ni modifica esa licencia.
+
+
+1. QUÉ CUBRE ESTA LICENCIA
+--------------------------
+
+  - Posts del blog:                    src/content/blog/
+  - Descripciones de proyectos:        src/content/projects/
+  - Textos propios de las páginas:     Sobre mí, Experiencia, Contacto, Landing
+  - CV y documentos descargables:      public/ (PDF del CV, etc.)
+  - Imágenes, ilustraciones y capturas de autoría propia:
+                                       public/images/
+  - Videos, grabaciones y gameplays de autoría propia
+
+Qué NO cubre esta licencia:
+
+  - El código fuente: licencia MIT (archivo LICENSE).
+  - La documentación (docs/, DESIGN.md, SKILL.md): licencia CC BY-NC 4.0
+    (archivo LICENSE-DOCS).
+  - Los SVG mayas decorativos de src/components/maya/: todos los derechos
+    reservados (ver src/components/maya/NOTICE.md).
+
+
+2. QUÉ PUEDES HACER (CC BY-NC-ND 4.0)
+-------------------------------------
+
+Puedes copiar y redistribuir el contenido, en cualquier medio o formato,
+siempre que:
+
+  - Atribución:     des el crédito adecuado a "Samuel Sarmientos / Samsar",
+                    incluyas un enlace a la licencia e indiques el origen.
+  - NoComercial:    no lo uses con fines comerciales.
+  - SinDerivadas:   no lo modifiques, transformes ni crees obras a partir de él.
+                    Si lo haces, no puedes distribuir el material modificado.
+
+
+3. PERMISO ADICIONAL PARA USO EDUCATIVO
+---------------------------------------
+
+Como permiso adicional, otorgado por el titular de los derechos, los
+estudiantes y docentes de los cursos en que se use este repositorio como
+material de aprendizaje pueden:
+
+  - Modificar, adaptar y ampliar el contenido DENTRO de su copia (fork o clon)
+    del repositorio, con fines exclusivos de práctica y aprendizaje.
+  - Usar el contenido como material de ejemplo en clase.
+
+Este permiso NO autoriza:
+
+  - Publicar el contenido modificado como si fuera original o bajo otro nombre.
+  - Redistribuir el contenido modificado fuera del contexto del curso.
+  - Usar el contenido modificado o sin modificar con fines comerciales.
+
+Los estudiantes que construyan su propio sitio a partir de este proyecto deben
+sustituir el contenido, el nombre, el logo y las imágenes por los propios.
+
+
+4. MARCA E IDENTIDAD
+--------------------
+
+La exclusión de marca, nombre e identidad del archivo LICENSE (sección
+"Trademark, Identity & Branding Exclusion") aplica también a este contenido.
+Los nombres "Samuel Sarmientos", "Samsar", "Samsar|Dev", "Samsar|IA" y
+"Samsar|Games", el logotipo, el símbolo de la marca, las biografías y los
+avatares NO se licencian para uso general.
+
+La identidad visual como conjunto puede estudiarse con fines educativos, pero
+el sitio de cualquier estudiante debe tener identidad propia.
+
+
+5. MATERIAL DE TERCEROS
+-----------------------
+
+Si un post o página incluye material de otras personas (citas, capturas,
+videos embebidos, logos de productos), ese material conserva su licencia y
+titular originales y NO está cubierto por esta licencia.
+
+
+6. CONTACTO
+-----------
+
+Para permisos fuera de los descritos aquí (uso comercial, adaptaciones,
+traducciones): samsar.dev@gmail.com
