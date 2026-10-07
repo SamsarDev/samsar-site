@@ -1,0 +1,41 @@
+---
+import Card from '../ui/Card.astro';
+import Chip from '../ui/Chip.astro';
+import type { MockPost } from '../../data/featuredPosts';
+
+interface Props {
+  post: MockPost;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="h-full">
+  <Card variant="interactive" class="flex h-full flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between gap-2">
+        <Chip variant="category">
+          {post.category.toUpperCase()}
+        </Chip>
+        <span class="font-['JetBrains_Mono'] text-xs text-[var(--text-secondary)]">
+          {post.readingTime}
+        </span>
+      </div>
+
+      <h3 class="mt-4 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">
+        <a href={`/blog/${post.slug}`} class="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]">
+          {post.title}
+        </a>
+      </h3>
+
+      <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
+        {post.description}
+      </p>
+    </div>
+
+    <div class="mt-6 flex items-center justify-between border-t border-[var(--border-base)] pt-4 text-xs text-[var(--text-secondary)]">
+      <span>{post.publishDate}</span>
+      <span class="font-medium text-[var(--accent-primary)]">Leer artículo &rarr;</span>
+    </div>
+  </Card>
+</article>
