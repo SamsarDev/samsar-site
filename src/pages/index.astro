@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeToggle from '../components/islands/ThemeToggle.vue';
 ---
 
 <BaseLayout title="Inicio | Samsar">
@@ -10,5 +11,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="mt-4 text-lg text-[var(--text-secondary)] font-['Manrope']">
       BaseLayout y prevención de FOUC configurados correctamente.
     </p>
+
+    <div class="mt-8 flex justify-center">
+      <ThemeToggle client:idle />
+    </div>
   </div>
 </BaseLayout>
