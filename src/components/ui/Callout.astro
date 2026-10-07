@@ -1,0 +1,51 @@
+---
+interface Props {
+  type?: 'note' | 'tip' | 'warning' | 'danger';
+  title?: string;
+}
+
+const { type = 'note', title } = Astro.props;
+
+const styles = {
+  note: {
+    border: 'border-l-[var(--color-jade)]',
+    bg: 'bg-[var(--color-jade)]/10',
+    titleColor: 'text-[var(--color-jade)]',
+    defaultTitle: 'Nota',
+  },
+  tip: {
+    border: 'border-l-[var(--color-hummingbird)]',
+    bg: 'bg-[var(--color-hummingbird)]/10',
+    titleColor: 'text-[var(--color-hummingbird)]',
+    defaultTitle: 'Consejo',
+  },
+  warning: {
+    border: 'border-l-[var(--color-sun-gold)]',
+    bg: 'bg-[var(--color-sun-gold)]/10',
+    titleColor: 'text-[var(--color-sun-gold)]',
+    defaultTitle: 'Atención',
+  },
+  danger: {
+    border: 'border-l-[var(--color-blood)]',
+    bg: 'bg-[var(--color-blood)]/10',
+    titleColor: 'text-[var(--color-blood)]',
+    defaultTitle: 'Peligro',
+  },
+}[type];
+---
+
+<aside
+  class:list={[
+    'my-6 p-4 rounded-r-lg border-l-4 text-sm leading-relaxed border border-t-0 border-r-0 border-b-0 border-[var(--border-base)]',
+    styles.border,
+    styles.bg,
+  ]}
+  role="note"
+>
+  <div class:list={['font-display font-bold mb-1.5 flex items-center gap-2', styles.titleColor]}>
+    <span>{title || styles.defaultTitle}</span>
+  </div>
+  <div class="text-[var(--text-primary)] font-sans">
+    <slot />
+  </div>
+</aside>
