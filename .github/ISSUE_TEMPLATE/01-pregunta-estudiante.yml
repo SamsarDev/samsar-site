@@ -1,0 +1,32 @@
+name: 🎓 Consulta Didáctica o Ejercicio
+description: Para estudiantes que tienen dudas sobre cómo resolver una tarea o entender un concepto.
+title: "[Duda]: "
+labels: ["didactico", "estudiantes"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ¡Bienvenido/a! Este espacio es para ayudarte a aprender y crecer como profesional. Nadie nace sabiendo.
+  - type: input
+    id: task-ref
+    attributes:
+      label: Tarea o Documento de Referencia
+      description: ¿Qué archivo o tarea de `docs/05-tasks/` estás estudiando?
+      placeholder: "Ej: docs/05-tasks/01-foundation/04-theme-toggle.md"
+    validations:
+      required: true
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: ¿Qué intentaste hacer hasta el momento?
+      description: Describí el código que escribiste o los comandos que ejecutaste.
+      placeholder: "Intenté montar la isla con client:load, pero..."
+    validations:
+      required: true
+  - type: textarea
+    id: doubt
+    attributes:
+      label: ¿Cuál es tu duda conceptual o técnica?
+      description: Explica qué parte del porqué o del cómo te gustaría profundizar.
+    validations:
+      required: true

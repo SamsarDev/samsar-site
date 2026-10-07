@@ -1,0 +1,31 @@
+name: 🐛 Reporte de Bug o Error Técnico
+description: Reportar un fallo de compilación, rotura de estilos, problema de accesibilidad o error en la documentación.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: ¿Qué ocurrió de forma inesperada?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      description: ¿Cómo podemos ver el fallo localmente?
+      placeholder: |
+        1. Ejecutar 'bun run dev'
+        2. Navegar a '...'
+        3. Hacer clic en '...'
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno local
+      description: Sistema operativo, versión de Node/Bun y navegador utilizado.
+      placeholder: "Windows 11, Bun v1.3.13, Chrome v120"
+    validations:
+      required: true
