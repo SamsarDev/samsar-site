@@ -1,0 +1,40 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  currentPage?: number;
+  totalPages?: number;
+}
+
+const { prevUrl, nextUrl, currentPage, totalPages } = Astro.props;
+---
+
+{(prevUrl || nextUrl) && (
+  <nav aria-label="Paginación de artículos" class="flex items-center justify-between pt-10 border-t border-[var(--border-base)] mt-12">
+    <div>
+      {prevUrl ? (
+        <Button href={prevUrl} variant="secondary" size="sm">
+          ← Anteriores
+        </Button>
+      ) : (
+        <span />
+      )}
+    </div>
+    {currentPage && totalPages && (
+      <span class="text-xs font-mono text-[var(--text-muted)]">
+        Página {currentPage} de {totalPages}
+      </span>
+    )}
+    <div>
+      {nextUrl ? (
+        <Button href={nextUrl} variant="secondary" size="sm">
+          Siguientes →
+        </Button>
+      ) : (
+        <span />
+      )}
+    </div>
+  </nav>
+)}

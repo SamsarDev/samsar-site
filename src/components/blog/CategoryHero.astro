@@ -1,0 +1,45 @@
+---
+interface Props {
+  category: 'samsar-dev' | 'samsar-ia' | 'samsar-games';
+  count: number;
+}
+
+const { category, count } = Astro.props;
+
+const info = {
+  'samsar-dev': {
+    title: 'Samsar|Dev',
+    accentVar: 'var(--color-jade)',
+    description: 'Guías de desarrollo, manuales de arquitectura, patrones de diseño y notas de ingeniería de software.',
+  },
+  'samsar-ia': {
+    title: 'Samsar|IA',
+    accentVar: 'var(--color-hummingbird)',
+    description: 'Exploraciones sobre IA generativa, LLMs, sistemas multi-agente, RAG y Model Context Protocol (MCP).',
+  },
+  'samsar-games': {
+    title: 'Samsar|Games',
+    accentVar: 'var(--color-blood)',
+    description: 'Desarrollo de videojuegos, pedagogía lúdica y gameplays formativos compartidos en familia.',
+  },
+}[category];
+---
+
+<header class="py-12 border-b border-[var(--border-base)]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border mb-4"
+      style={`color: ${info.accentVar}; border-color: ${info.accentVar}33; background-color: ${info.accentVar}15;`}
+    >
+      <span>Pilar Temático</span>
+      <span>•</span>
+      <span>{count} {count === 1 ? 'artículo' : 'artículos'}</span>
+    </div>
+    <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">
+      {info.title}
+    </h1>
+    <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">
+      {info.description}
+    </p>
+  </div>
+</header>
