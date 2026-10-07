@@ -1,0 +1,31 @@
+---
+title: 'Plataforma Agéntica con LangGraph y Servidores MCP'
+description: 'Capa de orquestación para flujos autónomos con transporte stdio y validación estricta de esquemas.'
+type: 'ai-experiment'
+stack: ['TypeScript', 'LangGraph', 'Node.js', 'Model Context Protocol', 'Azure OpenAI']
+status: 'active'
+repo: 'https://github.com/samsar-dev'
+demo: 'https://samsar.dev'
+postSlug: 'samsar-ia/primeros-pasos-sistemas-multi-agente'
+featured: true
+---
+
+import Callout from '../../components/ui/Callout.astro';
+
+## Contexto y Visión
+
+Diseño e implementación de una red de agentes autónomos colaborativos capaces de interactuar de forma segura con herramientas corporativas locales y en la nube. La plataforma sustituye llamadas monolíticas a LLMs por flujos orientados a grafos dirigidos.
+
+<Callout type="tip" title="Patrón Supervisor y HITL">
+  La arquitectura incorpora nodos supervisores para delegación dinámica y compuertas Human-in-the-Loop (HITL) en operaciones transaccionales sensibles.
+</Callout>
+
+## Arquitectura Técnica
+
+- **Orquestación con LangGraph:** Nodos modulares especializados (Retrieval, Agent, Tool y Validator) conectados mediante enrutamiento condicional.
+- **Protocolo de Contexto (MCP):** Servidores MCP desarrollados en TypeScript con transporte `stdio` y tipado estricto con esquemas Zod.
+- **Circuit Breaker:** Mecanismos de salvaguarda que detienen la ejecución si un subagente entra en bucles repetitivos o consume presupuesto excesivo de tokens.
+
+## Resultados y Aprendizajes
+
+La separación entre herramientas (MCP) y lógica de decisión redujo las alucinaciones en un 60% y permitió reutilizar los mismos servidores de herramientas entre distintos clientes de IA.
