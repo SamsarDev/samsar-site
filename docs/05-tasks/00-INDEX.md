@@ -11,7 +11,7 @@ Punto de entrada para el desarrollo práctico de **Samsar | Sitio web personal**
 | **Fase 1: Fundación** | [`01-foundation/`](01-foundation/) | Inicializar Astro 6, Tailwind v4, tokens semánticos, BaseLayout, ThemeToggle y navegación responsive. | **Listo** |
 | **Fase 2: Landing Page** | [`02-landing/`](02-landing/) | Construir átomos de UI (Button, Card, Chip, Badge), Hero, Pilares, Sobre el proyecto, Destacados y CTA. | **Listo** |
 | **Fase 3: Ecosistema Blog** | [`03-blog/`](03-blog/) | Configurar Content Layer API, índice `/blog`, vistas de categoría y lectura MDX con TOC y syntax highlighting. | **Listo** |
-| **Fase 4: Catálogo Proyectos** | [`04-portfolio/`](04-portfolio/) | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | **Listo para implementar** |
+| **Fase 4: Catálogo Proyectos** | [`04-portfolio/`](04-portfolio/) | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | **Listo** |
 | **Fase 5: Producción & SEO** | [`05-polish/`](05-polish/) | Generación de RSS, Sitemap, optimización Lighthouse > 95 y configuración de Cloudflare Pages. | Planificada |
 
 ---
