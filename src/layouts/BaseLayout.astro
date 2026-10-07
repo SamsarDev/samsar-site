@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Samsar | Código, cultura y curiosidad',
+  description = 'Sitio web personal, cuaderno de campo y portafolio de Samuel Sarmientos.',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://samsar.dev');
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+
+    <!-- Preload de Fuentes Críticas -->
+    <link rel="preload" href="/fonts/space-grotesk/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/manrope/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Script Sincrónico Anti-FOUC -->
+    <script is:inline>
+      (function () {
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] antialiased transition-colors duration-200">
+    <div class="flex min-h-screen flex-col">
+      <!-- Slot de Header (se integrará en la tarea 05) -->
+      <slot name="header" />
+
+      <!-- Contenido Principal -->
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <!-- Slot de Footer (se integrará en la tarea 05) -->
+      <slot name="footer" />
+    </div>
+  </body>
+</html>
