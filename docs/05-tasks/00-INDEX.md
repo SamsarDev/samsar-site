@@ -12,7 +12,7 @@ Punto de entrada para el desarrollo práctico de **Samsar | Sitio web personal**
 | **Fase 2: Landing Page** | [`02-landing/`](02-landing/) | Construir átomos de UI (Button, Card, Chip, Badge), Hero, Pilares, Sobre el proyecto, Destacados y CTA. | **Listo** |
 | **Fase 3: Ecosistema Blog** | [`03-blog/`](03-blog/) | Configurar Content Layer API, índice `/blog`, vistas de categoría y lectura MDX con TOC y syntax highlighting. | **Listo** |
 | **Fase 4: Catálogo Proyectos** | [`04-portfolio/`](04-portfolio/) | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | **Listo** |
-| **Fase 5: Perfil & Experiencia** | [`05-profile-and-experience/`](05-profile-and-experience/) | Bio personal (`/sobre-mi`), valores, timeline de experiencia laboral (`/experiencia`) y CV descargable. | Planificada |
+| **Fase 5: Perfil & Experiencia** | [`05-profile-and-experience/`](05-profile-and-experience/) | Bio personal (`/sobre-mi`), valores, timeline de experiencia laboral (`/experiencia`) y CV descargable. | **Listo** |
 | **Fase 6: Producción & SEO** | [`06-polish/`](06-polish/) | Generación de RSS, Sitemap, optimización Lighthouse > 95 y configuración de Cloudflare Pages. | Planificada |
 
 ---
