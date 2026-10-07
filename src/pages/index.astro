@@ -1,19 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ThemeToggle from '../components/islands/ThemeToggle.vue';
 ---
 
 <BaseLayout title="Inicio | Samsar">
-  <div class="mx-auto max-w-4xl px-4 py-16 text-center">
-    <h1 class="text-4xl font-bold font-['Space_Grotesk'] text-[var(--text-primary)]">
+  <section class="mx-auto max-w-4xl px-4 py-20 text-center">
+    <h1 class="font-['Space_Grotesk'] text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl">
       Samsar | Código, cultura y curiosidad
     </h1>
-    <p class="mt-4 text-lg text-[var(--text-secondary)] font-['Manrope']">
-      BaseLayout y prevención de FOUC configurados correctamente.
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--text-secondary)] font-['Manrope']">
+      Fundación técnica y sistema de navegación completados con éxito: cabecera fija, navegación semántica, alternador de tema y menú móvil accesible.
     </p>
-
-    <div class="mt-8 flex justify-center">
-      <ThemeToggle client:idle />
-    </div>
-  </div>
+  </section>
 </BaseLayout>
