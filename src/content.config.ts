@@ -18,4 +18,20 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+  schema: z.object({
+    title: z.string().min(3).max(80),
+    description: z.string().min(10).max(200),
+    type: z.enum(['professional', 'open-source', 'game', 'ai-experiment']),
+    stack: z.array(z.string()).min(1),
+    status: z.enum(['active', 'completed', 'wip', 'archived']),
+    repo: z.url().optional(),
+    demo: z.url().optional(),
+    postSlug: z.string().optional(),
+    cover: z.string().optional(),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, projects };
