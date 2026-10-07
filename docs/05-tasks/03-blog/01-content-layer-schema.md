@@ -58,7 +58,8 @@ export default defineConfig({
 > **Nota arquitectónica:** Siguiendo el ADR-0009, en Astro 6 la configuración reside en la raíz de `src/content.config.ts` y no en `src/content/config.ts`.
 
 ```typescript
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
