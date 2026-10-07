@@ -74,7 +74,7 @@ Lee estos documentos **en orden**. Los pasos 1 a 6 son lectura (aproximadamente 
 | `02-architecture/` | Listo |
 | `03-design/` | Listo |
 | `04-process/` | Listo |
-| `05-tasks/` | Listo (Fases 1, 2 y 3) |
+| `05-tasks/` | Listo (Fases 1, 2, 3 y 4) |
 | `06-playbooks/` | Pendiente |
 | `07-decisions/` | Listo |
 | `08-learning/` | Pendiente |
