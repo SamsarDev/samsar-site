@@ -1,41 +1,81 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import Card from '../ui/Card.astro';
 import Chip from '../ui/Chip.astro';
+import { formatDate } from '../../utils/formatDate';
+import { calculateReadingTime } from '../../utils/readingTime';
 import type { MockPost } from '../../data/featuredPosts';
 
 interface Props {
-  post: MockPost;
+  post: CollectionEntry<'blog'> | MockPost;
 }
 
 const { post } = Astro.props;
+
+const isEntry = 'data' in post;
+
+const title = isEntry ? post.data.title : post.title;
+const description = isEntry ? post.data.description : post.description;
+const pubDate = isEntry ? post.data.pubDate : new Date();
+const formattedDate = isEntry ? formatDate(pubDate) : post.publishDate;
+const category = isEntry ? post.data.category : post.category;
+const tags = isEntry ? post.data.tags : [];
+const url = `/blog/${isEntry ? post.id : post.slug}`;
+const readingTime = isEntry
+  ? calculateReadingTime(post.body || '')
+  : post.readingTime;
+
+const categoryMeta: Record<string, { label: string; colorClass: string }> = {
+  'samsar-dev': {
+    label: 'Samsar|Dev',
+    colorClass: 'text-[var(--color-jade)] border-[var(--color-jade)]/30 bg-[var(--color-jade)]/10',
+  },
+  'samsar-ia': {
+    label: 'Samsar|IA',
+    colorClass: 'text-[var(--color-hummingbird)] border-[var(--color-hummingbird)]/30 bg-[var(--color-hummingbird)]/10',
+  },
+  'samsar-games': {
+    label: 'Samsar|Games',
+    colorClass: 'text-[var(--color-blood)] border-[var(--color-blood)]/30 bg-[var(--color-blood)]/10',
+  },
+};
+
+const meta = categoryMeta[category] || {
+  label: category,
+  colorClass: 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10',
+};
 ---
 
-<article class="h-full">
-  <Card variant="interactive" class="flex h-full flex-col justify-between">
-    <div>
-      <div class="flex items-center justify-between gap-2">
-        <Chip variant="category">
-          {post.category.toUpperCase()}
-        </Chip>
-        <span class="font-['JetBrains_Mono'] text-xs text-[var(--text-secondary)]">
-          {post.readingTime}
-        </span>
+<Card variant="interactive" class="flex flex-col justify-between h-full group">
+  <div>
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <span class:list={['text-xs font-mono font-medium px-2 py-0.5 rounded-full border', meta.colorClass]}>
+        {meta.label}
+      </span>
+      <time datetime={isEntry ? pubDate.toISOString() : undefined} class="text-xs text-[var(--text-muted)] font-mono">
+        {formattedDate}
+      </time>
+    </div>
+
+    <h3 class="font-display text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2">
+      <a href={url} class="focus-visible:outline-none focus-visible:underline">
+        {title}
+      </a>
+    </h3>
+
+    <p class="text-sm text-[var(--text-secondary)] line-clamp-2 mb-4 leading-relaxed font-sans">
+      {description}
+    </p>
+  </div>
+
+  <div class="pt-4 border-t border-[var(--border-base)]/50 flex items-center justify-between text-xs text-[var(--text-muted)] font-mono">
+    <span>{readingTime}</span>
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-1">
+        {tags.slice(0, 2).map((tag) => (
+          <Chip variant="stack">{tag}</Chip>
+        ))}
       </div>
-
-      <h3 class="mt-4 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">
-        <a href={`/blog/${post.slug}`} class="rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]">
-          {post.title}
-        </a>
-      </h3>
-
-      <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
-        {post.description}
-      </p>
-    </div>
-
-    <div class="mt-6 flex items-center justify-between border-t border-[var(--border-base)] pt-4 text-xs text-[var(--text-secondary)]">
-      <span>{post.publishDate}</span>
-      <span class="font-medium text-[var(--accent-primary)]">Leer artículo &rarr;</span>
-    </div>
-  </Card>
-</article>
+    )}
+  </div>
+</Card>
