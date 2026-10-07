@@ -1,7 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import PostCard from '../blog/PostCard.astro';
 import Button from '../ui/Button.astro';
-import { featuredPosts } from '../../data/featuredPosts';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+
+const featured = allPosts
+  .filter((post) => post.data.featured)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const displayPosts =
+  featured.length > 0
+    ? featured
+    : allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
 ---
 
 <section class="py-16 bg-[var(--bg-primary)] border-t border-[var(--border-base)]">
@@ -21,7 +33,9 @@ import { featuredPosts } from '../../data/featuredPosts';
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {featuredPosts.map((post) => <PostCard post={post} />)}
+      {displayPosts.map((post) => (
+        <PostCard post={post} />
+      ))}
     </div>
   </div>
 </section>
