@@ -1,0 +1,50 @@
+---
+interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  class?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  class: className = '',
+  disabled = false,
+  type = 'button',
+  ...rest
+} = Astro.props;
+
+const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+
+const sizeStyles = {
+  sm: 'text-xs px-3 py-1.5 min-h-[36px]',
+  md: 'text-sm px-4 py-2 min-h-[44px]',
+  lg: 'text-base px-6 py-3 min-h-[48px]',
+};
+
+const variantStyles = {
+  primary: 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold hover:bg-[var(--accent-primary-hover)] active:translate-y-0.5',
+  secondary: 'border border-[var(--border-base)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] active:translate-y-0.5',
+  ghost: 'bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]',
+  danger: 'bg-[var(--color-blood)] text-[#FFFDF7] hover:opacity-90',
+};
+
+const combinedClasses = [baseStyles, sizeStyles[size], variantStyles[variant], className].join(' ');
+---
+
+{
+  href ? (
+    <a href={href} class={combinedClasses} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={combinedClasses} disabled={disabled} {...rest}>
+      <slot />
+    </button>
+  )
+}
