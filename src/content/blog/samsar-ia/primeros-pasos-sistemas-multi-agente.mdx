@@ -8,13 +8,29 @@ draft: false
 featured: true
 ---
 
+import Callout from '../../../components/ui/Callout.astro';
+
 ## De prompts aislados a redes colaborativas
 
 La evolución de los modelos de lenguaje nos ha llevado de simples asistentes conversacionales reactivos a verdaderos sistemas multi-agente capaces de delegar subtareas, verificar resultados de forma cruzada e interactuar con herramientas externas.
 
+<Callout type="tip" title="Principio de Responsabilidad Única">
+  Cada subagente debe contar con herramientas y contexto estrictamente acotados a su objetivo. La especialización reduce alucinaciones y optimiza el consumo de tokens.
+</Callout>
+
 ## El rol del Model Context Protocol (MCP)
 
 El estándar **Model Context Protocol** formaliza la forma en que los modelos interactúan con servidores de contexto y herramientas locales o remotas:
+
+```typescript
+// Definición conceptual de una herramienta expuesta mediante MCP
+export interface McpToolDeclaration {
+  name: string;
+  description: string;
+  parameters: Record<string, unknown>;
+  execute: (args: unknown) => Promise<unknown>;
+}
+```
 
 - **Desacoplamiento:** Los agentes no necesitan conocer la implementación interna de las fuentes de datos.
 - **Especialización:** Un agente de planificación coordina a subagentes de exploración, redacción o auditoría técnica.
