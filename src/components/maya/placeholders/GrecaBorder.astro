@@ -1,0 +1,23 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['pointer-events-none select-none opacity-5 overflow-hidden', className]} aria-hidden="true">
+  <svg width="100%" height="24" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="greca" width="48" height="24" patternUnits="userSpaceOnUse">
+        <path
+          d="M0 12 H12 V0 H24 V24 H36 V12 H48"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#greca)" class="text-[var(--text-primary)]" />
+  </svg>
+</div>
