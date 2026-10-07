@@ -1,20 +1,29 @@
 ---
-import Card from '../ui/Card.astro';
-import Chip from '../ui/Chip.astro';
-import Badge from '../ui/Badge.astro';
+import { getCollection } from 'astro:content';
+import ProjectCard from '../portfolio/ProjectCard.astro';
 import Button from '../ui/Button.astro';
-import { recentProjects } from '../../data/recentProjects';
+
+const allProjects = await getCollection('projects');
+
+const featuredProjects = allProjects
+  .filter((project) => project.data.featured)
+  .slice(0, 3);
+
+const displayProjects = featuredProjects.length > 0 ? featuredProjects : allProjects.slice(0, 3);
 ---
 
-<section class="py-16 bg-[var(--bg-surface)] border-t border-[var(--border-base)]">
+<section class="py-20 bg-[var(--bg-surface)] border-t border-[var(--border-base)]">
   <div class="mx-auto max-w-6xl px-4 sm:px-6">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
       <div>
-        <h2 class="font-['Space_Grotesk'] text-2xl font-bold tracking-tight text-[var(--text-primary)] sm:text-3xl">
-          Proyectos recientes
+        <p class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2">
+          Iniciativas & Software
+        </p>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+          Proyectos destacados
         </h2>
-        <p class="mt-2 text-base text-[var(--text-secondary)]">
-          Iniciativas de código abierto y desarrollos experimentales.
+        <p class="mt-2 text-base text-[var(--text-secondary)] font-sans">
+          Arquitecturas distribuidas, soluciones de IA y proyectos de código abierto.
         </p>
       </div>
       <Button href="/proyectos" variant="ghost" size="sm">
@@ -22,32 +31,10 @@ import { recentProjects } from '../../data/recentProjects';
       </Button>
     </div>
 
-    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        recentProjects.map((project) => (
-          <Card variant="interactive" class="flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between">
-                <Badge status={project.status} />
-              </div>
-              <h3 class="mt-3 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)]">
-                {project.title}
-              </h3>
-              <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
-                {project.description}
-              </p>
-            </div>
-
-            <div class="mt-6">
-              <div class="flex flex-wrap gap-1.5">
-                {project.stack.map((tech) => (
-                  <Chip variant="stack">{tech}</Chip>
-                ))}
-              </div>
-            </div>
-          </Card>
-        ))
-      }
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {displayProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
   </div>
 </section>
