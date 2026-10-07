@@ -1,0 +1,37 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+
+const navItems = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Sobre mí', href: '/sobre-mi' },
+  { label: 'Proyectos', href: '/proyectos' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Experiencia', href: '/experiencia' },
+  { label: 'Contacto', href: '/contacto' },
+];
+---
+
+<nav aria-label="Navegación principal" class:list={['hidden md:flex items-center gap-6', className]}>
+  {
+    navItems.map((item) => {
+      const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+      return (
+        <a
+          href={item.href}
+          aria-current={isActive ? 'page' : undefined}
+          class:list={[
+            'text-sm font-medium transition-colors hover:text-[var(--accent-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] rounded px-1 py-0.5',
+            isActive ? 'text-[var(--accent-primary)] font-semibold' : 'text-[var(--text-secondary)]',
+          ]}
+        >
+          {item.label}
+        </a>
+      );
+    })
+  }
+</nav>

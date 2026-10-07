@@ -1,0 +1,35 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--border-base)] bg-[var(--bg-surface)] text-[var(--text-secondary)]">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-12 sm:flex-row sm:px-6">
+    <p class="text-sm">
+      &copy; {currentYear} Samuel Sarmientos. Hecho con cariño en Guatemala.
+    </p>
+    <div class="flex items-center gap-6 text-sm">
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://linkedin.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="mailto:hola@samsar.dev"
+        class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+</footer>
