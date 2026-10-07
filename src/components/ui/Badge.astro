@@ -1,0 +1,33 @@
+---
+interface Props {
+  status?: 'active' | 'completed' | 'wip' | 'archived';
+  class?: string;
+}
+
+const { status = 'active', class: className = '' } = Astro.props;
+
+const statusStyles = {
+  active: 'border-[var(--color-jade)]/30 bg-[var(--color-jade)]/10 text-[var(--color-jade)]',
+  completed: 'border-[var(--color-hummingbird)]/30 bg-[var(--color-hummingbird)]/10 text-[var(--color-hummingbird)]',
+  wip: 'border-[var(--color-sun)]/30 bg-[var(--color-sun)]/10 text-[var(--color-sun)]',
+  archived: 'border-[var(--text-secondary)]/30 bg-[var(--bg-subtle)] text-[var(--text-secondary)]',
+};
+
+const labels = {
+  active: 'Activo',
+  completed: 'Completado',
+  wip: 'En desarrollo',
+  archived: 'Archivado',
+};
+---
+
+<span
+  class:list={[
+    "inline-flex items-center gap-1.5 rounded border px-2 py-0.5 font-['JetBrains_Mono'] text-[0.7rem] font-semibold uppercase tracking-wider",
+    statusStyles[status],
+    className,
+  ]}
+>
+  <span class="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+  <slot>{labels[status]}</slot>
+</span>

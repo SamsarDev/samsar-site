@@ -1,0 +1,22 @@
+---
+interface Props {
+  variant?: 'default' | 'interactive' | 'featured';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+
+const baseStyles = 'rounded-xl border border-[var(--border-base)] bg-[var(--bg-surface)] p-6 transition-all duration-200';
+
+const variantStyles = {
+  default: '',
+  interactive: 'hover:border-[var(--accent-primary)] hover:-translate-y-1 hover:shadow-lg',
+  featured: 'border-[var(--accent-primary)]/40 shadow-sm',
+};
+
+const combinedClasses = [baseStyles, variantStyles[variant], className].join(' ');
+---
+
+<div class={combinedClasses}>
+  <slot />
+</div>

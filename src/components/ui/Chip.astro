@@ -1,0 +1,22 @@
+---
+interface Props {
+  variant?: 'category' | 'tag' | 'stack';
+  class?: string;
+}
+
+const { variant = 'tag', class: className = '' } = Astro.props;
+
+const baseStyles = 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-[\'JetBrains_Mono\'] text-xs font-medium tracking-tight';
+
+const variantStyles = {
+  category: 'bg-[var(--accent-primary)]/15 text-[var(--accent-primary)]',
+  tag: 'bg-[var(--bg-subtle)] text-[var(--text-secondary)]',
+  stack: 'border border-[var(--border-base)] bg-[var(--bg-surface)] text-[var(--text-primary)]',
+};
+
+const combinedClasses = [baseStyles, variantStyles[variant], className].join(' ');
+---
+
+<span class={combinedClasses}>
+  <slot />
+</span>

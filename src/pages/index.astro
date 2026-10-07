@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Chip from '../components/ui/Chip.astro';
+import Badge from '../components/ui/Badge.astro';
 ---
 
 <BaseLayout title="Inicio | Samsar">
@@ -10,5 +14,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="mx-auto mt-6 max-w-2xl text-lg text-[var(--text-secondary)] font-['Manrope']">
       Fundación técnica y sistema de navegación completados con éxito: cabecera fija, navegación semántica, alternador de tema y menú móvil accesible.
     </p>
+
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 text-left">
+      <Card variant="interactive">
+        <div class="flex items-center justify-between">
+          <Badge status="active" />
+          <Chip variant="category">SAMSAR|DEV</Chip>
+        </div>
+        <h2 class="mt-4 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)]">
+          Átomos de UI Validados
+        </h2>
+        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+          Componentes Button, Card, Chip y Badge con polimorfismo, accesibilidad de teclado y tokens semánticos.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <Button href="/blog" variant="primary" size="sm">Explorar blog</Button>
+          <Button href="/proyectos" variant="secondary" size="sm">Ver proyectos</Button>
+        </div>
+      </Card>
+
+      <Card variant="featured">
+        <div class="flex items-center justify-between">
+          <Badge status="wip" />
+          <div class="flex gap-1.5">
+            <Chip variant="stack">Astro</Chip>
+            <Chip variant="stack">Vue 3</Chip>
+          </div>
+        </div>
+        <h2 class="mt-4 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)]">
+          Diseño Atómico & Tokens
+        </h2>
+        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+          Consumo estricto de variables semánticas sin colores hexadecimales manuales, compatible con Obsidiana & Jade y Cielo, Sol y Maíz.
+        </p>
+        <div class="mt-6">
+          <Button variant="ghost" size="sm">Acción secundaria &rarr;</Button>
+        </div>
+      </Card>
+    </div>
   </section>
 </BaseLayout>
