@@ -10,6 +10,7 @@ Bienvenido a la sección pedagógica de **Samsar | Sitio web personal**. Este pr
 |---|---|---|
 | **Ruta Formativa** | [`01-learning-path.md`](01-learning-path.md) | La secuencia didáctica completa fase por fase: fundamentos, diseño atómico, arquitectura hexagonal y SSG. |
 | **Despliegue Cloudflare** | [`02-cloudflare-pages-deployment-guide.md`](02-cloudflare-pages-deployment-guide.md) | Manual paso a paso de creación de cuenta, conexión con GitHub, variables de compilación y despliegue global en el Edge. |
+| **Versionado y Releases** | [`03-versioning-tags-and-releases.md`](03-versioning-tags-and-releases.md) | Guía de SemVer 2.0.0, tags anotados de Git, publicación de Releases en GitHub y rollbacks en Edge/Cloudflare. |
 
 ---
 
