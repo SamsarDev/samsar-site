@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada (404) | Samsar"
+  description="La página solicitada no existe o ha sido movida a otro paraje del cuaderno técnico."
+>
+  <main class="min-h-[70vh] flex items-center justify-center py-20 px-4 sm:px-6 text-center">
+    <div class="max-w-lg mx-auto">
+      <!-- Glifo o motivo geométrico maya -->
+      <div class="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/30 text-[var(--accent-primary)] mb-8 shadow-inner" aria-hidden="true">
+        <svg class="w-12 h-12" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+          <circle cx="24" cy="24" r="20" stroke-width="2" stroke-dasharray="4 4" />
+          <path d="M16 24L24 16L32 24L24 32Z" stroke-width="2" stroke-linejoin="round" />
+          <circle cx="24" cy="24" r="3" fill="currentColor" />
+        </svg>
+      </div>
+
+      <p class="font-mono text-xs uppercase tracking-widest text-[var(--accent-primary)] mb-2 font-semibold">
+        Error 404 // Sendero Extraviado
+      </p>
+
+      <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
+        Esta página se perdió en la selva
+      </h1>
+
+      <p class="text-base sm:text-lg text-[var(--text-secondary)] font-sans mb-10 leading-relaxed max-w-md mx-auto">
+        El glifo o sendero que intentas recorrer no existe, cambió de coordenadas o fue consumido por la maleza del tiempo.
+      </p>
+
+      <!-- Botones de rescate -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <Button href="/" variant="primary" size="md">
+          Volver a la plaza principal &rarr;
+        </Button>
+        <Button href="/blog" variant="secondary" size="md">
+          Explorar el blog
+        </Button>
+        <Button href="/proyectos" variant="ghost" size="md">
+          Ver proyectos
+        </Button>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-[var(--border-base)]/50">
+        <p class="font-mono text-xs text-[var(--text-muted)]">
+          ¿Buscabas comunicarte? Visita nuestro canal de <a href="/contacto" class="text-[var(--accent-primary)] hover:underline">contacto directo</a>.
+        </p>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
