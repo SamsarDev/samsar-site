@@ -45,3 +45,12 @@ Fase 6: Producción & Despliegue ─► SEO, OpenGraph, RSS 2.0, Sitemap XML, Cl
 - **Sindicación y Motores de Búsqueda:** Generación de feeds RSS 2.0 (`/rss.xml`), sitemaps dinámicos (`/sitemap-index.xml`) y metadatos OpenGraph.
 - **Arquitectura Edge en Cloudflare Pages:** Configuración de reglas de caché inmutables (`public/_headers`) y pipeline de compilación continua con Bun. Consulta el manual completo en [`02-cloudflare-pages-deployment-guide.md`](02-cloudflare-pages-deployment-guide.md).
 - **Versionado Semántico y Releases:** Congelamiento de hitos con SemVer 2.0.0, tags anotados de Git y GitHub Releases. Consulta la guía en [`03-versioning-tags-and-releases.md`](03-versioning-tags-and-releases.md).
+
+---
+
+## 3. Módulos de Especialización Técnica
+
+Para profundizar en los fundamentos teóricos aplicados en el código:
+- **Clean Architecture Frontend:** Principios de separación de responsabilidades y diseño de carpetas en [`04-frontend-clean-architecture.md`](04-frontend-clean-architecture.md).
+- **Accesibilidad Innegociable (WCAG AA):** Ratios de contraste, navegación por teclado y diseño inclusivo en [`05-accessibility-in-practice.md`](05-accessibility-in-practice.md).
+- **Patrones de Diseño en Astro y Vue:** Anti-FOUC, arquitectura de islas e hidratación perezosa en [`06-design-patterns-astro-vue.md`](06-design-patterns-astro-vue.md).

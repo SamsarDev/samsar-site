@@ -75,7 +75,7 @@ Lee estos documentos **en orden**. Los pasos 1 a 6 son lectura (aproximadamente 
 | `03-design/` | Listo |
 | `04-process/` | Listo |
 | `05-tasks/` | Listo (Fases 1 a 6 — MVP Completo) |
-| `06-playbooks/` | Pendiente |
+| `06-playbooks/` | Listo |
 | `07-decisions/` | Listo |
 | `08-learning/` | Listo |
 | `99-reference/` | Listo (originales v1.1) |
