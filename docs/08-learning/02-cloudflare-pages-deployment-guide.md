@@ -72,7 +72,7 @@ Baja hasta la sección colapsable **Environment variables** y añade las siguien
 
 | Variable | Valor | Razón Técnica |
 |---|---|---|
-| `NODE_VERSION` | `22.0.0` | Evita que el contenedor use Node 18 obsoleto y asegura compatibilidad con Astro 6. |
+| `NODE_VERSION` | `22.14.0` | Cumple el requisito estricto de Astro (`>=22.12.0`) y evita errores de runtime. |
 | `BUN_VERSION` | `latest` | Habilita el runtime de Bun en el entorno de compilación de Cloudflare. |
 
 ---
@@ -118,8 +118,9 @@ A partir de este momento, el flujo de desarrollo queda 100% automatizado:
 - **Error: `Command "bun" not found`:**
   - *Causa:* No se declaró `BUN_VERSION=latest` en las variables de entorno.
   - *Solución:* Añade la variable o cambia el comando de build a `npm run build`.
-- **Error: `Node version mismatch` o advertencias de Astro:**
-  - *Solución:* Asegura que `NODE_VERSION` sea `22.0.0` o superior en las variables de entorno.
+- **Error: `Node.js v22.0.0 is not supported by Astro! Please upgrade Node.js to a supported version: ">=22.12.0"`:**
+  - *Causa:* Cloudflare Pages usó una versión menor de Node 22 previa al soporte de Astro.
+  - *Solución:* Declara `NODE_VERSION=22.14.0` (o añade `.node-version` con `22.14.0` en la raíz).
 - **Rutas 404 en subpáginas:**
   - *Causa:* Falta el archivo `dist/404.html`.
   - *Solución:* En Astro, `src/pages/404.astro` compila directamente como `404.html` en la raíz de `dist/`, lo cual Cloudflare Pages detecta de forma automática.

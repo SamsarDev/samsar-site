@@ -28,7 +28,7 @@ Al vincular el proyecto en el panel de Cloudflare Pages, se deben configurar los
 
 | Variable | Valor | Justificación |
 |---|---|---|
-| `NODE_VERSION` | `22.0.0` | Garantiza compatibilidad con las últimas APIs de Node y Astro 6 |
+| `NODE_VERSION` | `22.14.0` | Cumple el requisito de Astro 6 (`>=22.12.0`) y APIs vigentes |
 | `BUN_VERSION` | `latest` (o `1.1.x`) | Permite a Cloudflare ejecutar `bun` directamente durante la compilación |
 
 ---
