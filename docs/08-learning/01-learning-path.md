@@ -44,3 +44,4 @@ Fase 6: Producción & Despliegue ─► SEO, OpenGraph, RSS 2.0, Sitemap XML, Cl
 ### Fase 6: Producción, SEO y Despliegue
 - **Sindicación y Motores de Búsqueda:** Generación de feeds RSS 2.0 (`/rss.xml`), sitemaps dinámicos (`/sitemap-index.xml`) y metadatos OpenGraph.
 - **Arquitectura Edge en Cloudflare Pages:** Configuración de reglas de caché inmutables (`public/_headers`) y pipeline de compilación continua con Bun. Consulta el manual completo en [`02-cloudflare-pages-deployment-guide.md`](02-cloudflare-pages-deployment-guide.md).
+- **Versionado Semántico y Releases:** Congelamiento de hitos con SemVer 2.0.0, tags anotados de Git y GitHub Releases. Consulta la guía en [`03-versioning-tags-and-releases.md`](03-versioning-tags-and-releases.md).
