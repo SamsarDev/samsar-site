@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+import { profileData } from '../data/profile';
+---
+
+<BaseLayout
+  title="Contacto | Samuel Sarmientos"
+  description="Canal de comunicación directo con Samuel Sarmientos para consultas de arquitectura, proyectos de IA, mentoría y colaboraciones open source."
+>
+  <main class="py-16 sm:py-24 mx-auto max-w-4xl px-4 sm:px-6 space-y-16">
+    <!-- Encabezado -->
+    <header class="text-center">
+      <p class="font-mono text-xs uppercase tracking-wider text-[var(--accent-primary)] mb-2">
+        Canal Directo & Colaboración
+      </p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
+        Hablemos
+      </h1>
+      <p class="mt-4 text-base sm:text-lg text-[var(--text-secondary)] font-sans max-w-2xl mx-auto leading-relaxed">
+        Espacio abierto para conversar sobre arquitectura de software, sistemas agénticos con IA, iniciativas pedagógicas o resolver desafíos de ingeniería distribuida.
+      </p>
+    </header>
+
+    <!-- Tarjetas de Canales Directos -->
+    <section>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <!-- Correo Electrónico -->
+        <Card variant="interactive" class="flex flex-col justify-between h-full group">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h2 class="font-display text-xl font-bold text-[var(--text-primary)] mb-1">
+              Correo Electrónico
+            </h2>
+            <p class="text-sm font-mono text-[var(--accent-primary)] mb-2 font-medium">
+              {profileData.email}
+            </p>
+            <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+              Canal ideal para propuestas de consultoría, invitaciones académicas o proyectos de desarrollo a medida.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50">
+            <a
+              href={`mailto:${profileData.email}`}
+              class="inline-flex items-center text-sm font-mono text-[var(--accent-primary)] hover:underline focus-visible:outline-none focus-visible:underline font-semibold"
+            >
+              Enviar correo electrónico &rarr;
+            </a>
+          </div>
+        </Card>
+
+        <!-- LinkedIn -->
+        <Card variant="interactive" class="flex flex-col justify-between h-full group">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/>
+              </svg>
+            </div>
+            <h2 class="font-display text-xl font-bold text-[var(--text-primary)] mb-1">
+              LinkedIn
+            </h2>
+            <p class="text-sm font-mono text-[var(--accent-primary)] mb-2 font-medium">
+              linkedin.com/in/samsar-dev
+            </p>
+            <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+              Conexión profesional, debate sobre decisiones arquitectónicas y seguimiento de actividad técnica.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50">
+            <a
+              href={profileData.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-sm font-mono text-[var(--accent-primary)] hover:underline focus-visible:outline-none focus-visible:underline font-semibold"
+              aria-label="Conectar en LinkedIn (se abre en nueva pestaña)"
+            >
+              Conectar en LinkedIn &rarr;
+            </a>
+          </div>
+        </Card>
+
+        <!-- GitHub -->
+        <Card variant="interactive" class="flex flex-col justify-between h-full group">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </div>
+            <h2 class="font-display text-xl font-bold text-[var(--text-primary)] mb-1">
+              GitHub & Código
+            </h2>
+            <p class="text-sm font-mono text-[var(--accent-primary)] mb-2 font-medium">
+              github.com/samsar-dev
+            </p>
+            <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+              Repositorios públicos, contribuciones open source y revisiones de código colaborativas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50">
+            <a
+              href={profileData.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-sm font-mono text-[var(--accent-primary)] hover:underline focus-visible:outline-none focus-visible:underline font-semibold"
+              aria-label="Ver perfil en GitHub (se abre en nueva pestaña)"
+            >
+              Explorar repositorios &rarr;
+            </a>
+          </div>
+        </Card>
+
+        <!-- Ubicación & Modalidad -->
+        <Card variant="default" class="flex flex-col justify-between h-full">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] flex items-center justify-center mb-4">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h2 class="font-display text-xl font-bold text-[var(--text-primary)] mb-1">
+              Ubicación & Disponibilidad
+            </h2>
+            <p class="text-sm font-mono text-[var(--accent-primary)] mb-2 font-medium">
+              Guatemala City (UTC-6)
+            </p>
+            <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+              Trabajo remoto con cobertura fluida para husos horarios de Norteamérica, Centroamérica y colaboración asíncrona global.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50 text-xs font-mono text-[var(--text-muted)]">
+            Modalidad: Remoto / Híbrido
+          </div>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Tipos de Interacciones Bienvenidas -->
+    <section class="p-8 rounded-2xl border border-[var(--border-base)] bg-[var(--bg-surface)]">
+      <div class="flex items-center gap-2 font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-4">
+        <span>Colaboraciones Habituales</span>
+      </div>
+      <h2 class="font-display text-2xl font-bold text-[var(--text-primary)] mb-6">
+        ¿Qué tipo de conversaciones impulsamos?
+      </h2>
+      <div class="grid gap-6 sm:grid-cols-3">
+        <div>
+          <h3 class="font-display text-base font-bold text-[var(--text-primary)] mb-2">
+            01 // Liderazgo & Consultoría
+          </h3>
+          <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+            Arquitectura de sistemas distribuidos, modernización de legados a microservicios y gobernanza DevSecOps.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-base font-bold text-[var(--text-primary)] mb-2">
+            02 // IA Agéntica & MCP
+          </h3>
+          <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+            Implementación de flujos autónomos con LangGraph, desarrollo de servidores MCP y canalizaciones RAG.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-base font-bold text-[var(--text-primary)] mb-2">
+            03 // Docencia & Mentoría
+          </h3>
+          <p class="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+            Talleres de pair programming asistido por IA, formación en algoritmos y cultura de ingeniería para estudiantes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enlaces de Retorno -->
+    <section class="text-center pt-8 border-t border-[var(--border-base)]">
+      <p class="text-sm text-[var(--text-secondary)] font-sans mb-4">
+        ¿Deseas conocer más antes de iniciar una conversación?
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <Button href="/sobre-mi" variant="secondary" size="sm">
+          Leer biografía &rarr;
+        </Button>
+        <Button href="/experiencia" variant="secondary" size="sm">
+          Ver trayectoria profesional &rarr;
+        </Button>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
