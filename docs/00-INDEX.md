@@ -77,7 +77,7 @@ Lee estos documentos **en orden**. Los pasos 1 a 6 son lectura (aproximadamente 
 | `05-tasks/` | Listo (Fases 1, 2, 3, 4 y 5) |
 | `06-playbooks/` | Pendiente |
 | `07-decisions/` | Listo |
-| `08-learning/` | Pendiente |
+| `08-learning/` | Listo |
 | `99-reference/` | Listo (originales v1.1) |
 
 > Si sigues un enlace y el archivo no existe todavía, es porque aún no se ha redactado. **No lo inventes**: avisa para que se complete.
