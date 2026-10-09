@@ -28,7 +28,7 @@ Punto de entrada a las especificaciones técnicas, estructura de código, rendim
 
 ## 3. Decisiones arquitectónicas fundamentales
 
-- **Astro 6 SSG:** Generación puramente estática en build time; cero JavaScript en páginas de lectura ([`ADR-0001`](../07-decisions/0001-astro-over-nuxt.md)).
+- **Astro 7 SSG:** Generación puramente estática en build time; cero JavaScript en páginas de lectura ([`ADR-0001`](../07-decisions/0001-astro-over-nuxt.md)).
 - **Cloudflare Pages:** Red Anycast edge con ancho de banda ilimitado y costo de infraestructura $0 USD ([`ADR-0002`](../07-decisions/0002-cloudflare-pages.md)).
 - **Vue 3 Composition API:** Único framework permitido para islas interactivas del cliente ([`ADR-0004`](../07-decisions/0004-vue-islands.md)).
 - **Tailwind CSS v4:** Arquitectura de estilos CSS-first mediante custom properties semánticas y `@import "tailwindcss"`.

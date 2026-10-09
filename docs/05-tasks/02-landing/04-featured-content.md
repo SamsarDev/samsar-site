@@ -79,7 +79,7 @@ export interface MockProject {
 export const recentProjects: MockProject[] = [
   {
     title: 'SamsarSite',
-    description: 'Sitio personal y pedagógico construido con Astro 6, Vue 3 y Tailwind v4.',
+    description: 'Sitio personal y pedagógico construido con Astro 7, Vue 3 y Tailwind v4.',
     stack: ['Astro', 'Vue 3', 'Tailwind v4', 'TypeScript'],
     status: 'active',
     repoUrl: 'https://github.com/SamsarDev/samsar-site',

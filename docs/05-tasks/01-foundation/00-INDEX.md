@@ -10,7 +10,7 @@ Las tareas deben ejecutarse en orden estricto, ya que cada una construye sobre l
 
 | # | Tarea | Qué se construye | Archivos Principales |
 |---|---|---|---|
-| **01** | [`01-init-astro.md`](01-init-astro.md) | Inicialización de Astro 6, TypeScript estricto e integración oficial de Vue 3. | `package.json`, `astro.config.mjs`, `tsconfig.json` |
+| **01** | [`01-init-astro.md`](01-init-astro.md) | Inicialización de Astro 7, TypeScript estricto e integración oficial de Vue 3. | `package.json`, `astro.config.mjs`, `tsconfig.json` |
 | **02** | [`02-tailwind-tokens.md`](02-tailwind-tokens.md) | Integración de Tailwind v4 CSS-first, tokens en `theme.css` y fuentes WOFF2 locales. | `src/styles/theme.css`, `src/styles/global.css`, `public/fonts/` |
 | **03** | [`03-base-layout.md`](03-base-layout.md) | Layout maestro con script anti-FOUC en `<head>`, metadatos SEO y slots. | `src/layouts/BaseLayout.astro`, `src/pages/index.astro` |
 | **04** | [`04-theme-toggle.md`](04-theme-toggle.md) | Isla interactiva Vue para conmutar entre tema oscuro y claro con `localStorage`. | `src/components/islands/ThemeToggle.vue` |

@@ -28,7 +28,7 @@ Al vincular el proyecto en el panel de Cloudflare Pages, se deben configurar los
 
 | Variable | Valor | Justificación |
 |---|---|---|
-| `NODE_VERSION` | `22.14.0` | Cumple el requisito de Astro 6 (`>=22.12.0`) y APIs vigentes |
+| `NODE_VERSION` | `22.14.0` | Cumple el requisito de Astro 7 (`>=22.12.0`) y APIs vigentes |
 | `BUN_VERSION` | `latest` (o `1.1.x`) | Permite a Cloudflare ejecutar `bun` directamente durante la compilación |
 
 ---
@@ -59,6 +59,28 @@ Para aprovechar al máximo la red Edge de Cloudflare y optimizar las métricas W
 
 ## 4. Dominio Personalizado y SSL
 
+> ⚠️ **Estado actual: dominio temporal.** El sitio se publica hoy en `https://samsar-site.pages.dev/`, el subdominio que asigna Cloudflare Pages. `samsar.dev` es el **dominio final** y todavía no está activo, así que `astro.config.mjs` apunta al temporal a propósito. Al activar el dominio propio hay que recorrer la lista de la sección 5.
+
 1. **Dominio principal:** El dominio personalizado `samsar.dev` se gestiona a través de los servidores de nombres (DNS) de Cloudflare.
 2. **Cifrado SSL/TLS:** Configurado en modo **Full (Strict)**, con renovación automática de certificados SSL sin intervención manual.
 3. **Redirecciones:** Forzar HTTPS de forma estricta y redirigir `www.samsar.dev` al dominio raíz `samsar.dev`.
+
+---
+
+## 5. Lista de Verificación al Activar el Dominio Propio
+
+Cuando `samsar.dev` esté activo, sustituye la URL temporal por la final **en estos lugares**. Es la lista completa; si añades otro archivo donde se declare el dominio, súmalo aquí.
+
+| Archivo | Qué cambiar |
+|---|---|
+| `astro.config.mjs` | `site:` — es la fuente de verdad: de ahí salen las canónicas, el sitemap y el RSS |
+| `public/robots.txt` | la directiva `Sitemap:` y su comentario de dominio temporal |
+| `src/layouts/BaseLayout.astro` | el valor de respaldo de `canonicalURL` |
+| `src/pages/rss.xml.ts` | el valor de respaldo de `site` |
+| `src/content/projects/` | los campos `demo:` que apuntan al sitio |
+| `docs/05-tasks/**` | las tareas que muestran `site:`, el respaldo de canónicas o `robots.txt` como ejemplo |
+| `docs/02-architecture/05-deployment.md` y `docs/08-learning/02-cloudflare-pages-deployment-guide.md` | las referencias al dominio y esta misma nota de estado |
+
+> **No cambian al mover el dominio:** los correos (`samsar.dev@gmail.com`, `hola@samsar.dev`), las URL de GitHub y LinkedIn, ni el aviso de licencia de `src/components/maya/NOTICE.md`, que delimita el alcance legal de los SVG y no la dirección del despliegue.
+>
+> `docs/99-reference/` conserva las referencias antiguas a propósito: es archivo histórico y no se edita.

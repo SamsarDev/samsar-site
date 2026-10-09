@@ -42,7 +42,7 @@ const {
   ogImage = "/og-image.png",
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://samsar.dev');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://samsar-site.pages.dev/');
 ---
 
 <!doctype html>

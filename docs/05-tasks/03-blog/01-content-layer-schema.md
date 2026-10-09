@@ -8,7 +8,7 @@
 
 ## 1. Objetivo Pedagógico
 
-Aprender la arquitectura de datos desacoplada de **Astro 6 con el Content Layer API**. Comprenderás por qué se valida el frontmatter de Markdown/MDX mediante esquemas de **Zod** en tiempo de compilación (evitando fallos silenciosos en producción), cómo integrar `@astrojs/mdx` para habilitar componentes enriquecidos dentro de los artículos, y cómo encapsular utilidades puras y deterministas en TypeScript para formatear fechas y calcular tiempos de lectura.
+Aprender la arquitectura de datos desacoplada de **Astro 7 con el Content Layer API**. Comprenderás por qué se valida el frontmatter de Markdown/MDX mediante esquemas de **Zod** en tiempo de compilación (evitando fallos silenciosos en producción), cómo integrar `@astrojs/mdx` para habilitar componentes enriquecidos dentro de los artículos, y cómo encapsular utilidades puras y deterministas en TypeScript para formatear fechas y calcular tiempos de lectura.
 
 ---
 
@@ -45,7 +45,7 @@ import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://samsar.dev',
+  site: 'https://samsar-site.pages.dev/',
   vite: {
     plugins: [tailwindcss()],
   },
@@ -55,7 +55,7 @@ export default defineConfig({
 
 ### Paso 2: Crear la definición de colecciones en `src/content.config.ts`
 
-> **Nota arquitectónica:** Siguiendo el ADR-0009, en Astro 6 la configuración reside en la raíz de `src/content.config.ts` y no en `src/content/config.ts`.
+> **Nota arquitectónica:** Siguiendo el ADR-0009, en Astro 7 la configuración reside en la raíz de `src/content.config.ts` y no en `src/content/config.ts`.
 
 ```typescript
 import { defineCollection } from 'astro:content';

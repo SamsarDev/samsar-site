@@ -7,7 +7,7 @@ Esta guía describe el itinerario pedagógico recorrido a lo largo de las 6 fase
 ## 1. Mapa de Habilidades por Fase
 
 ```text
-Fase 1: Fundación ──────────────► Astro 6, Tailwind v4, CSS Tokens, BaseLayout, Theme Anti-FOUC
+Fase 1: Fundación ──────────────► Astro 7, Tailwind v4, CSS Tokens, BaseLayout, Theme Anti-FOUC
 Fase 2: Landing Page ───────────► Diseño Atómico (UI Atoms), Composition & Accessibility WCAG AA
 Fase 3: Ecosistema Blog ────────► Content Layer API, Zod Validation, MDX, Shiki Dual-Theme, Tags
 Fase 4: Catálogo Proyectos ─────► Static Collections, SSG Routing, Filtered Hubs, Cross-Links

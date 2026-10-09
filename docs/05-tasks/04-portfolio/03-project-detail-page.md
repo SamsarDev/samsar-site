@@ -8,7 +8,7 @@
 
 ## 1. Objetivo Pedagógico
 
-Aprender a construir una ficha técnica detallada que combine documentación arquitectónica profunda con relaciones cruzadas entre colecciones independientes. Implementarás la ruta dinámica `/proyectos/[...slug].astro` utilizando `render(project)` de Astro 6, compondrás un hero con metadatos clave (estado, stack tecnológico y botones de acción directa), vincularás el artículo técnico del blog asociado mediante `postSlug` consultando `getEntry('blog', project.data.postSlug)`, y habilitarás navegación secuencial entre iniciativas.
+Aprender a construir una ficha técnica detallada que combine documentación arquitectónica profunda con relaciones cruzadas entre colecciones independientes. Implementarás la ruta dinámica `/proyectos/[...slug].astro` utilizando `render(project)` de Astro 7, compondrás un hero con metadatos clave (estado, stack tecnológico y botones de acción directa), vincularás el artículo técnico del blog asociado mediante `postSlug` consultando `getEntry('blog', project.data.postSlug)`, y habilitarás navegación secuencial entre iniciativas.
 
 ---
 
@@ -183,5 +183,5 @@ const relatedPost = postSlug ? await getEntry('blog', postSlug) : undefined;
 
 ## 5. Pistas Didácticas y Errores Comunes
 
-- **`getEntry('blog', postSlug)`:** En Astro 6, `getEntry` recibe el nombre de la colección y el identificador (`postSlug`). Si no encuentra el artículo o el slug está desalineado, retornará `undefined` sin romper la compilación.
+- **`getEntry('blog', postSlug)`:** En Astro 7, `getEntry` recibe el nombre de la colección y el identificador (`postSlug`). Si no encuentra el artículo o el slug está desalineado, retornará `undefined` sin romper la compilación.
 - **`exactOptionalPropertyTypes` en props:** Recuerda tipear `prevProject?: CollectionEntry<'projects'> | undefined` para que TypeScript acepte el paso explícito de `undefined`.

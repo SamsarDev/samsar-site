@@ -11,7 +11,7 @@ Definición de conceptos clave de arquitectura de software, estándares web y di
 | **SSG (Static Site Generator)** | Compilación que genera archivos HTML, CSS y JS estáticos durante el build. El servidor o CDN solo entrega archivos planos ya renderizados, sin cómputo por petición. |
 | **Islands Architecture** | Patrón donde la página es HTML estático puro por defecto, y solo pequeños componentes interactivos aislados (islas) cargan e hidratan JavaScript en el navegador. |
 | **Hydration (Hidratación)** | Proceso en el que un componente renderizado previamente en HTML se vincula a su lógica reactiva de JavaScript en el navegador del cliente. |
-| **Content Layer API** | Estándar de Astro 6 para cargar, tipar y validar colecciones de contenido (Markdown/MDX) desde fuentes locales o remotas mediante esquemas Zod en `src/content.config.ts`. |
+| **Content Layer API** | Estándar de Astro 7 para cargar, tipar y validar colecciones de contenido (Markdown/MDX) desde fuentes locales o remotas mediante esquemas Zod en `src/content.config.ts`. |
 | **MDX** | Extensión de Markdown que permite intercalar componentes dinámicos de UI dentro del texto formateado. |
 | **FOUC (Flash of Unstyled Content)** | Parpadeo visual molesto que ocurre cuando una página se pinta con un tema visual o estilos por defecto antes de que el script determine la preferencia guardada del usuario. |
 

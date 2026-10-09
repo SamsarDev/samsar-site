@@ -8,7 +8,7 @@ Guía de habilidades (skills) para estudiantes y agentes de IA que trabajan en e
 
 En el desarrollo de software asistido por IA, una **skill** (habilidad) es un paquete modular de instrucciones especializadas, scripts de validación, flujos de trabajo y referencias técnicas que extiende las capacidades operativas de un agente. En lugar de sobrecargar el contexto global del agente con cientos de reglas genéricas, una skill inyecta conocimiento profundo sobre un dominio específico justo cuando la tarea lo requiere (por ejemplo, al manipular archivos Astro, maquetar con Tailwind v4 o auditar accesibilidad).
 
-Para este proyecto, las skills funcionan como un puente didáctico y arquitectónico: garantizan que cualquier agente (Claude Code, OpenCode, Codex, Antigravity) trabaje alineado a los estándares de **Astro 6**, **islas Vue 3**, **Tailwind CSS v4** y las reglas de diseño de `DESIGN.md`, minimizando alucinaciones y acelerando el aprendizaje del estudiante.
+Para este proyecto, las skills funcionan como un puente didáctico y arquitectónico: garantizan que cualquier agente (Claude Code, OpenCode, Codex, Antigravity) trabaje alineado a los estándares de **Astro 7**, **islas Vue 3**, **Tailwind CSS v4** y las reglas de diseño de `DESIGN.md`, minimizando alucinaciones y acelerando el aprendizaje del estudiante.
 
 ---
 
@@ -16,7 +16,7 @@ Para este proyecto, las skills funcionan como un puente didáctico y arquitectó
 
 | Skill | Para qué | Cuándo usarla | Fuente |
 |---|---|---|---|
-| **`astro-expert`** | Buenas prácticas en Astro 6: Content Collections con Zod, directivas de hidratación (`client:visible`, `client:idle`) y cero JS por defecto. | Al crear o modificar páginas (`src/pages/`), layouts o componentes `.astro`. | Ecosistema Astro / Community Skills |
+| **`astro-expert`** | Buenas prácticas en Astro 7: Content Collections con Zod, directivas de hidratación (`client:visible`, `client:idle`) y cero JS por defecto. | Al crear o modificar páginas (`src/pages/`), layouts o componentes `.astro`. | Ecosistema Astro / Community Skills |
 | **`vue-composition-api`** | Implementación estricta de Vue 3 con Composition API, `<script setup lang="ts">`, tipado de props con `defineProps` y estado reactivo limpio. | Al desarrollar islas interactivas en `src/components/islands/`. | Ecosistema Vue 3 |
 | **`tailwind-v4`** | Arquitectura CSS-first de Tailwind v4, mapeo de custom properties temáticas y ausencia de `tailwind.config.js`. | Al maquetar estilos o actualizar `src/styles/theme.css`. | Tailwind CSS Community |
 | **`web-accessibility-wcag`** | Auditoría y cumplimiento de accesibilidad WCAG 2.x nivel AA: contraste ≥ 4.5:1, navegación completa por teclado, focos visibles y atributos ARIA. | Al crear componentes de interfaz, botones, inputs y navegación. | W3C / A11y Guidelines |
@@ -53,7 +53,7 @@ En Google Antigravity, las skills se descubren y gestionan automáticamente medi
 
 ## 4. Skills propias del proyecto
 
-Actualmente, el proyecto se encuentra en su fase inicial de arquitectura. En una etapa posterior, este repositorio contará con **skills propias y exclusivas** ubicadas en la carpeta `.agents/skills/`.
+El MVP (fases 1 a 6) está completo, pero las **skills propias y exclusivas** de este repositorio todavía no están implementadas: la carpeta `.agents/skills/` aún no existe. Están planificadas para una etapa posterior.
 
 Estas skills internas estarán diseñadas para automatizar y guiar el flujo de trabajo didáctico:
 

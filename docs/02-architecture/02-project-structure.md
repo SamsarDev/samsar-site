@@ -24,7 +24,7 @@ samsar-site/
 │   │   ├── landing/         # Hero, Pillars, Highlights, CTA
 │   │   ├── islands/         # Componentes Vue interactivos (.vue)
 │   │   └── maya/            # SVGs decorativos y motivos culturales
-│   ├── content.config.ts    # Content Layer API de Astro 6 (esquemas Zod)
+│   ├── content.config.ts    # Content Layer API de Astro 7 (esquemas Zod)
 │   ├── content/             # Archivos Markdown / MDX de contenido
 │   │   ├── blog/            # Artículos divididos en 3 pilares
 │   │   │   ├── samsar-dev/

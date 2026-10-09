@@ -4,7 +4,7 @@ Directrices para componentes cliente, directivas de hidratación y prevención d
 
 ---
 
-## 1. Filosofía de Islas en Astro 6
+## 1. Filosofía de Islas en Astro 7
 
 Astro aplica por defecto la regla de **cero JavaScript en el cliente**. Cada archivo `.astro` se compila a HTML estático en el servidor. Solo cuando un elemento de la interfaz requiere interactividad reactiva en el navegador del usuario (gestión de estado, eventos de teclado o almacenamiento local), se encapsula en una **isla interactiva** (`src/components/islands/*.vue`).
 

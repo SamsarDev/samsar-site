@@ -25,32 +25,46 @@ Este repositorio tiene un segundo propósito: es un **proyecto de ejemplo para c
 
 | Capa | Tecnología |
 |---|---|
-| Generador de sitio | [Astro](https://astro.build) 6 (SSG) |
+| Generador de sitio | [Astro](https://astro.build) 7 (SSG) |
 | Interactividad | Islas [Vue](https://vuejs.org) 3 |
 | Estilos | Tailwind CSS v4 + tokens CSS |
 | Contenido | Markdown / MDX con Content Collections |
 | Hosting | Cloudflare Pages |
+| Runtime y paquetes | Node.js 22.14.0 (fijado en `.node-version`) + [Bun](https://bun.sh) (alternativa: npm) |
 
 Por qué se eligió cada pieza: [`docs/07-decisions/`](docs/07-decisions/).
 
 ---
 
+## 🚦 Estado del proyecto
+
+**MVP completo.** Las 6 fases de [`docs/05-tasks/`](docs/05-tasks/00-INDEX.md) están cerradas: fundación, landing, blog, portafolio, perfil/experiencia y producción (SEO, RSS, sitemap, cabeceras de caché y guía de despliegue en Cloudflare Pages).
+
+- **Astro 7** (declarado `^7.3.6`), con Tailwind v4, Vue 3 y MDX según el stack de arriba.
+- **12 archivos** en `src/pages/`, incluidas las rutas dinámicas `/blog/[...slug]`, `/blog/tags/[tag]`, `/proyectos/[type]`, además de `/404` y `rss.xml`.
+- **3 islas Vue** con hidratación perezosa: `ThemeToggle`, `MobileMenu` y `ExperienceTimeline`.
+- **CI en GitHub Actions** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)): `bun run check` y `bun run build` en cada push y PR a `main`.
+
+Lo pendiente es post-MVP y está catalogado en [`docs/01-product/02-features.md`](docs/01-product/02-features.md): buscador en cliente (F14), formulario de contacto (F15), embeds interactivos (F20), entre otros.
+
+También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`](docs/05-tasks/07-maintenance/00-INDEX.md), con tareas para alinear la documentación con el código real: estructura de carpetas, inventario de islas, patrón anti-FOUC, catálogo de componentes y un linter de verdad. Incluye además crear la imagen Open Graph que `BaseLayout` usa por defecto y hoy no existe.
+
+---
+
 ## ⚡ Inicio rápido
 
-> ℹ️ **Nota de estado:** El proyecto está en fase de documentación y planificación. Estos pasos aplican cuando se complete la tarea de inicialización ([`docs/05-tasks/01-foundation/`](docs/05-tasks/01-foundation/)).
-
-**Requisitos:** Node.js 22+ (o runtime compatible) y Git. Se recomienda **[Bun](https://bun.sh)** o **[pnpm](https://pnpm.io)** por velocidad y eficiencia de dependencias, manteniendo total compatibilidad con **npm**.
+**Requisitos:** Node.js 22.14.0 (versión fijada en `.node-version`; Astro 7 exige `>= 22.12.0`) y Git. El gestor de paquetes del proyecto es **[Bun](https://bun.sh)**, con **npm** como alternativa.
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/samsar-dev/samsar-site.git
 cd samsar-site
 
-# 2. Instalar dependencias (Recomendado: Bun o pnpm)
-bun install         # o: pnpm install | npm install
+# 2. Instalar dependencias (Bun recomendado; alternativa: npm)
+bun install         # o: npm install
 
-# 3. Iniciar servidor local
-bun dev             # o: pnpm dev | npm run dev
+# 3. Iniciar el servidor local
+bun run dev         # o: npm run dev
 ```
 
 El sitio quedará disponible en `http://localhost:4321`.
@@ -59,7 +73,7 @@ El sitio quedará disponible en `http://localhost:4321`.
 
 | Script | Bun (Recomendado) | npm | Descripción |
 |---|---|---|---|
-| **Desarrollo** | `bun dev` | `npm run dev` | Inicia el servidor local de desarrollo con recarga rápida |
+| **Desarrollo** | `bun run dev` | `npm run dev` | Inicia el servidor local de desarrollo con recarga rápida |
 | **Build** | `bun run build` | `npm run build` | Compila el sitio estático para producción |
 | **Preview** | `bun run preview` | `npm run preview` | Previsualiza localmente el build generado |
 | **Chequeo** | `bun run check` | `npm run check` | Ejecuta Astro Check (validación estricta de tipos y plantillas) |

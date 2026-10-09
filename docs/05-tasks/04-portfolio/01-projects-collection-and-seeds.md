@@ -8,7 +8,7 @@
 
 ## 1. Objetivo Pedagógico
 
-Aprender a escalar la arquitectura de datos desacoplada en **Astro 6** registrando múltiples colecciones en el Content Layer API (`src/content.config.ts`). Definirás un contrato de datos estricto mediante **Zod** para gobernar las iniciativas de software (`projects`), tipando tipos de proyecto (`professional`, `open-source`, `game`, `ai-experiment`), estados del ciclo de vida (`active`, `completed`, `wip`, `archived`), pilas tecnológicas (`stack`), y vinculación bidireccional con artículos técnicos mediante `postSlug`. Redactarás 4 proyectos semilla documentados con rigor ingenieril basados en la trayectoria técnica real del autor.
+Aprender a escalar la arquitectura de datos desacoplada en **Astro 7** registrando múltiples colecciones en el Content Layer API (`src/content.config.ts`). Definirás un contrato de datos estricto mediante **Zod** para gobernar las iniciativas de software (`projects`), tipando tipos de proyecto (`professional`, `open-source`, `game`, `ai-experiment`), estados del ciclo de vida (`active`, `completed`, `wip`, `archived`), pilas tecnológicas (`stack`), y vinculación bidireccional con artículos técnicos mediante `postSlug`. Redactarás 4 proyectos semilla documentados con rigor ingenieril basados en la trayectoria técnica real del autor.
 
 ---
 
@@ -92,7 +92,7 @@ type: 'ai-experiment'
 stack: ['TypeScript', 'LangGraph', 'Node.js', 'Model Context Protocol', 'Azure OpenAI']
 status: 'active'
 repo: 'https://github.com/samsar-dev'
-demo: 'https://samsar.dev'
+demo: 'https://samsar-site.pages.dev/'
 postSlug: 'samsar-ia/primeros-pasos-sistemas-multi-agente'
 featured: true
 ---

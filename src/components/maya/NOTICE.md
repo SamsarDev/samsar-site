@@ -10,12 +10,12 @@ cubiertos por la licencia MIT del repositorio.
 | Diseñadora | [NOMBRE DE LA DISEÑADORA] |
 | Titular de los derechos | [NOMBRE DE LA DISEÑADORA] |
 | Licenciatario | Samuel Sarmientos (Samsar) |
-| Tipo de licencia | Licencia de un solo uso, exclusiva para el sitio samsar.dev |
+| Tipo de licencia | Licencia de un solo uso, exclusiva para el sitio de Samsar (`samsar.dev` y sus dominios asociados) |
 | Fecha / referencia del acuerdo | [FECHA O REFERENCIA] |
 
 ## Qué está permitido
 
-- Su uso en el sitio web desplegado de Samsar (samsar.dev).
+- Su uso en el sitio web desplegado de Samsar (`samsar.dev` y sus dominios asociados).
 
 ## Qué NO está permitido sin autorización escrita de la titular
 
