@@ -22,6 +22,7 @@ Aprender a mantener un inventario de proyecto que no mienta. Un árbol de carpet
 - [ ] Los comentarios de carpeta listan los componentes reales. Al menos: `blog/` (Breadcrumbs, CategoryHero, Pagination, PostCard, PostNavigation, RelatedPosts, TOC), `landing/` (AboutProject, CtaSection, FeaturedPosts, Hero, Pillars, RecentProjects), `ui/` (Badge, Button, Callout, Card, Chip), `layout/` (Footer, Header, Nav), `islands/` (ExperienceTimeline, MobileMenu, ThemeToggle) y `portfolio/` (ProjectCard).
 - [ ] `src/layouts/` se documenta con los dos layouts reales: `BaseLayout.astro` y `BlogLayout.astro`.
 - [ ] `AGENTS.md` §6 (versión resumida que apunta al documento canónico) es coherente con el árbol corregido: sin `CodeBlock`, `Embed`, `Highlights` ni `ProjectLayout`.
+- [ ] La tabla de **§2 (Convenciones de Ubicación)** cubre todo lo que un estudiante puede necesitar crear: las siete familias de `src/components/` (`ui`, `layout`, `blog`, `landing`, `portfolio`, `islands`, `maya`), los dos tipos de contenido (`content/blog/`, `content/projects/`), los datos tipados (`data/`), las rutas (`pages/`), los activos (`src/assets/` y `public/`) y los esquemas (`content.config.ts`). El objetivo es didáctico: que nadie tenga que volver a este documento —ni a una tarea futura— para saber dónde va un archivo.
 - [ ] El documento final no afirma nada que no puedas verificar con el listado del paso 1.
 
 ---
@@ -71,7 +72,10 @@ Comprueba que cada ruta mencionada en el documento existe. El documento no tiene
    git ls-files src public
    ```
 
-   Criterio: toda ruta del árbol existe en el listado, y todo archivo relevante del listado aparece en el árbol o está agrupado explícitamente (por ejemplo, "y 3 posts semilla" no es aceptable: escribe los nombres).
+   Criterio, en las **dos** direcciones:
+   - **(a) El árbol no inventa:** toda ruta del árbol debe existir en el listado. Un árbol con archivos que no están es justo el defecto que esta tarea elimina.
+   - **(b) El árbol no omite:** todo archivo de `src/` y `public/` debe aparecer por su nombre. Vale nombrarlo en el comentario de su carpeta (como hacen `blog/`, `landing/` o `ui/`), no hace falta una línea de árbol por archivo. No escribas "y 3 posts semilla": enumera los nombres.
+   - **Única excepción:** los `.woff2` se documentan por familia y pesos (`space-grotesk/  # 600, 700`). Su nombre lleva sufijos de versión y enumerarlos no aporta al inventario.
 
 2. Verifica que `AGENTS.md` y `02-project-structure.md` no se contradigan:
 
@@ -79,7 +83,9 @@ Comprueba que cada ruta mencionada en el documento existe. El documento no tiene
    git diff AGENTS.md docs/02-architecture/02-project-structure.md
    ```
 
-3. **Aviso sobre `check` y `build`:** pueden fallar de forma intermitente por lo descrito en [`00-INDEX.md`](00-INDEX.md) §3. Ejecútalos; si en tu entorno fallan, deja constancia en el resumen de la tarea de que la verificación se hizo con el listado de Git.
+3. Recorre las carpetas de primer nivel del árbol (`src/components/*`, `src/content/*`, `src/data/`, `src/pages/`, `src/assets/`, `public/`) y comprueba que cada una tiene su fila en §2. Si en el futuro aparece una familia nueva en el código, la tabla debe crecer con ella en el mismo cambio que la crea.
+
+4. **Aviso sobre `check` y `build`:** pueden fallar de forma intermitente por lo descrito en [`00-INDEX.md`](00-INDEX.md) §3. Ejecútalos; si en tu entorno fallan, deja constancia en el resumen de la tarea de que la verificación se hizo con el listado de Git.
 
 ---
 
@@ -89,3 +95,5 @@ Comprueba que cada ruta mencionada en el documento existe. El documento no tiene
 - **No borres `NOTICE.md` de `maya/`:** no es un descuido, es el aviso de licencia de los SVG decorativos (ver el README §Licencia). Si reescribes esa carpeta, documéntalo.
 - **Regla preventiva:** cuando crees, muevas o renombres un archivo estructural, actualiza el árbol en el **mismo commit**. Un inventario que se actualiza "después" no se actualiza nunca.
 - **Ojo con `docs/99-reference/`:** contiene el árbol antiguo y no se edita. Si alguien compara ambos documentos y ve diferencias, la respuesta es "el de `99-reference/` es histórico".
+- **Verifica por script, no a ojo:** comparar 61 entradas manualmente contra `git ls-files` no se hace bien. Escribe un par de líneas que recorran el árbol y el listado en las dos direcciones; es más rápido y no se le escapa nada.
+- **Cuidado con la codificación si automatizas:** los caracteres del árbol (`├──`, `│`, `└──`) se leen como basura si tu herramienta asume ANSI en lugar de UTF-8, y entonces el script reporta que **no existe absolutamente nada**. Fuerza UTF-8 (en PowerShell, `Get-Content -Encoding UTF8`) antes de creerte el resultado. Es un falso positivo que cuesta media hora si no lo ves venir.

@@ -8,56 +8,76 @@ Organización de directorios, responsabilidades por carpeta y convenciones de no
 
 ```text
 samsar-site/
-├── public/                  # Archivos estáticos servidos directamente
-│   ├── favicon.svg          # Favicon del sitio
-│   ├── og-image.png         # Imagen Open Graph por defecto
-│   ├── cv-samuel.pdf        # CV descargable
-│   └── fonts/               # Fuentes WOFF2 autoalojadas
-│       ├── space-grotesk/   # 600, 700
-│       ├── manrope/         # 400, 500
-│       └── jetbrains-mono/  # 400, 500
+├── public/                   # Archivos estáticos servidos sin procesar
+│   ├── favicon.svg           # Favicon del sitio
+│   ├── robots.txt            # Directivas para rastreadores (incluye el sitemap)
+│   ├── _headers              # Cabeceras de caché de Cloudflare Pages
+│   ├── cv-samuel-sarmientos.pdf  # CV descargable (/experiencia)
+│   └── fonts/                # Fuentes WOFF2 autoalojadas
+│       ├── space-grotesk/    # 600, 700
+│       ├── manrope/          # 400, 500
+│       └── jetbrains-mono/   # 400, 500
 ├── src/
-│   ├── components/          # Componentes reutilizables
-│   │   ├── ui/              # Botones, Cards, Chips, Badges, Callouts
-│   │   ├── layout/          # Header, Footer, Nav, Breadcrumbs
-│   │   ├── blog/            # PostCard, TOC, CodeBlock, Embed
-│   │   ├── landing/         # Hero, Pillars, Highlights, CTA
-│   │   ├── islands/         # Componentes Vue interactivos (.vue)
-│   │   └── maya/            # SVGs decorativos y motivos culturales
-│   ├── content.config.ts    # Content Layer API de Astro 7 (esquemas Zod)
-│   ├── content/             # Archivos Markdown / MDX de contenido
-│   │   ├── blog/            # Artículos divididos en 3 pilares
-│   │   │   ├── samsar-dev/
-│   │   │   ├── samsar-ia/
-│   │   │   └── samsar-games/
-│   │   └── projects/        # Iniciativas y proyectos individuales
-│   ├── data/                # Archivos de datos estructurados en TypeScript
-│   │   └── experience.ts    # Trayectoria laboral, skills y educación
-│   ├── layouts/             # Plantillas base de página (.astro)
-│   │   ├── BaseLayout.astro # Layout raíz con script anti-FOUC y SEO
-│   │   ├── BlogLayout.astro # Layout con sidebar TOC y lectura 70ch
-│   │   └── ProjectLayout.astro
-│   ├── pages/               # Enrutamiento basado en archivos
-│   │   ├── index.astro      # Portada (/)
-│   │   ├── sobre-mi.astro   # Biografía (/sobre-mi)
-│   │   ├── experiencia.astro# Timeline y CV (/experiencia)
-│   │   ├── proyectos/       # Catálogo y detalle dinámico
-│   │   ├── blog/            # Índice, categorías y [slug]
-│   │   ├── contacto.astro   # Enlaces de contacto (/contacto)
-│   │   ├── 404.astro        # Error 404
-│   │   └── rss.xml.ts       # Generador del feed RSS
-│   ├── styles/              # Arquitectura de estilos CSS
-│   │   ├── theme.css        # Tokens de diseño y custom properties
-│   │   └── global.css       # Directiva Tailwind v4 y resets
-│   └── utils/               # Funciones de utilidad pura en TypeScript
-│       ├── reading-time.ts  # Cálculo de minutos de lectura
-│       ├── format-date.ts   # Formateo de fechas en español
-│       └── seo.ts           # Constructores de metadatos Open Graph
-├── astro.config.mjs         # Configuración de Astro, Vue y plugins Vite
-├── package.json             # Dependencias del proyecto (Bun / npm)
-├── tsconfig.json            # Configuración estricta de TypeScript
-└── AGENTS.md                # Reglas operativas para agentes de IA
+│   ├── assets/               # Imágenes importadas por componentes
+│   │   └── avatar.png        # Avatar de /sobre-mi
+│   ├── components/           # Componentes reutilizables
+│   │   ├── ui/               # Button, Card, Chip, Badge, Callout
+│   │   ├── layout/           # Header, Footer, Nav
+│   │   ├── blog/             # PostCard, TOC, Breadcrumbs, CategoryHero,
+│   │   │                     #   Pagination, PostNavigation, RelatedPosts
+│   │   ├── landing/          # Hero, Pillars, AboutProject, CtaSection,
+│   │   │                     #   FeaturedPosts, RecentProjects
+│   │   ├── portfolio/        # ProjectCard
+│   │   ├── islands/          # Islas Vue: ThemeToggle, MobileMenu,
+│   │   │                     #   ExperienceTimeline
+│   │   └── maya/             # SVGs decorativos (ver NOTICE.md)
+│   │       ├── NOTICE.md     # Licencia: estos SVG no son MIT
+│   │       └── placeholders/ # Reemplazos MIT: GrecaBorder, QuetzalSilhouette
+│   ├── content.config.ts     # Colecciones y esquemas Zod
+│   ├── content/              # Contenido en Markdown / MDX
+│   │   ├── blog/             # Artículos divididos en 3 pilares
+│   │   │   ├── samsar-dev/   # guia-clean-architecture-frontend.md
+│   │   │   ├── samsar-ia/    # primeros-pasos-sistemas-multi-agente.mdx
+│   │   │   └── samsar-games/ # diseno-ludico-pedagogia-con-mi-hijo.md
+│   │   └── projects/         # clean-architecture-minimal-apis.md,
+│   │                         #   experiencias-gamificadas-edtech.md,
+│   │                         #   modernizacion-core-bancario.md,
+│   │                         #   orquestacion-agentica-mcp.mdx
+│   ├── data/                 # Datos estructurados en TypeScript
+│   │   ├── experience.ts     # Trayectoria laboral, skills y educación
+│   │   └── profile.ts        # Datos personales y de contacto
+│   ├── layouts/              # Plantillas base de página (.astro)
+│   │   ├── BaseLayout.astro  # Layout raíz con script anti-FOUC y SEO
+│   │   └── BlogLayout.astro  # Layout de lectura con TOC y 70ch
+│   ├── pages/                # Enrutamiento basado en archivos
+│   │   ├── index.astro       # Portada (/)
+│   │   ├── sobre-mi.astro    # Biografía (/sobre-mi)
+│   │   ├── experiencia.astro # Timeline y CV (/experiencia)
+│   │   ├── contacto.astro    # Enlaces de contacto (/contacto)
+│   │   ├── 404.astro         # Error 404
+│   │   ├── rss.xml.ts        # Feed RSS (/rss.xml)
+│   │   ├── blog/             # Catálogo, pilares, etiquetas y lectura
+│   │   │   ├── index.astro   # Catálogo (/blog)
+│   │   │   ├── [...slug].astro  # Lectura del artículo
+│   │   │   ├── [category]/   # Un pilar por carpeta (/blog/samsar-dev, ...)
+│   │   │   └── tags/[tag].astro # Filtro por etiqueta
+│   │   └── proyectos/        # Catálogo, filtros y fichas
+│   │       ├── index.astro   # Catálogo (/proyectos)
+│   │       ├── [...slug].astro  # Ficha de proyecto
+│   │       └── [type]/       # Filtro por tipo (/proyectos/game, ...)
+│   ├── styles/               # Arquitectura de estilos CSS
+│   │   ├── theme.css         # Tokens de diseño y custom properties
+│   │   └── global.css        # Directiva Tailwind v4 y resets
+│   └── utils/                # Funciones de utilidad puras
+│       ├── formatDate.ts     # Formateo de fechas en español
+│       └── readingTime.ts    # Cálculo de minutos de lectura
+├── astro.config.mjs          # Configuración de Astro, Vue y plugins Vite
+├── package.json              # Dependencias del proyecto (Bun / npm)
+├── tsconfig.json             # Configuración estricta de TypeScript
+└── AGENTS.md                 # Reglas operativas para agentes de IA
 ```
+
+> **Nota sobre `public/og-image.png`:** no aparece en el árbol porque **no existe**, y ese es un defecto real: `BaseLayout.astro` lo usa como valor por defecto de `ogImage`, así que `og:image` y `twitter:image` apuntan hoy a un 404. Lo cubre la [tarea 06 de la Fase 7](../05-tasks/07-maintenance/06-og-image-asset.md); cuando ese archivo exista, debe volver a este árbol.
 
 ---
 
@@ -67,9 +87,18 @@ samsar-site/
 |---|---|---|
 | Un botón, card o badge estático | `src/components/ui/` | `.astro` |
 | Una barra de navegación o footer | `src/components/layout/` | `.astro` |
+| Una tarjeta, TOC o navegación de artículo | `src/components/blog/` | `.astro` |
+| Una sección de la portada (hero, pilares, destacados) | `src/components/landing/` | `.astro` |
+| Una tarjeta o ficha de proyecto | `src/components/portfolio/` | `.astro` |
 | Un componente con estado reactivo (toggle, menú móvil) | `src/components/islands/` | `.vue` |
 | Un SVG maya decorativo (`aria-hidden="true"`) | `src/components/maya/` | `.astro` |
 | Un nuevo artículo técnico | `src/content/blog/<categoria>/` | `.md` / `.mdx` |
+| Una ficha de proyecto nueva | `src/content/projects/` | `.md` / `.mdx` |
+| Datos tipados del sitio (perfil, experiencia) | `src/data/` | `.ts` |
+| Una ruta o página nueva | `src/pages/` | `.astro` |
+| Una imagen que un componente importa (Astro la procesa) | `src/assets/` | `.png` / `.webp` |
+| Un archivo estático que se sirve tal cual (favicon, CV, imagen OG) | `public/` | Sin procesar |
+| Un campo o colección de contenido nuevo | `src/content.config.ts` | Zod (consulta antes: `AGENTS.md` §9) |
 | Una función utilitaria o formateador | `src/utils/` | `.ts` |
 | Un token de diseño o color nuevo | `src/styles/theme.css` | CSS Custom Property |
 
