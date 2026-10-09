@@ -31,7 +31,7 @@ Aprender a construir una experiencia de lectura técnica de alto rendimiento y m
 Añade la configuración de markdown con temas claro y oscuro:
 ```javascript
 export default defineConfig({
-  site: 'https://samsar.dev',
+  site: 'https://samsar-site.pages.dev/',
   markdown: {
     shikiConfig: {
       themes: {

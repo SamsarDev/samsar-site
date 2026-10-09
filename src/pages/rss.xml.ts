@@ -11,7 +11,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: 'Samsar | Código, cultura y curiosidad',
     description: 'Cuaderno técnico sobre arquitectura limpia, inteligencia artificial agéntica y pedagogía.',
-    site: context.site?.toString() || 'https://samsar.dev',
+    site: context.site?.toString() || 'https://samsar-site.pages.dev/',
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,

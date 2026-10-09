@@ -92,7 +92,7 @@ Baja hasta la sección colapsable **Environment variables** y añade las siguien
 
 ## 8. Paso 6: Dominio Personalizado y Certificado SSL
 
-Para asociar tu dominio propio (por ejemplo, `samsar.dev`):
+Para asociar tu dominio propio (por ejemplo, `samsar.dev`). El sitio funciona hoy en el dominio temporal `https://samsar-site.pages.dev/`; este paso se hace cuando el dominio esté listo:
 
 1. En el panel de tu proyecto en Pages, ve a la pestaña **Custom domains**.
 2. Haz clic en **Set up a custom domain**.
