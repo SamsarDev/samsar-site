@@ -93,18 +93,22 @@ Antes de dar una tarea por terminada, ejecuta como minimo `bun run check` y `bun
 
 ```
 src/
+├── assets/          # Imágenes importadas por componentes
 ├── components/
-│   ├── ui/          # Button, Chip, Badge, Card, Callout...
+│   ├── ui/          # Button, Card, Chip, Badge, Callout
 │   ├── layout/      # Header, Footer, Nav
-│   ├── blog/        # PostCard, TOC, CodeBlock, Embed
-│   ├── landing/     # Hero, Pillars, Highlights
-│   ├── islands/     # Componentes Vue interactivos (.vue)
-│   └── maya/        # SVG decorativos
-├── content/         # Markdown/MDX + esquemas Zod
-├── layouts/         # BaseLayout, BlogLayout, ProjectLayout
+│   ├── blog/        # PostCard, TOC, Breadcrumbs, Pagination, CategoryHero...
+│   ├── landing/     # Hero, Pillars, AboutProject, CtaSection, FeaturedPosts...
+│   ├── portfolio/   # ProjectCard
+│   ├── islands/     # Islas Vue: ThemeToggle, MobileMenu, ExperienceTimeline
+│   └── maya/        # SVG decorativos + placeholders/ (licencia MIT)
+├── content.config.ts # Colecciones y esquemas Zod
+├── content/         # Markdown/MDX: blog/ (3 pilares) y projects/
+├── data/            # Datos tipados: experience.ts, profile.ts
+├── layouts/         # BaseLayout, BlogLayout
 ├── pages/           # Rutas
 ├── styles/          # theme.css (tokens), global.css
-└── utils/
+└── utils/           # formatDate.ts, readingTime.ts
 ```
 
 Detalle completo en `docs/02-architecture/02-project-structure.md`.
