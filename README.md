@@ -47,7 +47,7 @@ Por qué se eligió cada pieza: [`docs/07-decisions/`](docs/07-decisions/).
 
 Lo pendiente es post-MVP y está catalogado en [`docs/01-product/02-features.md`](docs/01-product/02-features.md): buscador en cliente (F14), formulario de contacto (F15), embeds interactivos (F20), entre otros.
 
-También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`](docs/05-tasks/07-maintenance/00-INDEX.md), con tareas para alinear la documentación con el código real: estructura de carpetas, inventario de islas, patrón anti-FOUC, catálogo de componentes y un linter de verdad.
+También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`](docs/05-tasks/07-maintenance/00-INDEX.md), con tareas para alinear la documentación con el código real: estructura de carpetas, inventario de islas, patrón anti-FOUC, catálogo de componentes y un linter de verdad. Incluye además crear la imagen Open Graph que `BaseLayout` usa por defecto y hoy no existe.
 
 ---
 
