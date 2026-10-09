@@ -37,26 +37,31 @@ En lugar de resolver el tema dentro de una isla de Vue o en un script asíncrono
 
 ```html
 <script is:inline>
-  // Se ejecuta ANTES de pintar el primer píxel del DOM
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+  (function () {
+    // Se ejecuta ANTES de pintar el primer píxel del DOM
+    const storedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
   })();
-
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
 </script>
 ```
 
-**Resultado:** Cero parpadeos. La clase `.dark` está presente en la etiqueta `<html>` desde el primer milisegundo de pintado.
+**Resultado:** Cero parpadeos. El atributo `data-theme="dark"` (o `"light"`) está en la etiqueta `<html>` desde el primer milisegundo de pintado, así que el CSS ya sabe qué tokens aplicar.
+
+### Por qué un atributo `data-theme` y no una clase `.dark`
+
+Este es el malentendido más común al llegar desde un tutorial de Tailwind. Cuando un proyecto usa la variante `dark:` de Tailwind, el tema se activa con una clase: `<html class="dark">` acompañado de `darkMode: 'class'`. **Aquí no funciona así**, y copiar ese ejemplo no cambia absolutamente nada en pantalla:
+
+- El tema vive en **custom properties** resueltas por selectores de atributo en `src/styles/theme.css`: `:root, [data-theme='dark']` define los tokens por defecto (*Obsidiana & Jade*) y `[data-theme='light']` los sobreescribe (*Cielo, Sol y Maíz*).
+- `document.documentElement.classList.add('dark')` **no tendría ningún efecto visual**: en este proyecto no existe ningún selector `.dark` que lo lea.
+- Como los componentes usan solo **tokens semánticos** (`var(--bg-primary)`, `var(--text-primary)`) y nunca colores fijos, cambiar el atributo repinta el sitio entero sin tocar un solo componente.
+
+La ventaja del atributo sobre la clase es que admite más de dos temas sin tocar el JavaScript (`data-theme="sepia"`) y deja el estado legible en el propio DOM. Además, `theme.css` declara los tokens oscuros en `:root`, así que si el script nunca llegara a ejecutarse el sitio **sigue siendo legible**: cae al tema por defecto en lugar de quedarse sin estilos.
+
+**Quién más toca este mecanismo:** la isla `ThemeToggle.vue` no inventa nada por su cuenta — lee el atributo actual con `getAttribute('data-theme')` al montarse y, al hacer clic, escribe el nuevo valor con `setAttribute` y lo persiste en `localStorage`. Es decir, el script del `<head>` fija el tema inicial y la isla solo lo alterna.
+
+> **Nota de mantenimiento:** si algún día cambia el mecanismo de tema, hay que actualizar los cuatro sitios que lo implementan o lo describen: [`src/layouts/BaseLayout.astro`](../../src/layouts/BaseLayout.astro) (script del `<head>`), [`src/components/islands/ThemeToggle.vue`](../../src/components/islands/ThemeToggle.vue) (alternancia), [`docs/02-architecture/03-islands.md`](../02-architecture/03-islands.md) §3 y este módulo.
 
 ---
 
