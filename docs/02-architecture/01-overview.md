@@ -19,7 +19,7 @@ Arquitectura técnica global, flujo de compilación y principios de ingeniería 
 │  └────────────────┬─────────────────────────┘               │
 │                   │                                         │
 │                   ▼                                         │
-│  2. COMPILACIÓN (Astro 6 SSG + Vite)                        │
+│  2. COMPILACIÓN (Astro 7 SSG + Vite)                        │
 │  ┌──────────────────────────────────────────┐               │
 │  │ • Renderizado estático a HTML/CSS        │               │
 │  │ • Islas Vue 3 (@astrojs/vue)             │               │
@@ -45,11 +45,11 @@ Arquitectura técnica global, flujo de compilación y principios de ingeniería 
 
 ### 2.1 Capa de Contenido y Datos
 - **Fuente de verdad:** Todos los artículos y proyectos residen en archivos Markdown/MDX dentro del repositorio Git.
-- **Tipado estricto:** Definido mediante el nuevo **Content Layer API de Astro 6** (`src/content.config.ts`) utilizando esquemas Zod con validación en tiempo de compilación.
+- **Tipado estricto:** Definido mediante el nuevo **Content Layer API de Astro 7** (`src/content.config.ts`) utilizando esquemas Zod con validación en tiempo de compilación.
 - **Datos estructurados:** La trayectoria profesional se almacena en TypeScript nativo (`src/data/experience.ts`), desacoplada de la generación de páginas MDX individuales.
 
 ### 2.2 Capa de Compilación y Renderizado
-- **Astro 6:** Generador principal configurado en modo estático puro (`output: 'static'`). Genera HTML prerenderizado para todas las rutas conocidas mediante `getStaticPaths()`.
+- **Astro 7:** Generador principal configurado en modo estático puro (`output: 'static'`). Genera HTML prerenderizado para todas las rutas conocidas mediante `getStaticPaths()`.
 - **Islas Vue 3:** Para interactividad del cliente (toggle de tema y menú móvil en MVP), utilizando Composition API con `<script setup lang="ts">`.
 - **Tailwind CSS v4:** Motor de estilos integrado en Vite mediante `@tailwindcss/vite`, operando sin `tailwind.config.js` y resolviendo custom properties desde `src/styles/theme.css`.
 

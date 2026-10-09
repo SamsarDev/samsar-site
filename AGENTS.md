@@ -10,7 +10,9 @@ Sitio web personal de **Samuel Sarmientos / Samsar** ("Código, cultura y curios
 
 Este proyecto se construye **con fines didácticos**: lo desarrollan estudiantes junto con agentes de IA. Eso cambia cómo debes trabajar (ver sección 3).
 
-**Stack:** Astro 6 (SSG) + islas Vue 3 + Tailwind CSS v4 + Markdown/MDX con Content Collections + Cloudflare Pages.
+**Estado:** MVP completo (fases 1 a 6 de `docs/05-tasks/`). El código ya está implementado y el CI valida `check` y `build`; los cambios pendientes son mejoras post-MVP, no andamiaje inicial.
+
+**Stack:** Astro 7 (SSG) + islas Vue 3 + Tailwind CSS v4 + Markdown/MDX con Content Collections + Cloudflare Pages.
 
 ---
 
@@ -243,7 +245,7 @@ Lista completa en `docs/04-process/03-definition-of-done.md`.
 
 ## 13. Skills
 
-Las skills recomendadas y cómo instalarlas para cada agente están en `SKILL.md`. Las skills propias del proyecto viven en `.agents/skills/`.
+Las skills recomendadas y cómo instalarlas para cada agente están en `SKILL.md`. Las skills propias del proyecto están planificadas en `.agents/skills/` (aún no implementadas).
 
 ---
 

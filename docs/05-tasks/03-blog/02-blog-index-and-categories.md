@@ -196,5 +196,5 @@ En `src/pages/blog/[category]/index.astro`, usa `getStaticPaths()` retornando lo
 
 ## 5. Pistas Didácticas y Errores Comunes
 
-- **Identificador de posts en Content Layer (`post.id` vs `post.slug`):** En Astro 6 Content Layer API, el identificador principal generado por el cargador `glob` es `post.id` (que contiene la ruta relativa sin extensión). Asegúrate de enlazar con `post.id`.
+- **Identificador de posts en Content Layer (`post.id` vs `post.slug`):** En Astro 7 Content Layer API, el identificador principal generado por el cargador `glob` es `post.id` (que contiene la ruta relativa sin extensión). Asegúrate de enlazar con `post.id`.
 - **Filtro de borradores:** Recuerda siempre filtrar `draft: false` en producción para que los artículos en borrador no sean indexados prematuramente.

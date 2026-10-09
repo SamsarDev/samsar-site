@@ -1,4 +1,4 @@
-# ADR-0001: Selección de Astro 6 sobre Nuxt y Eleventy
+# ADR-0001: Selección de Astro 7 sobre Nuxt y Eleventy
 
 - **Estado:** Aceptado
 - **Fecha:** 2026-10-06
@@ -11,7 +11,7 @@
 
 El proyecto es un sitio web personal centrado en contenido (artículos técnicos largos, guías pedagógicas y portafolio). Se requiere un generador de sitios estáticos (SSG) que entregue rendimiento óptimo (Lighthouse > 95), minimice el JavaScript enviado al cliente y soporte componentes interactivos sin obligar a adoptar un runtime completo en cada página.
 
-El autor cuenta con amplia experiencia en Vue y Angular, sin experiencia en React. Por tanto, la comparativa técnica se centró en **Astro 6** vs **Nuxt 4** vs **Eleventy 3**.
+El autor cuenta con amplia experiencia en Vue y Angular, sin experiencia en React. Por tanto, la comparativa técnica se centró en **Astro 7** vs **Nuxt 4** vs **Eleventy 3**.
 
 ---
 
@@ -27,7 +27,7 @@ El autor cuenta con amplia experiencia en Vue y Angular, sin experiencia en Reac
 
 ## 3. Opciones Consideradas
 
-### Opción 1: Astro 6 con Islas Vue (Seleccionada)
+### Opción 1: Astro 7 con Islas Vue (Seleccionada)
 - **Ventajas:** Arquitectura de islas (Islands Architecture) que envía 0 JS por defecto; Content Collections con validación Zod en tiempo de compilación; integración oficial y transparente con Vue (`@astrojs/vue`).
 - **Desventajas:** La sintaxis de plantillas `.astro` es propia, aunque intuitiva (mezcla de JSX/HTML y frontmatter).
 
@@ -43,7 +43,7 @@ El autor cuenta con amplia experiencia en Vue y Angular, sin experiencia en Reac
 
 ## 4. Decisión Adoptada
 
-Se adopta **Astro 6** como generador de sitio estático. Su modelo de islas permite que el 90% del sitio sea HTML estático puro, hidratando únicamente los componentes interactivos aislados mediante `@astrojs/vue`. Además, Content Collections con Zod proporciona una robustez inigualable para gestionar los artículos del blog y proyectos.
+Se adopta **Astro 7** como generador de sitio estático. Su modelo de islas permite que el 90% del sitio sea HTML estático puro, hidratando únicamente los componentes interactivos aislados mediante `@astrojs/vue`. Además, Content Collections con Zod proporciona una robustez inigualable para gestionar los artículos del blog y proyectos.
 
 ---
 

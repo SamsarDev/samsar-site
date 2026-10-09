@@ -8,7 +8,7 @@
 
 ## 1. Objetivo Pedagógico
 
-Aprender el ciclo de renderizado de contenido en **Astro 6 con el Content Layer API**. Comprenderás cómo generar todas las páginas estáticas del blog en tiempo de compilación con `getStaticPaths()`, cómo compilar el cuerpo de Markdown/MDX a componentes Astro utilizando `render(post)` y extraer sus `headings`, y cómo enriquecer la experiencia de usuario con navegación secuencial cronológica (`<PostNavigation.astro>`) y un algoritmo simple de recomendación contextual (`<RelatedPosts.astro>`).
+Aprender el ciclo de renderizado de contenido en **Astro 7 con el Content Layer API**. Comprenderás cómo generar todas las páginas estáticas del blog en tiempo de compilación con `getStaticPaths()`, cómo compilar el cuerpo de Markdown/MDX a componentes Astro utilizando `render(post)` y extraer sus `headings`, y cómo enriquecer la experiencia de usuario con navegación secuencial cronológica (`<PostNavigation.astro>`) y un algoritmo simple de recomendación contextual (`<RelatedPosts.astro>`).
 
 ---
 
@@ -196,5 +196,5 @@ const readingTime = calculateReadingTime(post.body || '');
 
 ## 5. Pistas Didácticas y Errores Comunes
 
-- **`render()` en Astro 6:** En versiones anteriores se usaba `await post.render()`. En Astro 6 con Content Layer API, se importa `render` de `astro:content` y se invoca como `await render(post)`.
+- **`render()` en Astro 7:** En versiones anteriores se usaba `await post.render()`. En Astro 7 con Content Layer API, se importa `render` de `astro:content` y se invoca como `await render(post)`.
 - **Ruta comodín `[...slug]`:** Permite capturar rutas con subdirectorios anidados como `samsar-dev/guia-clean-architecture-frontend` preservando la estructura de carpetas de origen.

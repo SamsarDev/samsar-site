@@ -1,4 +1,4 @@
-# Tarea 01: Inicialización de Astro 6 con TypeScript Estricto y Vue 3
+# Tarea 01: Inicialización de Astro 7 con TypeScript Estricto y Vue 3
 
 - **Fase:** 01 — Fundación y Core UI
 - **Estimación:** 20 minutos
@@ -8,7 +8,7 @@
 
 ## 1. Objetivo Pedagógico
 
-Aprender a inicializar un proyecto limpio con **Astro 6** en modo estático puro (SSG), configurando **TypeScript en modo estricto** (sin permitir `any`) e integrando el soporte oficial para componentes **Vue 3** (`@astrojs/vue`), que utilizaremos exclusivamente para islas interactivas.
+Aprender a inicializar un proyecto limpio con **Astro 7** en modo estático puro (SSG), configurando **TypeScript en modo estricto** (sin permitir `any`) e integrando el soporte oficial para componentes **Vue 3** (`@astrojs/vue`), que utilizaremos exclusivamente para islas interactivas.
 
 ---
 
@@ -28,7 +28,7 @@ Aprender a inicializar un proyecto limpio con **Astro 6** en modo estático puro
 Crea el archivo `package.json` base o inicializa con tu gestor preferido (Bun recomendado):
 
 ```bash
-bun add astro@^6.0.0 vue@^3.5.0 @astrojs/vue @astrojs/check typescript
+bun add astro@^7.0.0 vue@^3.5.0 @astrojs/vue @astrojs/check typescript
 ```
 *(Si usas npm: `npm install astro vue @astrojs/vue @astrojs/check typescript`)*
 
@@ -91,7 +91,7 @@ const title = "Samsar | Sitio web personal";
   </head>
   <body>
     <h1>{title}</h1>
-    <p>Andamiaje base de Astro 6 inicializado con éxito.</p>
+    <p>Andamiaje base de Astro 7 inicializado con éxito.</p>
   </body>
 </html>
 ```

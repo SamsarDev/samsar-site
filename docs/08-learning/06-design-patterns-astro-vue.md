@@ -1,6 +1,6 @@
 # 06-design-patterns-astro-vue: Patrones de Diseño en Arquitecturas SSG e Islas
 
-Este módulo didáctico analiza los patrones de arquitectura y diseño aplicados en la combinación de **Astro 6** como generador de sitios estáticos (SSG) y **Vue 3** como motor de islas interactivas.
+Este módulo didáctico analiza los patrones de arquitectura y diseño aplicados en la combinación de **Astro 7** como generador de sitios estáticos (SSG) y **Vue 3** como motor de islas interactivas.
 
 ---
 
