@@ -109,7 +109,7 @@ import ReadingProgressBar from '../components/islands/ReadingProgressBar.vue';
 |---|---|---|
 | `client:visible` | **(Recomendada por defecto)** Para componentes que están más abajo en la página (se hidratan solo cuando entran en el viewport). | Mínimo |
 | `client:idle` | Para componentes interactivos secundarios que no bloquean el primer pintado. | Bajo |
-| `client:load` | Exclusivo para componentes críticos visibles inmediatamente en el viewport inicial (ej: `ThemeToggle.vue`). | Alto |
+| `client:load` | Exclusivo para componentes críticos visibles inmediatamente en el viewport inicial. En este proyecto **ninguna isla lo usa**: `ThemeToggle` y `MobileMenu` van con `client:idle`, y `ExperienceTimeline` con `client:visible`. | Alto |
 
 ---
 

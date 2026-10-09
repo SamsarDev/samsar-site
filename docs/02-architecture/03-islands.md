@@ -14,12 +14,21 @@ Astro aplica por defecto la regla de **cero JavaScript en el cliente**. Cada arc
 
 ## 2. Inventario de Islas del MVP
 
-En la versión inicial (MVP), el sitio opera con exactamente **dos islas reactivas**, manteniendo el bundle de JavaScript en mínimos históricos (< 15 KB):
+El sitio opera con **tres islas reactivas**. El presupuesto de JavaScript que deben respetar no se repite aquí: vive en [`04-performance.md`](04-performance.md) §1, que es su única fuente de verdad. Esta sección documenta **qué islas hay y por qué se hidratan así**.
 
 | Componente | Archivo | Responsabilidad | Directiva de Hidratación | Justificación |
 |---|---|---|---|---|
 | **Toggle de Tema** | `ThemeToggle.vue` | Alternar entre tema oscuro y claro, emitir eventos y persistir en `localStorage`. | `client:idle` | No bloquea el renderizado inicial ni el LCP. Se hidrata cuando el hilo principal está libre. |
 | **Menú Móvil** | `MobileMenu.vue` | Controlar apertura/cierre del menú hamburguesa en pantallas < 768px con accesibilidad ARIA. | `client:idle` | Solo relevante si el usuario interactúa en mobile tras la carga de la página. |
+| **Línea Temporal de Experiencia** | `ExperienceTimeline.vue` | Línea temporal filtrable de la trayectoria profesional en `/experiencia`. | `client:visible` | Es la única isla bajo el pliegue. `client:visible` espera a que entre en el viewport (`IntersectionObserver`), así su bundle no compite con el LCP de la página. |
+
+> **Por qué ninguna usa `client:load`:** las tres son prescindibles en el primer pintado —el tema ya lo aplica el script anti-FOUC del §3, el menú solo existe en mobile y la línea temporal está bajo el pliegue—. `client:load` se justifica solo si la isla es imprescindible para el contenido visible inicial, y hoy no lo es ninguna. La regla completa está en [`AGENTS.md`](../../AGENTS.md) §7.1.
+
+**Cómo auditar este inventario** (debe devolver exactamente tres líneas, una por fila de la tabla):
+
+```bash
+grep -rn "client:" src --include="*.astro"
+```
 
 ---
 

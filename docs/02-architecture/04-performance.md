@@ -11,12 +11,25 @@ El sitio debe cumplir con los siguientes umbrales medidos en condiciones de red 
 | Métrica | Objetivo | Estrategia de Cumplimiento |
 |---|---|---|
 | **LCP** (Largest Contentful Paint) | `< 1.5 s` | HTML estático servido desde Edge (Cloudflare Anycast) + preload de fuentes críticas en `<head>`. |
-| **INP / FID** (Interactividad) | `< 100 ms` | Cero JS bloqueante; islas Vue diferidas a `client:idle`. |
+| **INP / FID** (Interactividad) | `< 100 ms` | Cero JS bloqueante; islas Vue diferidas con `client:idle` o `client:visible` (nunca `client:load`). |
 | **CLS** (Cumulative Layout Shift) | `< 0.05` | Dimensiones explícitas (`width` y `height`) en todas las imágenes e ilustraciones SVG. |
-| **JavaScript Inicial (MVP)** | `< 15 KB` | Solo el runtime mínimo de Vue para `ThemeToggle` y `MobileMenu`. |
+| **JS de aplicación (islas)** | `< 10 KB` (gzip) | Código propio de las islas más el runtime de hidratación de Astro. **No** incluye el runtime de Vue, que es un coste fijo del framework y se contabiliza en la nota inferior. Inventario en [`03-islands.md`](03-islands.md) §2. |
 | **CSS Purgado Total** | `< 15 KB` | Motor de Tailwind CSS v4 con purga automática en tiempo de compilación. |
 | **Carga Total de Fuentes** | `< 100 KB` | 3 familias en formato `.woff2` autoalojadas, subconjunto latino y `font-display: swap`. |
 | **Puntuación Lighthouse** | `> 95` | Requisito obligatorio en las 4 categorías (Performance, Accessibility, Best Practices, SEO). |
+
+> **Cómo se mide el JavaScript.** El presupuesto se mide sobre el build de producción (`dist/_astro/*.js`) y se expresa **en gzip**, que es como viaja por la red. Medición del build actual:
+>
+> | Chunk | gzip |
+> |---|---|
+> | `runtime-core` (Vue, coste fijo del framework) | 26.4 KB |
+> | `client` (runtime de hidratación de Astro) | 3.3 KB |
+> | `MobileMenu` | 1.4 KB |
+> | `ThemeToggle` | 1.0 KB |
+> | **Total inicial** (páginas sin la línea temporal) | **31.4 KB** |
+> | `ExperienceTimeline` (solo en `/experiencia`) | 1.9 KB |
+>
+> El runtime de Vue queda **fuera** del presupuesto porque no depende de cuántas islas añadas: es el mismo con una que con cuatro. Incluirlo haría que cualquier isla nueva excediera la métrica, así que dejaría de ser accionable. La versión anterior de este presupuesto decía `< 15 KB` contando el framework, un techo inalcanzable con islas Vue —solo el runtime pesa 26.4 KB gzip—; se corrigió al medirlo.
 
 ---
 
