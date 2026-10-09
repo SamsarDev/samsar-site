@@ -17,7 +17,7 @@ Cada isla interactiva cuesta JavaScript, CPU y una decisión de hidratación. Po
 - [ ] `docs/02-architecture/03-islands.md` §2 ya no afirma que el sitio opera con "exactamente **dos** islas reactivas": el número y la prosa reflejan las **tres** reales.
 - [ ] La tabla incluye `ExperienceTimeline.vue` con su directiva real `client:visible` (usada en `src/pages/experiencia.astro`, línea 56) y una justificación: es un componente *below-the-fold*, así que su bundle no debe competir con el LCP.
 - [ ] Se confirman las directivas de las otras dos islas, ambas en `src/components/layout/Header.astro` (líneas 28 y 29): `ThemeToggle` con `client:idle` y `MobileMenu` con `client:idle`.
-- [ ] La cifra de presupuesto de JavaScript (`< 15 KB`) se **mide** o se **retira**. No se deja como estaba si no puedes respaldarla: si no hay forma de medirla hoy, sustitúyela por una referencia al presupuesto objetivo de [`04-performance.md`](../../02-architecture/04-performance.md) y deja claro que es un objetivo, no una medición.
+- [ ] La cifra de presupuesto de JavaScript (`< 15 KB`) se **mide** o se **retira**. No se deja como estaba si no puedes respaldarla: si no hay forma de medirla hoy, sustitúyela por una referencia al presupuesto objetivo de [`04-performance.md`](../../02-architecture/04-performance.md) y deja claro que es un objetivo, no una medición. **Y comprueba el objetivo antes de confiar en él:** si al medir descubres que el techo documentado es inalcanzable, el hallazgo es el presupuesto y no tu trabajo — corrígelo en `04-performance.md` dejando la medición escrita (ver la pista en §5).
 - [ ] §5 (islas planificadas para post-MVP) sigue siendo correcto respecto a `docs/01-product/02-features.md`: buscador en cliente (F14) y formulario de contacto (F15).
 - [ ] El documento explica en una frase **por qué** `ExperienceTimeline` no necesita `client:load`, para que la regla de hidratación perezosa quede enseñada y no solo listada.
 - [ ] El inventario se puede reproducir con el comando de §4.
@@ -52,7 +52,7 @@ Actualiza el número de islas, la frase de introducción y la tabla. Añade la f
 
 Tienes dos caminos válidos, y debes elegir uno de forma explícita:
 
-- **Medir:** inspecciona el JavaScript emitido en `dist/_astro/` tras un build y anota el peso real del JS inicial. Si el build no está disponible en tu entorno (ver [`00-INDEX.md`](00-INDEX.md) §3), este camino no está disponible.
+- **Medir:** inspecciona el JavaScript emitido en `dist/_astro/` tras un build y anota el peso real **en gzip**, que es como viaja por la red (el tamaño en disco exagera la cifra entre dos y tres veces). Desglosa por chunk y **separa el runtime del framework de las islas**: son costes de naturaleza distinta y mezclarlos produce un presupuesto que no puedes mejorar. Si el build no está disponible en tu entorno (ver [`00-INDEX.md`](00-INDEX.md) §3), este camino no está disponible.
 - **Retirar la cifra:** elimina el número concreto y deja la referencia al presupuesto objetivo de `04-performance.md`.
 
 Lo que **no** es válido es dejar `< 15 KB` porque "suena bien".
@@ -83,3 +83,4 @@ Lo que **no** es válido es dejar `< 15 KB` porque "suena bien".
 - **Contar islas no es contar componentes Vue:** un componente `.vue` sin directiva `client:*` se renderiza en el servidor y no envía JavaScript de isla. El inventario lista **islas hidratadas**.
 - **`client:visible` vs `client:idle`:** `visible` espera a que el elemento entre en el viewport (`IntersectionObserver`); `idle` espera a que el hilo principal esté libre. Para contenido bajo el pliegue, `visible` es más perezoso y por eso es el correcto aquí.
 - **No conviertas esta tarea en un rediseño:** si al auditar concluyes que una isla debería dejar de serlo (por ejemplo, resolver el menú móvil con `details`/`summary`), **no lo hagas aquí**: abre una tarea nueva. Aquí solo se corrige la documentación.
+- **Mide el objetivo antes de confiar en él:** esta tarea daba por hecho que el presupuesto de `04-performance.md` era correcto y que solo faltaba documentarlo. Al medir el build real, el techo de `< 15 KB` resultó inalcanzable: **solo el runtime de Vue pesa 26.4 KB gzip**. Un presupuesto que nadie ha medido es una intención, no un dato. Si al comprobarlo no se cumple, el hallazgo es el presupuesto —no tu trabajo—, y corregirlo o partirlo en métricas accionables forma parte de la tarea. Este es el error más caro de la documentación técnica: cifras heredadas que se copian de documento en documento y que nadie puede cumplir porque nadie las midió.
