@@ -30,5 +30,5 @@ Especificación de secciones, jerarquía y elementos visuales para la página pr
 ## 3. Comportamiento y Animaciones
 
 - **Transiciones y Motion:** Fade-in escalonado en el hero y parallax sutil en siluetas SVG. Todas las transiciones están supeditadas a `@media (prefers-reduced-motion: reduce)`.
-- **Interactividad:** La página es 100% estática (`.astro`), excepto la isla `ThemeToggle.vue` (`client:idle` o `client:load`) en el header y el menú mobile (`client:idle`).
+- **Interactividad:** La página es 100% estática (`.astro`), excepto las dos islas del header: `ThemeToggle.vue` y `MobileMenu.vue`, ambas con `client:idle`. La tercera isla del sitio, `ExperienceTimeline.vue`, no aparece aquí porque vive en `/experiencia`.
 - **Total estimado de elementos:** ~35-40 nodos interactivos y de contenido.
