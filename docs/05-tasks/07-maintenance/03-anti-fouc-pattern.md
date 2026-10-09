@@ -70,8 +70,10 @@ Compara tu snippet con el de `03-islands.md` §3. Si difieren en algo (atributo,
 3. Comprueba que no queda la clase `.dark` como parte del patrón:
 
    ```bash
-   grep -rn "classList.*dark\|className.*dark" docs/ src/
+   grep -rn "classList.*dark\|className.*dark" docs/ src/ --exclude-dir=07-maintenance
    ```
+
+   La exclusión es necesaria: las instrucciones de esta misma tarea citan el patrón antiguo a propósito, así que sin ella el comando se encuentra a sí mismo.
 
 ---
 

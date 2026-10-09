@@ -34,7 +34,7 @@ grep -rn "client:" src --include="*.astro"
 
 ## 3. Prevención de FOUC (Flash of Unstyled Content)
 
-Uno de los errores más comunes al implementar toggles de tema con islas es el parpadeo de pantalla (FOUC), que ocurre si la isla espera a descargarse e hidratarse antes de aplicar la clase o atributo de tema en `<html>`.
+Uno de los errores más comunes al implementar toggles de tema con islas es el parpadeo de pantalla (FOUC), que ocurre si la isla espera a descargarse e hidratarse antes de aplicar el atributo de tema (`data-theme`) en `<html>`.
 
 ### Estrategia Adoptada: Script Inline Bloqueante en `<head>`
 
