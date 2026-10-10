@@ -99,5 +99,5 @@ Cloudflare Pages utiliza por defecto una versión antigua de Node.js si no se es
 
 ### Solución
 1. En el panel de Cloudflare Pages, dirígete a **Settings > Environment variables**.
-2. Añade la variable `NODE_VERSION` con el valor `22.0.0` (o `BUN_VERSION` con `latest`).
+2. Añade la variable `NODE_VERSION` con el valor `24.21.0` (o `BUN_VERSION` con `latest`).
 3. Verifica que el comando de compilación sea `bun run build` (o `npm run build`) y que el directorio de salida sea exactamente `dist`.

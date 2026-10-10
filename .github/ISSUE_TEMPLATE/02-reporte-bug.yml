@@ -1,7 +1,7 @@
 name: 🐛 Reporte de Bug o Error Técnico
 description: Reportar un fallo de compilación, rotura de estilos, problema de accesibilidad o error en la documentación.
-title: "[Bug]: "
-labels: ["bug"]
+title: '[Bug]: '
+labels: ['bug']
 body:
   - type: textarea
     id: description
@@ -26,6 +26,6 @@ body:
     attributes:
       label: Entorno local
       description: Sistema operativo, versión de Node/Bun y navegador utilizado.
-      placeholder: "Windows 11, Bun v1.3.13, Chrome v120"
+      placeholder: 'Windows 11, Bun v1.3.13, Chrome v120'
     validations:
       required: true

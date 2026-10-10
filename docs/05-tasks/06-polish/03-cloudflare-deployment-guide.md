@@ -18,7 +18,7 @@ Al ser este un proyecto formativo y colaborativo, documentarás con rigor didác
   - Registro de cuenta gratuita en Cloudflare.
   - Conexión del repositorio de GitHub mediante la integración nativa de Cloudflare Pages.
   - Configuración del build: framework preset (`Astro`), comando (`bun run build`), directorio de salida (`dist`).
-  - Configuración de variables de entorno (`NODE_VERSION=22.0.0`, `BUN_VERSION=latest`).
+  - Configuración de variables de entorno (`NODE_VERSION=24.21.0`, `BUN_VERSION=latest`).
   - Funcionamiento de *Preview Deployments* automáticos en cada Pull Request.
   - Vinculación de dominio personalizado, servidores DNS y SSL Full (Strict).
   - Guía de resolución de problemas comunes (*Troubleshooting*).

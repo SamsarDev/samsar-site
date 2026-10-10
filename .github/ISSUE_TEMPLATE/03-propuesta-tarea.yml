@@ -1,7 +1,7 @@
 name: 💡 Propuesta de Mejora o Tarea
 description: Proponer una nueva característica, optimización o mejora de documentación antes de empezar a programar.
-title: "[Propuesta]: "
-labels: ["propuesta", "mejora"]
+title: '[Propuesta]: '
+labels: ['propuesta', 'mejora']
 body:
   - type: textarea
     id: motivation
@@ -22,7 +22,7 @@ body:
     attributes:
       label: ¿Querés implementar esta propuesta vos mismo/a?
       options:
-        - "Sí, me gustaría trabajarlo y abrir el Pull Request"
-        - "No, solo es una sugerencia para el equipo"
+        - 'Sí, me gustaría trabajarlo y abrir el Pull Request'
+        - 'No, solo es una sugerencia para el equipo'
     validations:
       required: true

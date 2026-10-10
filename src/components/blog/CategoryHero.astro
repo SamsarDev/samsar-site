@@ -33,13 +33,11 @@ const info = {
     >
       <span>Pilar Temático</span>
       <span>•</span>
-      <span>{count} {count === 1 ? 'artículo' : 'artículos'}</span>
+      <span>
+        {count} {count === 1 ? 'artículo' : 'artículos'}
+      </span>
     </div>
-    <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">
-      {info.title}
-    </h1>
-    <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">
-      {info.description}
-    </p>
+    <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">{info.title}</h1>
+    <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">{info.description}</p>
   </div>
 </header>

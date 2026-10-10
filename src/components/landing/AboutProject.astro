@@ -9,11 +9,13 @@ const principles = [
   },
   {
     title: 'Didáctica Abierta',
-    description: 'Desarrollado en público junto con estudiantes y agentes de IA para demostrar que se aprende construyendo.',
+    description:
+      'Desarrollado en público junto con estudiantes y agentes de IA para demostrar que se aprende construyendo.',
   },
   {
     title: 'Identidad & Memoria',
-    description: 'Homenaje a la cosmovisión y el arte maya de Guatemala integrado con naturalidad en el software moderno.',
+    description:
+      'Homenaje a la cosmovisión y el arte maya de Guatemala integrado con naturalidad en el software moderno.',
   },
 ];
 ---
@@ -30,23 +32,19 @@ const principles = [
         Un espacio de código y exploración
       </h2>
       <p class="mx-auto mt-4 max-w-[70ch] text-base leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
-        Este sitio no es un currículum corporativo ni una tarjeta de presentación comercial. Es un cuaderno de campo vivo donde documento experimentos de ingeniería, reflexiono sobre el impacto de la inteligencia artificial y diseño experiencias interactivas con raíces culturales.
+        Este sitio no es un currículum corporativo ni una tarjeta de presentación comercial. Es un cuaderno de campo
+        vivo donde documento experimentos de ingeniería, reflexiono sobre el impacto de la inteligencia artificial y
+        diseño experiencias interactivas con raíces culturales.
       </p>
     </div>
 
     <div class="mt-12 grid gap-6 sm:grid-cols-3">
-      {
-        principles.map((item) => (
-          <Card class="bg-[var(--bg-primary)] border-[var(--border-base)]">
-            <h3 class="font-['Space_Grotesk'] text-lg font-bold text-[var(--text-primary)]">
-              {item.title}
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
-              {item.description}
-            </p>
-          </Card>
-        ))
-      }
+      {principles.map((item) => (
+        <Card class="bg-[var(--bg-primary)] border-[var(--border-base)]">
+          <h3 class="font-['Space_Grotesk'] text-lg font-bold text-[var(--text-primary)]">{item.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">{item.description}</p>
+        </Card>
+      ))}
     </div>
   </div>
 </section>

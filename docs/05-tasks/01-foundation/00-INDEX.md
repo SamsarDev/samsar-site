@@ -21,7 +21,7 @@ Las tareas deben ejecutarse en orden estricto, ya que cada una construye sobre l
 ## 2. Prerrequisitos de Entorno
 
 Antes de comenzar la tarea 01, verifica que tu entorno local cuente con:
-- **Node.js:** Versión 22.0.0 o superior (`node -v`).
+- **Node.js:** la versión que fija `.node-version` (`24.21.0`), comprobable con `node -v`. Astro exige `>= 22.12.0` y el linter `^24.16.0`.
 - **Bun:** Instalado y accesible en terminal (`bun -v`). Si tu entorno no soporta Bun, puedes usar `npm` como alternativa.
 - **Git:** Configurado localmente (`git status`).
 

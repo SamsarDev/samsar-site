@@ -57,30 +57,30 @@ const filterTabs = [
 ];
 ---
 
-<BaseLayout
-  title={`${meta.title} | Proyectos Samsar`}
-  description={meta.desc}
->
+<BaseLayout title={`${meta.title} | Proyectos Samsar`} description={meta.desc}>
   <main class="py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <header class="mb-12">
         <p class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2">
           Filtrado por tipo • {projects.length} {projects.length === 1 ? 'proyecto' : 'proyectos'}
         </p>
-        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">
-          {meta.title}
-        </h1>
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">
-          {meta.desc}
-        </p>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)] mb-4">{meta.title}</h1>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">{meta.desc}</p>
 
         <!-- Barra de filtros estáticos -->
-        <nav aria-label="Filtrar proyectos por tipo" class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[var(--border-base)]">
+        <nav
+          aria-label="Filtrar proyectos por tipo"
+          class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[var(--border-base)]"
+        >
           {filterTabs.map((tab) => (
             <a href={tab.href} class="focus-visible:outline-none">
               <Chip
                 variant="category"
-                class={tab.active ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : ''}
+                class={
+                  tab.active
+                    ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]'
+                    : ''
+                }
               >
                 {tab.label}
               </Chip>

@@ -18,9 +18,7 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
     aria-label="Tabla de contenidos"
     class="p-5 rounded-xl border border-[var(--border-base)] bg-[var(--bg-surface)] text-xs"
   >
-    <p class="font-display font-bold text-[var(--text-primary)] uppercase tracking-wider mb-3">
-      En este artículo
-    </p>
+    <p class="font-display font-bold text-[var(--text-primary)] uppercase tracking-wider mb-3">En este artículo</p>
     <ul class="space-y-2 font-sans">
       {toc.map((item) => (
         <li class:list={[item.depth === 3 ? 'pl-3 border-l border-[var(--border-base)]/60' : '']}>

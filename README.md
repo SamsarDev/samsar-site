@@ -30,7 +30,7 @@ Este repositorio tiene un segundo propósito: es un **proyecto de ejemplo para c
 | Estilos | Tailwind CSS v4 + tokens CSS |
 | Contenido | Markdown / MDX con Content Collections |
 | Hosting | Cloudflare Pages |
-| Runtime y paquetes | Node.js 22.14.0 (fijado en `.node-version`) + [Bun](https://bun.sh) (alternativa: npm) |
+| Runtime y paquetes | Node.js 24.21.0 (fijado en `.node-version`) + [Bun](https://bun.sh) (alternativa: npm) |
 
 Por qué se eligió cada pieza: [`docs/07-decisions/`](docs/07-decisions/).
 
@@ -53,11 +53,11 @@ También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`
 
 ## ⚡ Inicio rápido
 
-**Requisitos:** Node.js 22.14.0 (versión fijada en `.node-version`; Astro 7 exige `>= 22.12.0`) y Git. El gestor de paquetes del proyecto es **[Bun](https://bun.sh)**, con **npm** como alternativa.
+**Requisitos:** Node.js 24.21.0 (versión fijada en `.node-version`; Astro 7 exige `>= 22.12.0` y el linter `^24.16.0`) y Git. El gestor de paquetes del proyecto es **[Bun](https://bun.sh)**, con **npm** como alternativa.
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/samsar-dev/samsar-site.git
+git clone https://github.com/SamsarDev/samsar-site.git
 cd samsar-site
 
 # 2. Instalar dependencias (Bun recomendado; alternativa: npm)
@@ -77,7 +77,9 @@ El sitio quedará disponible en `http://localhost:4321`.
 | **Build** | `bun run build` | `npm run build` | Compila el sitio estático para producción |
 | **Preview** | `bun run preview` | `npm run preview` | Previsualiza localmente el build generado |
 | **Chequeo** | `bun run check` | `npm run check` | Ejecuta Astro Check (validación estricta de tipos y plantillas) |
-| **Linter** | `bun run lint` | `npm run lint` | Analiza el código con las reglas de estilo y formato |
+| **Linter** | `bun run lint` | `npm run lint` | ESLint: errores reales (variables o imports sin usar, `any` explícito) y 34 reglas de accesibilidad. Bloquea el CI |
+| **Formato** | `bun run format` | `npm run format` | Prettier: formatea el código (`.astro`, TypeScript, CSS, JSON) |
+| **Formato (verificar)** | `bun run format:check` | `npm run format:check` | Comprueba el formato sin escribir nada, igual que el CI |
 
 ---
 
@@ -141,7 +143,7 @@ Este repositorio combina varias licencias, según el tipo de material:
 ## 👤 Autor
 
 **Samuel Sarmientos / Samsar** · Guatemala  
-[GitHub](https://github.com/samsar-dev) · [LinkedIn](#) · samsar.dev@gmail.com
+[GitHub](https://github.com/SamsarDev) · [LinkedIn](#) · samsar.dev@gmail.com
 
 ---
 

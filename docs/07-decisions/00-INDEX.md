@@ -27,6 +27,7 @@ Para crear una nueva decisión, copia la estructura base definida en [`0000-adr-
 | [`0008`](0008-zero-backend-contact-form.md) | **Enlaces Directos en MVP y Formulario en Post-MVP** | Aceptado | 2026-10-07 | Arquitectura / Contacto |
 | [`0009`](0009-astro-content-layer-api.md) | **Adopción del Content Layer API de Astro 7** | Aceptado | 2026-10-07 | Arquitectura / Contenido |
 | [`0010`](0010-inline-svg-icons-over-package.md) | **Adopción de Iconos SVG Inline sobre Paquetes** | Aceptado | 2026-10-07 | Frontend / Componentes |
+| [`0011`](0011-linter-and-formatter.md) | **ESLint y Prettier con Reglas Mínimas sobre `astro check`** | Aceptado | 2026-10-09 | Proceso / Tooling |
 
 ---
 

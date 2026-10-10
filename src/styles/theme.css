@@ -3,18 +3,18 @@
 :root,
 [data-theme='dark'] {
   /* Primitivos: Obsidiana & Jade */
-  --color-bg: #0A0E0C;
+  --color-bg: #0a0e0c;
   --color-bg-elevated: #131916;
-  --color-bg-highlight: #1C2420;
-  --color-jade: #00A86B;
-  --color-jade-light: #1FBF84;
-  --color-jade-muted: #1F7A5C;
-  --color-hummingbird: #19C3B0;
-  --color-blood: #B22222;
-  --color-blood-text: #EF6B63;
-  --color-text: #E8E6E1;
-  --color-text-muted: #9AA39E;
-  --color-text-subtle: #5C6660;
+  --color-bg-highlight: #1c2420;
+  --color-jade: #00a86b;
+  --color-jade-light: #1fbf84;
+  --color-jade-muted: #1f7a5c;
+  --color-hummingbird: #19c3b0;
+  --color-blood: #b22222;
+  --color-blood-text: #ef6b63;
+  --color-text: #e8e6e1;
+  --color-text-muted: #9aa39e;
+  --color-text-subtle: #5c6660;
 
   /* Semánticos */
   --bg-primary: var(--color-bg);
@@ -51,21 +51,21 @@
 
 [data-theme='light'] {
   /* Primitivos: Cielo, Sol y Maíz */
-  --color-bg: #FFFDF7;
-  --color-bg-elevated: #F5F0E8;
-  --color-bg-highlight: #EAE3D5;
-  --color-sun: #F4A300;
-  --color-sun-light: #FFB41F;
-  --color-sun-text: #8A5A00;
-  --color-link: #0369A1;
-  --color-sky: #A7D8F0;
-  --color-sky-deep: #87CEEB;
-  --color-corn: #F7C948;
-  --color-corn-green: #7CB342;
-  --color-blood: #B22222;
-  --color-text: #2B2B2B;
-  --color-text-muted: #5B6370;
-  --color-text-subtle: #9CA3AF;
+  --color-bg: #fffdf7;
+  --color-bg-elevated: #f5f0e8;
+  --color-bg-highlight: #eae3d5;
+  --color-sun: #f4a300;
+  --color-sun-light: #ffb41f;
+  --color-sun-text: #8a5a00;
+  --color-link: #0369a1;
+  --color-sky: #a7d8f0;
+  --color-sky-deep: #87ceeb;
+  --color-corn: #f7c948;
+  --color-corn-green: #7cb342;
+  --color-blood: #b22222;
+  --color-text: #2b2b2b;
+  --color-text-muted: #5b6370;
+  --color-text-subtle: #9ca3af;
 
   /* Semánticos */
   --bg-primary: var(--color-bg);

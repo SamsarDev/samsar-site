@@ -4,7 +4,7 @@ description: 'Blueprint de código abierto para construcción de APIs de alto re
 type: 'open-source'
 stack: ['C#', '.NET Core', 'FastEndpoints', 'Docker', 'FluentValidation']
 status: 'active'
-repo: 'https://github.com/samsar-dev'
+repo: 'https://github.com/SamsarDev'
 demo: 'https://samsar-site.pages.dev/'
 featured: true
 ---

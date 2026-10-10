@@ -15,7 +15,7 @@ Aprender a diseñar e implementar páginas de utilidad críticas para la experie
 ## 2. Criterios de Aceptación (DoD)
 
 - [ ] Ruta `src/pages/contacto.astro` implementada con `BaseLayout.astro`.
-- [ ] **Contacto (MVP):** encabezado explicativo y tarjetas directas (`Card.astro`) con enlaces funcionales a correo (`mailto:samsar.dev@gmail.com`), perfil de LinkedIn (`https://linkedin.com/in/samsar-dev`), cuenta de GitHub (`https://github.com/samsar-dev`) y zona horaria (Guatemala, UTC-6).
+- [ ] **Contacto (MVP):** encabezado explicativo y tarjetas directas (`Card.astro`) con enlaces funcionales a correo (`mailto:samsar.dev@gmail.com`), perfil de LinkedIn (`https://linkedin.com/in/samsar-dev`), cuenta de GitHub (`https://github.com/SamsarDev`) y zona horaria (Guatemala, UTC-6).
 - [ ] Atributos de seguridad (`rel="noopener noreferrer"`) y etiquetas `aria-label` en enlaces externos.
 - [ ] Ruta `src/pages/404.astro` implementada con `BaseLayout.astro`.
 - [ ] **Error 404:** código 404 destacado, mensaje temático (*"Esta página se perdió en la selva"*), motivo gráfico maya y dos botones de rescate (*"Volver al inicio"* y *"Explorar el blog"*).

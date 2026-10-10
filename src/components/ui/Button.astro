@@ -24,7 +24,8 @@ const {
 // Loading implies inert: it prevents double submits and repeated clicks.
 const isInert = disabled || loading;
 
-const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+const baseStyles =
+  'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
 const sizeStyles = {
   sm: 'text-xs px-3 py-1.5 min-h-[36px]',
@@ -33,8 +34,10 @@ const sizeStyles = {
 };
 
 const variantStyles = {
-  primary: 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold hover:bg-[var(--accent-primary-hover)] active:translate-y-0.5',
-  secondary: 'border border-[var(--border-base)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] active:translate-y-0.5',
+  primary:
+    'bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold hover:bg-[var(--accent-primary-hover)] active:translate-y-0.5',
+  secondary:
+    'border border-[var(--border-base)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-subtle)] active:translate-y-0.5',
   ghost: 'bg-transparent text-[var(--text-primary)] hover:bg-[var(--bg-subtle)]',
   danger: 'bg-[var(--color-blood)] text-[#FFFDF7] hover:opacity-90',
 };
@@ -45,25 +48,24 @@ const combinedClasses = [baseStyles, sizeStyles[size], variantStyles[variant], l
 
 // Inline spinner: no dependencies, inherits the button text colour and stops when the user asks for reduced motion.
 // The margin lives here, not in the shared base styles, so existing buttons keep exactly the layout they had.
-const spinnerStyles = 'mr-2 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none';
+const spinnerStyles =
+  'mr-2 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none';
 ---
 
-{
-  href ? (
-    <a
-      href={href}
-      class={combinedClasses}
-      aria-busy={loading ? 'true' : undefined}
-      aria-disabled={isInert ? 'true' : undefined}
-      {...rest}
-    >
-      {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
-      <slot />
-    </a>
-  ) : (
-    <button type={type} class={combinedClasses} disabled={isInert} aria-busy={loading ? 'true' : undefined} {...rest}>
-      {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a
+    href={href}
+    class={combinedClasses}
+    aria-busy={loading ? 'true' : undefined}
+    aria-disabled={isInert ? 'true' : undefined}
+    {...rest}
+  >
+    {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
+    <slot />
+  </a>
+) : (
+  <button type={type} class={combinedClasses} disabled={isInert} aria-busy={loading ? 'true' : undefined} {...rest}>
+    {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
+    <slot />
+  </button>
+)}

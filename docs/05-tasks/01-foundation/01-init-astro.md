@@ -14,7 +14,7 @@ Aprender a inicializar un proyecto limpio con **Astro 7** en modo estático puro
 
 ## 2. Criterios de Aceptación (DoD)
 
-- [ ] Existe un archivo `package.json` válido con scripts: `dev`, `build`, `preview`, `check` y `lint`.
+- [ ] Existe un archivo `package.json` válido con scripts: `dev`, `build`, `preview` y `check`. (El script `lint` **no** pertenece a esta fase: llega con el linter real en la Fase 7 de mantenimiento. Prometerlo aquí sería vender una herramienta que todavía no existe.)
 - [ ] La integración `@astrojs/vue` está instalada y declarada en `astro.config.mjs`.
 - [ ] `tsconfig.json` está configurado con `"extends": "astro/tsconfigs/strictest"`.
 - [ ] Una página de prueba mínima en `src/pages/index.astro` compila sin errores.
