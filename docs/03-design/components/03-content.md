@@ -111,14 +111,12 @@ Las fichas **1 a 10** son los componentes de contenido; las **11 a 14**, la secc
 ## 12. `<Pillars />` (`Pillars.astro`)
 
 - **Propósito:** Presentar los tres pilares editoriales del blog.
-- **Props:** ninguna; los tres pilares viven en un array local (`category`, `title`, `description`, `href` y un `badge` que **no se pinta**).
+- **Props:** ninguna; los tres pilares viven en un array local (`category`, `title`, `description` y `href`).
 - **Elementos:** encabezado `<h2>` *"Qué encontrarás aquí"* con subtítulo, y una rejilla de tres `Card` variante `interactive` (1 columna en mobile, 2 en tablet, 3 en desktop). Cada tarjeta lleva la categoría en JetBrains Mono, el título, la descripción y el pie *"Explorar sección →"*. La tarjeta entera es un enlace, con anillo de foco, y el título pasa a Jade al pasar el cursor.
 - **Estados:** `default` y `hover` (elevación de `Card` + desplazamiento de la flecha con `translate-x`).
 - **Estado:** Implementado — `src/components/landing/Pillars.astro`
 
-> **Dos desajustes encontrados al escribir esta ficha (tarea 07, bloque A):**
-> - El `href` de cada pilar apunta a `/blog?categoria=dev|ia|games`, un parámetro que **ningún archivo de `src/` lee**: el catálogo filtra por ruta (`/blog/samsar-dev`, `/blog/samsar-ia`, `/blog/samsar-games`). El pie promete *"Explorar sección"* y en realidad deja al visitante en el catálogo completo.
-> - El array declara un campo `badge` (*Ingeniería*, *Inteligencia*, *Lúdica*) que **no se renderiza** en ninguna parte.
+> **Corregido en la misma tarea (bloque A):** el `href` de cada pilar apuntaba a `/blog?categoria=dev|ia|games`, un parámetro que **ningún archivo de `src/` lee** —el catálogo filtra por ruta—, así que el pie *"Explorar sección"* dejaba al visitante en el catálogo completo. Ahora enlaza a `/blog/samsar-dev`, `/blog/samsar-ia` y `/blog/samsar-games`, los tres pilares que genera `src/pages/blog/[category]/index.astro`. También se eliminó un campo `badge` que el array declaraba y ninguna plantilla pintaba.
 
 ---
 
