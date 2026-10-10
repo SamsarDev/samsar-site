@@ -16,7 +16,7 @@
 
 ## 2. Catálogo Maestro por Categoría
 
-Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **35 entradas**: **22 implementadas**, **10 planificadas** y **3 retiradas**. En el código hay **27 componentes reales** en `src/components/`.
+Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **40 entradas**: **27 implementadas**, **10 planificadas** y **3 retiradas**. En el código hay **27 componentes reales** en `src/components/`, y desde la [tarea 07 de la Fase 7](../05-tasks/07-maintenance/07-component-gaps.md) **los 27 tienen ficha**: la cuenta cierra sin excepciones.
 
 > **Convención de estado.** Cada ficha del catálogo lleva una línea `- **Estado:**` con uno de estos tres valores:
 > - **Implementado** — con su ruta real: existe y se usa.
@@ -27,10 +27,10 @@ Las especificaciones detalladas de props, variantes, estados y estilos de cada c
 |---|---|---|---|---|---|
 | **UI Base** | 10 | 6 | 3 | 1 | [`components/01-ui.md`](components/01-ui.md) |
 | **Layout y navegación** | 6 | 6 | 0 | 0 | [`components/02-layout.md`](components/02-layout.md) |
-| **Contenido** | 10 | 8 | 0 | 2 | [`components/03-content.md`](components/03-content.md) |
+| **Contenido** | 15 | 13 | 0 | 2 | [`components/03-content.md`](components/03-content.md) |
 | **Motivos Mayas** | 9 | 2 | 7 | 0 | [`components/04-maya.md`](components/04-maya.md) |
 
-> **Componentes reales que aún no tienen ficha (5):** `landing/AboutProject.astro`, `landing/CtaSection.astro`, `landing/Hero.astro`, `landing/Pillars.astro` y la isla `islands/ExperienceTimeline.vue`. Existen y se usan (los cuatro primeros en la portada, el último en `/experiencia`), pero su especificación de diseño está pendiente. No se inventan aquí. La cuenta cierra: **27 reales = 22 con ficha + 5 sin ficha**.
+> **Cuenta cerrada.** Las cinco fichas que faltaban —los cuatro componentes de portada (`Hero`, `Pillars`, `AboutProject`, `CtaSection`) y la isla `ExperienceTimeline`— se escribieron en la [tarea 07 de la Fase 7](../05-tasks/07-maintenance/07-component-gaps.md) leyendo el código, no el plan. Ya no hay componentes reales sin especificación: **27 reales = 27 con ficha**.
 
 ---
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import type { ExperienceItem } from '../../data/experience';
+import type { ExperienceArea, ExperienceItem } from '../../data/experience';
 
 const props = defineProps<{
   experiences: ExperienceItem[];
@@ -17,18 +17,26 @@ const filters = [
 
 type FilterId = (typeof filters)[number]['id'];
 
+/** 'all' is a filter, not an area: the data type has no such member. */
+type AreaId = Exclude<ExperienceArea, 'all'>;
+
+function isAreaId(id: FilterId): id is AreaId {
+  return id !== 'all';
+}
+
 const activeFilter = ref<FilterId>('all');
 
 function getFilterCount(filterId: FilterId): number {
-  if (filterId === 'all') return props.experiences.length;
-  return props.experiences.filter((exp) => exp.area.includes(filterId as any)).length;
+  if (!isAreaId(filterId)) return props.experiences.length;
+  return props.experiences.filter((exp) => exp.area.includes(filterId)).length;
 }
 
 const filteredExperiences = computed(() => {
-  if (activeFilter.value === 'all') {
+  const active = activeFilter.value;
+  if (!isAreaId(active)) {
     return props.experiences;
   }
-  return props.experiences.filter((exp) => exp.area.includes(activeFilter.value as any));
+  return props.experiences.filter((exp) => exp.area.includes(active));
 });
 
 function selectFilter(id: FilterId) {
