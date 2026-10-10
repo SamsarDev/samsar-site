@@ -14,7 +14,7 @@ Punto de entrada para el desarrollo práctico de **Samsar | Sitio web personal**
 | **Fase 4: Catálogo Proyectos** | [`04-portfolio/`](04-portfolio/) | Implementar colección de proyectos, grid filtrable y plantilla de detalle (`/proyectos/[slug]`). | **Listo** |
 | **Fase 5: Perfil & Experiencia** | [`05-profile-and-experience/`](05-profile-and-experience/) | Bio personal (`/sobre-mi`), valores, timeline de experiencia laboral (`/experiencia`) y CV descargable. | **Listo** |
 | **Fase 6: Producción & SEO** | [`06-polish/`](06-polish/) | Generación de RSS, Sitemap, optimización Lighthouse > 95 y configuración de Cloudflare Pages. | **Listo** |
-| **Fase 7: Mantenimiento** | [`07-maintenance/`](07-maintenance/) | Alinear la documentación con el código real: estructura, inventario de islas, patrón anti-FOUC, catálogo de componentes y linter. Incluye además crear el asset Open Graph ausente. | **Planificado** |
+| **Fase 7: Mantenimiento** | [`07-maintenance/`](07-maintenance/) | Alinear la documentación con el código real: estructura, inventario de islas, patrón anti-FOUC, catálogo de componentes y linter. Incluye crear el asset Open Graph ausente y cerrar los huecos que dejó la auditoría del catálogo. | **En curso** |
 
 ---
 
