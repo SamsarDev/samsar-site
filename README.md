@@ -57,7 +57,7 @@ También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/samsar-dev/samsar-site.git
+git clone https://github.com/SamsarDev/samsar-site.git
 cd samsar-site
 
 # 2. Instalar dependencias (Bun recomendado; alternativa: npm)
@@ -143,7 +143,7 @@ Este repositorio combina varias licencias, según el tipo de material:
 ## 👤 Autor
 
 **Samuel Sarmientos / Samsar** · Guatemala  
-[GitHub](https://github.com/samsar-dev) · [LinkedIn](#) · samsar.dev@gmail.com
+[GitHub](https://github.com/SamsarDev) · [LinkedIn](#) · samsar.dev@gmail.com
 
 ---
 

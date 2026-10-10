@@ -35,7 +35,7 @@ export const profileData: ProfileData = {
   location: 'Guatemala City, Guatemala',
   email: 'samsar.dev@gmail.com',
   linkedin: 'https://linkedin.com/in/samsar-dev',
-  github: 'https://github.com/samsar-dev',
+  github: 'https://github.com/SamsarDev',
   bioParagraphs: [
     'Ingeniero de Software y Technical Lead con cerca de una década de experiencia en el ciclo completo de desarrollo full-stack, diseño de sistemas distribuidos y modernización de plataformas empresariales críticas en banca, retail masivo, logística y edtech.',
     'Desde 2023, enfoco mi práctica estratégica en la arquitectura e implementación de soluciones de Inteligencia Artificial agéntica (Agentic AI, Model Context Protocol y RAG), integrando modelos generativos de forma segura y gobernada en los flujos operativos centrales del negocio.',
