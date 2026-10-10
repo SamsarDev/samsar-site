@@ -5,6 +5,7 @@ interface Props {
   href?: string;
   class?: string;
   disabled?: boolean;
+  loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   [key: string]: unknown;
 }
@@ -15,9 +16,13 @@ const {
   href,
   class: className = '',
   disabled = false,
+  loading = false,
   type = 'button',
   ...rest
 } = Astro.props;
+
+// Loading implies inert: it prevents double submits and repeated clicks.
+const isInert = disabled || loading;
 
 const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
@@ -34,16 +39,30 @@ const variantStyles = {
   danger: 'bg-[var(--color-blood)] text-[#FFFDF7] hover:opacity-90',
 };
 
-const combinedClasses = [baseStyles, sizeStyles[size], variantStyles[variant], className].join(' ');
+const loadingStyles = loading ? 'pointer-events-none opacity-70' : '';
+
+const combinedClasses = [baseStyles, sizeStyles[size], variantStyles[variant], loadingStyles, className].join(' ');
+
+// Inline spinner: no dependencies, inherits the button text colour and stops when the user asks for reduced motion.
+// The margin lives here, not in the shared base styles, so existing buttons keep exactly the layout they had.
+const spinnerStyles = 'mr-2 h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-current border-t-transparent motion-reduce:animate-none';
 ---
 
 {
   href ? (
-    <a href={href} class={combinedClasses} {...rest}>
+    <a
+      href={href}
+      class={combinedClasses}
+      aria-busy={loading ? 'true' : undefined}
+      aria-disabled={isInert ? 'true' : undefined}
+      {...rest}
+    >
+      {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
       <slot />
     </a>
   ) : (
-    <button type={type} class={combinedClasses} disabled={disabled} {...rest}>
+    <button type={type} class={combinedClasses} disabled={isInert} aria-busy={loading ? 'true' : undefined} {...rest}>
+      {loading && <span class={spinnerStyles} aria-hidden="true"></span>}
       <slot />
     </button>
   )
