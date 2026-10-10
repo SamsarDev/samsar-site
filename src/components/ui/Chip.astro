@@ -6,7 +6,8 @@ interface Props {
 
 const { variant = 'tag', class: className = '' } = Astro.props;
 
-const baseStyles = 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-[\'JetBrains_Mono\'] text-xs font-medium tracking-tight';
+const baseStyles =
+  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-['JetBrains_Mono'] text-xs font-medium tracking-tight";
 
 const variantStyles = {
   category: 'bg-[var(--accent-primary)]/15 text-[var(--accent-primary)]',

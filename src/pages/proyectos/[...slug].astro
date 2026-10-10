@@ -47,29 +47,20 @@ const relatedPost = postSlug ? await getEntry('blog', postSlug) : undefined;
 <BaseLayout title={`${title} | Proyectos Samsar`} description={description}>
   <article class="py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      <Breadcrumbs
-        items={[
-          { label: 'Proyectos', href: '/proyectos' },
-          { label: title },
-        ]}
-      />
+      <Breadcrumbs items={[{ label: 'Proyectos', href: '/proyectos' }, { label: title }]} />
 
       <!-- Hero Técnico del Proyecto -->
       <header class="mb-12 pb-8 border-b border-[var(--border-base)]">
         <div class="flex items-center gap-3 mb-4">
           <Badge status={status} />
-          <span class="text-xs font-mono text-[var(--text-muted)]">
-            {typeLabels[type] || type}
-          </span>
+          <span class="text-xs font-mono text-[var(--text-muted)]">{typeLabels[type] || type}</span>
         </div>
 
         <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4 leading-tight">
           {title}
         </h1>
 
-        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6 font-sans">
-          {description}
-        </p>
+        <p class="text-lg text-[var(--text-secondary)] leading-relaxed mb-6 font-sans">{description}</p>
 
         <!-- Stack Tecnológico -->
         <div class="flex flex-wrap gap-1.5 mb-8">
@@ -118,9 +109,7 @@ const relatedPost = postSlug ? await getEntry('blog', postSlug) : undefined;
           <p class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2">
             Ingeniería & Cuaderno de Campo
           </p>
-          <h2 class="font-display text-2xl font-bold text-[var(--text-primary)] mb-6">
-            Artículo técnico relacionado
-          </h2>
+          <h2 class="font-display text-2xl font-bold text-[var(--text-primary)] mb-6">Artículo técnico relacionado</h2>
           <div class="max-w-md">
             <PostCard post={relatedPost} />
           </div>
@@ -137,9 +126,7 @@ const relatedPost = postSlug ? await getEntry('blog', postSlug) : undefined;
             {prevProject ? (
               <a href={`/proyectos/${prevProject.id}`} class="block group h-full focus-visible:outline-none">
                 <Card variant="interactive" class="h-full">
-                  <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">
-                    ← Proyecto anterior
-                  </span>
+                  <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">← Proyecto anterior</span>
                   <span class="font-display font-bold text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
                     {prevProject.data.title}
                   </span>
@@ -151,11 +138,12 @@ const relatedPost = postSlug ? await getEntry('blog', postSlug) : undefined;
           </div>
           <div>
             {nextProject ? (
-              <a href={`/proyectos/${nextProject.id}`} class="block group h-full text-right sm:text-left focus-visible:outline-none">
+              <a
+                href={`/proyectos/${nextProject.id}`}
+                class="block group h-full text-right sm:text-left focus-visible:outline-none"
+              >
                 <Card variant="interactive" class="h-full">
-                  <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">
-                    Siguiente proyecto →
-                  </span>
+                  <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">Siguiente proyecto →</span>
                   <span class="font-display font-bold text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
                     {nextProject.data.title}
                   </span>

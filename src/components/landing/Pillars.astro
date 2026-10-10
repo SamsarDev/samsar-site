@@ -38,35 +38,33 @@ const pillars = [
     </div>
 
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        pillars.map((item) => (
-          <a
-            href={item.href}
-            class="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] rounded-xl"
-          >
-            <Card variant="interactive" class="h-full flex flex-col justify-between">
-              <div>
-                <span class="font-['JetBrains_Mono'] text-xs font-semibold text-[var(--accent-primary)]">
-                  {item.category}
-                </span>
-                <h3 class="mt-2 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                  {item.title}
-                </h3>
-                <p class="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
-                  {item.description}
-                </p>
-              </div>
+      {pillars.map((item) => (
+        <a
+          href={item.href}
+          class="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] rounded-xl"
+        >
+          <Card variant="interactive" class="h-full flex flex-col justify-between">
+            <div>
+              <span class="font-['JetBrains_Mono'] text-xs font-semibold text-[var(--accent-primary)]">
+                {item.category}
+              </span>
+              <h3 class="mt-2 font-['Space_Grotesk'] text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                {item.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] font-['Manrope']">
+                {item.description}
+              </p>
+            </div>
 
-              <div class="mt-6 flex items-center text-sm font-semibold text-[var(--accent-primary)]">
-                <span>Explorar sección</span>
-                <span class="ml-1 transition-transform group-hover:translate-x-1" aria-hidden="true">
-                  &rarr;
-                </span>
-              </div>
-            </Card>
-          </a>
-        ))
-      }
+            <div class="mt-6 flex items-center text-sm font-semibold text-[var(--accent-primary)]">
+              <span>Explorar sección</span>
+              <span class="ml-1 transition-transform group-hover:translate-x-1" aria-hidden="true">
+                &rarr;
+              </span>
+            </div>
+          </Card>
+        </a>
+      ))}
     </div>
   </div>
 </section>

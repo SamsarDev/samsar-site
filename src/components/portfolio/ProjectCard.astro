@@ -34,9 +34,7 @@ const label = typeLabels[type] || type;
       </a>
     </h3>
 
-    <p class="text-sm text-[var(--text-secondary)] line-clamp-3 mb-6 leading-relaxed font-sans">
-      {description}
-    </p>
+    <p class="text-sm text-[var(--text-secondary)] line-clamp-3 mb-6 leading-relaxed font-sans">{description}</p>
   </div>
 
   <div>
@@ -45,9 +43,7 @@ const label = typeLabels[type] || type;
         <Chip variant="stack">{tech}</Chip>
       ))}
       {stack.length > 4 && (
-        <span class="text-xs font-mono text-[var(--text-muted)] self-center">
-          +{stack.length - 4}
-        </span>
+        <span class="text-xs font-mono text-[var(--text-muted)] self-center">+{stack.length - 4}</span>
       )}
     </div>
 

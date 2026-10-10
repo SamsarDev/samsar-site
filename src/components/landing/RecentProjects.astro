@@ -5,9 +5,7 @@ import Button from '../ui/Button.astro';
 
 const allProjects = await getCollection('projects');
 
-const featuredProjects = allProjects
-  .filter((project) => project.data.featured)
-  .slice(0, 3);
+const featuredProjects = allProjects.filter((project) => project.data.featured).slice(0, 3);
 
 const displayProjects = featuredProjects.length > 0 ? featuredProjects : allProjects.slice(0, 3);
 ---
@@ -19,9 +17,7 @@ const displayProjects = featuredProjects.length > 0 ? featuredProjects : allProj
         <p class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-2">
           Iniciativas & Software
         </p>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
-          Proyectos destacados
-        </h2>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">Proyectos destacados</h2>
         <p class="mt-2 text-base text-[var(--text-secondary)] font-sans">
           Arquitecturas distribuidas, soluciones de IA y proyectos de código abierto.
         </p>

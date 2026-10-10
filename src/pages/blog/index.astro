@@ -4,8 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import Chip from '../../components/ui/Chip.astro';
 
-const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
 const categories = [
   { label: 'Todos', href: '/blog', active: true },
@@ -29,14 +30,25 @@ const categories = [
           Cuaderno de campo & Blog
         </h1>
         <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl font-sans">
-          Exploraciones técnicas, manuales de arquitectura, apuntes de inteligencia artificial y crónicas de videojuegos desarrollados en familia.
+          Exploraciones técnicas, manuales de arquitectura, apuntes de inteligencia artificial y crónicas de videojuegos
+          desarrollados en familia.
         </p>
 
         <!-- Filtros por categoría -->
-        <nav aria-label="Filtrar por categoría" class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[var(--border-base)]">
+        <nav
+          aria-label="Filtrar por categoría"
+          class="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[var(--border-base)]"
+        >
           {categories.map((cat) => (
             <a href={cat.href} class="focus-visible:outline-none">
-              <Chip variant="category" class={cat.active ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : ''}>
+              <Chip
+                variant="category"
+                class={
+                  cat.active
+                    ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]'
+                    : ''
+                }
+              >
                 {cat.label}
               </Chip>
             </a>

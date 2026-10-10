@@ -12,7 +12,10 @@ const { prevUrl, nextUrl, currentPage, totalPages } = Astro.props;
 ---
 
 {(prevUrl || nextUrl) && (
-  <nav aria-label="Paginación de artículos" class="flex items-center justify-between pt-10 border-t border-[var(--border-base)] mt-12">
+  <nav
+    aria-label="Paginación de artículos"
+    class="flex items-center justify-between pt-10 border-t border-[var(--border-base)] mt-12"
+  >
     <div>
       {prevUrl ? (
         <Button href={prevUrl} variant="secondary" size="sm">

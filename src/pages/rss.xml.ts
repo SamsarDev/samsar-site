@@ -4,9 +4,7 @@ import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
   const posts = await getCollection('blog');
-  const sortedPosts = posts.sort(
-    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
-  );
+  const sortedPosts = posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
   return rss({
     title: 'Samsar | Código, cultura y curiosidad',

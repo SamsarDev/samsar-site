@@ -14,19 +14,30 @@ const { items } = Astro.props;
 <nav aria-label="Migas de pan" class="text-xs font-mono text-[var(--text-muted)] mb-8">
   <ol class="flex flex-wrap items-center gap-1.5">
     <li>
-      <a href="/" class="hover:text-[var(--text-primary)] transition-colors focus-visible:outline-none focus-visible:underline">
+      <a
+        href="/"
+        class="hover:text-[var(--text-primary)] transition-colors focus-visible:outline-none focus-visible:underline"
+      >
         Inicio
       </a>
     </li>
     {items.map((item, idx) => (
       <li class="flex items-center gap-1.5">
-        <span aria-hidden="true" class="text-[var(--text-muted)]/60">/</span>
+        <span aria-hidden="true" class="text-[var(--text-muted)]/60">
+          /
+        </span>
         {item.href && idx < items.length - 1 ? (
-          <a href={item.href} class="hover:text-[var(--text-primary)] transition-colors focus-visible:outline-none focus-visible:underline">
+          <a
+            href={item.href}
+            class="hover:text-[var(--text-primary)] transition-colors focus-visible:outline-none focus-visible:underline"
+          >
             {item.label}
           </a>
         ) : (
-          <span class="text-[var(--text-primary)] font-medium truncate max-w-[200px] sm:max-w-md" aria-current={idx === items.length - 1 ? 'page' : undefined}>
+          <span
+            class="text-[var(--text-primary)] font-medium truncate max-w-[200px] sm:max-w-md"
+            aria-current={idx === items.length - 1 ? 'page' : undefined}
+          >
             {item.label}
           </span>
         )}

@@ -17,12 +17,7 @@ import { profileData } from '../data/profile';
     <div class="mx-auto max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12">
       <div class="relative shrink-0">
         <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-2 border-[var(--accent-primary)]/40 shadow-xl bg-[var(--bg-surface-elevated)] p-1">
-          <Image
-            src={avatarImg}
-            alt={profileData.name}
-            class="w-full h-full object-cover rounded-xl"
-            loading="eager"
-          />
+          <Image src={avatarImg} alt={profileData.name} class="w-full h-full object-cover rounded-xl" loading="eager" />
         </div>
         <div class="absolute -bottom-2 -right-2 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-base)] shadow-sm text-[10px] font-mono font-medium text-[var(--accent-primary)]">
           Senior Lead
@@ -35,18 +30,14 @@ import { profileData } from '../data/profile';
             {profileData.location}
           </span>
           <span class="text-xs text-[var(--text-muted)]">•</span>
-          <span class="font-mono text-xs text-[var(--text-secondary)]">
-            ~10 años en Ingeniería
-          </span>
+          <span class="font-mono text-xs text-[var(--text-secondary)]">~10 años en Ingeniería</span>
         </div>
 
         <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] tracking-tight">
           {profileData.name}
         </h1>
 
-        <p class="mt-3 text-lg text-[var(--text-secondary)] font-sans leading-relaxed">
-          {profileData.tagline}
-        </p>
+        <p class="mt-3 text-lg text-[var(--text-secondary)] font-sans leading-relaxed">{profileData.tagline}</p>
 
         <div class="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-4">
           <Button href="/experiencia" variant="primary" size="sm">
@@ -64,9 +55,7 @@ import { profileData } from '../data/profile';
     <!-- Biografía Narrativa -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">
-          01 // Manifiesto
-        </span>
+        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">01 // Manifiesto</span>
         <div class="h-px flex-1 bg-[var(--border-base)]"></div>
       </div>
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-6">
@@ -82,9 +71,7 @@ import { profileData } from '../data/profile';
     <!-- Áreas de Interés -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">
-          02 // Enfoque
-        </span>
+        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">02 // Enfoque</span>
         <div class="h-px flex-1 bg-[var(--border-base)]"></div>
       </div>
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-8">
@@ -94,12 +81,8 @@ import { profileData } from '../data/profile';
         {profileData.interestAreas.map((area) => (
           <Card variant="interactive" class="flex flex-col justify-between h-full">
             <div>
-              <h3 class="font-display text-lg font-bold text-[var(--text-primary)] mb-2">
-                {area.title}
-              </h3>
-              <p class="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
-                {area.description}
-              </p>
+              <h3 class="font-display text-lg font-bold text-[var(--text-primary)] mb-2">{area.title}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">{area.description}</p>
             </div>
           </Card>
         ))}
@@ -109,9 +92,7 @@ import { profileData } from '../data/profile';
     <!-- Valores y Filosofía -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">
-          03 // Filosofía
-        </span>
+        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">03 // Filosofía</span>
         <div class="h-px flex-1 bg-[var(--border-base)]"></div>
       </div>
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-8">
@@ -124,12 +105,8 @@ import { profileData } from '../data/profile';
               {principle.number}
             </span>
             <div>
-              <h3 class="font-display text-lg font-bold text-[var(--text-primary)] mb-1">
-                {principle.title}
-              </h3>
-              <p class="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
-                {principle.description}
-              </p>
+              <h3 class="font-display text-lg font-bold text-[var(--text-primary)] mb-1">{principle.title}</h3>
+              <p class="text-sm text-[var(--text-secondary)] leading-relaxed font-sans">{principle.description}</p>
             </div>
           </div>
         ))}
@@ -139,9 +116,7 @@ import { profileData } from '../data/profile';
     <!-- Stack de Dominio -->
     <section>
       <div class="flex items-center gap-3 mb-6">
-        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">
-          04 // Competencias
-        </span>
+        <span class="font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider">04 // Competencias</span>
         <div class="h-px flex-1 bg-[var(--border-base)]"></div>
       </div>
       <h2 class="font-display text-2xl sm:text-3xl font-bold text-[var(--text-primary)] mb-8">
@@ -169,12 +144,8 @@ import { profileData } from '../data/profile';
         <div class="flex items-center gap-2 font-mono text-xs text-[var(--accent-primary)] uppercase tracking-wider mb-3">
           <span>05 // Dimensión Humana</span>
         </div>
-        <h2 class="font-display text-2xl font-bold text-[var(--text-primary)] mb-4">
-          Fuera de la Terminal
-        </h2>
-        <p class="text-base text-[var(--text-secondary)] font-sans leading-relaxed">
-          {profileData.outsideTerminal}
-        </p>
+        <h2 class="font-display text-2xl font-bold text-[var(--text-primary)] mb-4">Fuera de la Terminal</h2>
+        <p class="text-base text-[var(--text-secondary)] font-sans leading-relaxed">{profileData.outsideTerminal}</p>
       </div>
     </section>
 
@@ -184,7 +155,8 @@ import { profileData } from '../data/profile';
         ¿Tienes una idea, consulta técnica o proyecto?
       </h2>
       <p class="text-base text-[var(--text-secondary)] font-sans max-w-xl mx-auto mb-6">
-        Siempre con apertura para colaborar en iniciativas de alto impacto, mentoría técnica, o resolver retos de arquitectura distribuida e inteligencia artificial.
+        Siempre con apertura para colaborar en iniciativas de alto impacto, mentoría técnica, o resolver retos de
+        arquitectura distribuida e inteligencia artificial.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <Button href="/contacto" variant="primary" size="md">

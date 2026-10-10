@@ -9,8 +9,9 @@ import { formatDate } from '../../utils/formatDate';
 import { calculateReadingTime } from '../../utils/readingTime';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
 
   return posts.map((post, index) => {
     const nextPost = index > 0 ? posts[index - 1] : undefined;
@@ -20,8 +21,7 @@ export async function getStaticPaths() {
       .filter(
         (p) =>
           p.id !== post.id &&
-          (p.data.category === post.data.category ||
-            p.data.tags.some((t) => post.data.tags.includes(t)))
+          (p.data.category === post.data.category || p.data.tags.some((t) => post.data.tags.includes(t))),
       )
       .slice(0, 3);
 
@@ -60,13 +60,7 @@ const categoryMeta = {
 }[category];
 ---
 
-<BlogLayout
-  title={title}
-  description={description}
-  headings={headings}
-  category={category}
-  pubDate={pubDate}
->
+<BlogLayout title={title} description={description} headings={headings} category={category} pubDate={pubDate}>
   <header class="mb-10 pb-8 border-b border-[var(--border-base)]">
     <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-[var(--text-muted)] mb-4">
       <span class:list={['px-2.5 py-0.5 rounded-full font-medium border', categoryMeta.colorClass]}>
@@ -82,9 +76,7 @@ const categoryMeta = {
       {title}
     </h1>
 
-    <p class="text-lg text-[var(--text-secondary)] leading-relaxed font-sans">
-      {description}
-    </p>
+    <p class="text-lg text-[var(--text-secondary)] leading-relaxed font-sans">{description}</p>
   </header>
 
   <div class="prose-content">

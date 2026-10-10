@@ -42,11 +42,11 @@ const { tag, posts } = Astro.props;
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] mb-3">
           <span>Etiqueta</span>
           <span>•</span>
-          <span>{posts.length} {posts.length === 1 ? 'publicación' : 'publicaciones'}</span>
+          <span>
+            {posts.length} {posts.length === 1 ? 'publicación' : 'publicaciones'}
+          </span>
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">
-          #{tag}
-        </h1>
+        <h1 class="font-display text-4xl sm:text-5xl font-bold text-[var(--text-primary)]">#{tag}</h1>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
