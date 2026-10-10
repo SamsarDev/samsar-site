@@ -1,7 +1,12 @@
 # Aviso: activos SVG mayas decorativos
 
-**Todos los derechos reservados.** Los archivos de esta carpeta **no** están
-cubiertos por la licencia MIT del repositorio.
+**Todos los derechos reservados.** Los **archivos de identidad** de esta carpeta
+(los motivos mayas originales) **no** están cubiertos por la licencia MIT del
+repositorio.
+
+> **Excepción:** los componentes de `placeholders/` **sí** son MIT. Están ahí
+> precisamente para que forks y estudiantes tengan motivos decorativos sin tocar
+> los de identidad.
 
 ## Origen y licencia
 
