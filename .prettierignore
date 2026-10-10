@@ -1,0 +1,13 @@
+# Artefactos generados y dependencias
+dist/
+node_modules/
+.astro/
+.bun-cache/
+public/
+
+# La documentación y el contenido son prosa escrita a mano: formatearlos
+# reflowaría tablas y párrafos enteros y enterraría los cambios reales en ruido.
+docs/
+*.md
+*.mdx
+LICENSE*

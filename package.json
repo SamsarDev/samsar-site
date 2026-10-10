@@ -7,7 +7,10 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "astro check"
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -22,6 +25,11 @@
     "vue": "^3.5.43"
   },
   "devDependencies": {
+    "eslint": "10.12.0",
+    "eslint-plugin-astro": "3.2.1",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.1",
+    "typescript-eslint": "8.71.1",
     "wrangler": "^4.148.0"
   }
 }

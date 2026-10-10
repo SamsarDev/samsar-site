@@ -82,10 +82,14 @@ bun run dev          # servidor de desarrollo (fallback: npm run dev)
 bun run build        # build de produccion (debe terminar sin warnings) (fallback: npm run build)
 bun run preview      # previsualizar el build (fallback: npm run preview)
 bun run check        # astro check: tipos y errores de .astro (fallback: npm run check)
-bun run lint         # linter (fallback: npm run lint)
+bun run lint         # eslint: errores reales, bloquea el CI (fallback: npm run lint)
+bun run format       # prettier --write: formatea el codigo (fallback: npm run format)
+bun run format:check # prettier --check: verifica el formato sin tocarlo (fallback: npm run format:check)
 ```
 
-Antes de dar una tarea por terminada, ejecuta como minimo `bun run check` y `bun run build` (o sus equivalentes con `npm` si `bun` fallo).
+Antes de dar una tarea por terminada, ejecuta como minimo `bun run lint`, `bun run check` y `bun run build` (o sus equivalentes con `npm` si `bun` fallo).
+
+`lint` y `check` son capas distintas y complementarias: `astro check` valida tipos y plantillas; `eslint` busca errores reales (imports o variables sin usar, `any` explicito). Ninguno sustituye al otro.
 
 ---
 

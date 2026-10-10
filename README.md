@@ -77,7 +77,9 @@ El sitio quedará disponible en `http://localhost:4321`.
 | **Build** | `bun run build` | `npm run build` | Compila el sitio estático para producción |
 | **Preview** | `bun run preview` | `npm run preview` | Previsualiza localmente el build generado |
 | **Chequeo** | `bun run check` | `npm run check` | Ejecuta Astro Check (validación estricta de tipos y plantillas) |
-| **Linter** | `bun run lint` | `npm run lint` | Analiza el código con las reglas de estilo y formato |
+| **Linter** | `bun run lint` | `npm run lint` | ESLint: errores reales (variables o imports sin usar, `any` explícito). Bloquea el CI |
+| **Formato** | `bun run format` | `npm run format` | Prettier: formatea el código (`.astro`, TypeScript, CSS, JSON) |
+| **Formato (verificar)** | `bun run format:check` | `npm run format:check` | Comprueba el formato sin escribir nada, igual que el CI |
 
 ---
 
