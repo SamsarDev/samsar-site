@@ -10,6 +10,7 @@ Organización de directorios, responsabilidades por carpeta y convenciones de no
 samsar-site/
 ├── public/                   # Archivos estáticos servidos sin procesar
 │   ├── favicon.svg           # Favicon del sitio
+│   ├── og-image.png          # Tarjeta Open Graph 1200x630 (26 KB, PNG sin procesar)
 │   ├── robots.txt            # Directivas para rastreadores (incluye el sitemap)
 │   ├── _headers              # Cabeceras de caché de Cloudflare Pages
 │   ├── cv-samuel-sarmientos.pdf  # CV descargable (/experiencia)
@@ -77,7 +78,9 @@ samsar-site/
 └── AGENTS.md                 # Reglas operativas para agentes de IA
 ```
 
-> **Nota sobre `public/og-image.png`:** no aparece en el árbol porque **no existe**, y ese es un defecto real: `BaseLayout.astro` lo usa como valor por defecto de `ogImage`, así que `og:image` y `twitter:image` apuntan hoy a un 404. Lo cubre la [tarea 06 de la Fase 7](../05-tasks/07-maintenance/06-og-image-asset.md); cuando ese archivo exista, debe volver a este árbol.
+> **`public/og-image.png`** (creado en la [tarea 06 de la Fase 7](../05-tasks/07-maintenance/06-og-image-asset.md)): **1200x630 px, PNG RGB, 26 KB** contra el límite explícito de **300 KB** que se acordó aquí, porque `04-performance.md` **no** define presupuesto para imágenes. Tema oscuro *Obsidiana & Jade*, con tokens leídos de `theme.css`: fondo `#0a0e0c`, marca `#e8e6e1`, tagline `#9aa39e`, punto en Jade `#00a86b` y pilares `#1fbf84`. Lleva un solo mensaje, legible como miniatura: la marca `Samsar.` tal como la pinta el Header, el tagline *"Código, cultura y curiosidad"* y los tres pilares. El marco de grecas reutiliza la geometría de `GrecaBorder.astro` a 8.6 % de opacidad, dentro del 6-10 % que permite [`docs/03-design/06-maya-motifs.md`](../03-design/06-maya-motifs.md).
+>
+> Vive en `public/` a propósito: se sirve sin pasar por la optimización de Astro, porque los rastreadores esperan una URL estable y predecible. Su peso es, por tanto, responsabilidad del autor.
 
 ---
 
