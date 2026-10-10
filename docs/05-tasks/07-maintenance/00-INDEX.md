@@ -8,7 +8,7 @@ Estas tareas no construyen funcionalidad nueva: cierran los huecos que dejó la 
 
 ## 1. Secuencia de Tareas
 
-Las seis tareas son **independientes** y pueden ejecutarse en cualquier orden. Se recomienda el orden propuesto porque avanza de lo mecánico (inventarios) hacia lo que exige decisiones de diseño o aprobación de dependencias. La única interacción entre tareas es **01 ↔ 06**: si la 06 crea el asset, la 01 debe mantener `public/og-image.png` en el árbol en lugar de eliminarlo.
+Las siete tareas son **independientes** y pueden ejecutarse en cualquier orden. Se recomienda el orden propuesto porque avanza de lo mecánico (inventarios) hacia lo que exige decisiones de diseño o aprobación de dependencias. La única interacción entre tareas es **01 ↔ 06**: si la 06 crea el asset, la 01 debe mantener `public/og-image.png` en el árbol en lugar de eliminarlo.
 
 | # | Tarea | Qué corrige | Alcance |
 |---|---|---|---|
@@ -18,6 +18,7 @@ Las seis tareas son **independientes** y pueden ejecutarse en cualquier orden. S
 | **04** | [`04-component-catalog-audit.md`](04-component-catalog-audit.md) | El catálogo de `docs/03-design/components/` documenta componentes que no existen (5 de los 10 átomos de `01-ui.md`). | Documentación + decisión de diseño |
 | **05** | [`05-real-linter.md`](05-real-linter.md) | El script `lint` es un alias de `check` y no hay linter configurado, pero la documentación promete uno. | Tooling (requiere aprobación de dependencias) |
 | **06** | [`06-og-image-asset.md`](06-og-image-asset.md) | `BaseLayout` usa `/og-image.png` por defecto y ese archivo no existe: `og:image` y `twitter:image` apuntan a un 404. | Activo nuevo (sin dependencias) |
+| **07** | [`07-component-gaps.md`](07-component-gaps.md) | Cuatro huecos que la auditoría del catálogo no cerró: cinco componentes reales sin ficha, `Input` y `CodeBlock` sin implementar, `Icon.astro` decidido en un ADR y nunca creado, y fichas que afirman comportamiento inexistente. | Documentación y código |
 
 ---
 
@@ -75,3 +76,4 @@ Dos hallazgos de la auditoría no eran correcciones de documentación, y se deci
 - El catálogo de componentes distingue con claridad **lo implementado** de **lo planificado**, con la ruta real de cada pieza.
 - El script `lint` hace lo que su nombre promete, o la documentación deja de prometer un linter.
 - La imagen Open Graph por defecto existe, y `og:image` y `twitter:image` dejan de apuntar a un 404.
+- El catálogo de componentes no solo es honesto: no le quedan fichas pendientes, ni componentes prometidos sin implementar, ni decisiones de arquitectura aceptadas sin ejecutar.
