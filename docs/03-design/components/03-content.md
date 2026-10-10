@@ -84,6 +84,9 @@ Especificación de los 10 componentes dedicados a la presentación de artículos
 ## 10. `<Pagination />` (`Pagination.astro`)
 
 - **Propósito:** Controles de navegación de página para listados extensos.
-- **Props:** `page: Page<CollectionEntry<'blog'>>`.
-- **Elementos:** Botones accesibles *"Anterior"* y *"Siguiente"* con estado deshabilitado si no hay página disponible, e indicador textual *"Página X de Y"*.
+- **Props:** `prevUrl?: string`, `nextUrl?: string`, `currentPage?: number`, `totalPages?: number`.
+- **Elementos:** botones *"← Anteriores"* y *"Siguientes →"* (componente `Button`, variante `secondary`, tamaño `sm`), indicador textual *"Página X de Y"* y un hueco (`<span />`) en la dirección que no existe, para que el indicador quede centrado.
+- **Comportamiento:** si no hay `prevUrl` ni `nextUrl`, no renderiza nada. **No existe estado deshabilitado:** la dirección ausente se resuelve con el hueco, una decisión de maquetación deliberada, porque un control deshabilitado que no lleva a ninguna parte solo añade ruido a quien navega con teclado.
 - **Estado:** Implementado — `src/components/blog/Pagination.astro`
+
+> **Corregido en la [tarea 07 de la Fase 7](../../05-tasks/07-maintenance/07-component-gaps.md):** la ficha declaraba una prop `page` que el componente nunca tuvo y prometía un estado deshabilitado que se resuelve con un hueco.
