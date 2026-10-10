@@ -7,23 +7,30 @@
 ## 1. Principios de Componentes UI
 
 1. **Astro por defecto:** Todo componente visual y estructural es un componente `.astro` estático.
-2. **Islas reservadas para reactividad:** Únicamente componentes con estado de cliente (`ThemeToggle.vue`, `MobileMenu.vue`) se crean como islas Vue en `src/components/islands/`.
+2. **Islas reservadas para reactividad:** Solo los componentes con estado de cliente se crean como islas Vue en `src/components/islands/`. Hoy son tres: `ThemeToggle.vue`, `MobileMenu.vue` y `ExperienceTimeline.vue` (ver [`02-architecture/03-islands.md`](../02-architecture/03-islands.md)).
 3. **Props fuertemente tipadas:** Cada componente Astro exporta su interfaz `Props` en TypeScript; cada componente Vue utiliza `defineProps<Props>()`.
 4. **Cero valores hexadecimales:** Todo color, borde, espaciado y sombra debe aplicar tokens semánticos definidos en `src/styles/theme.css`.
-5. **Iconos de interfaz sin librerías pesadas:** Los iconos de UI (flechas, menú, sol/luna, cerrar, enlaces) se resuelven mediante SVGs inline inspirados en Lucide ([`ADR-0010`](../07-decisions/0010-inline-svg-icons-over-package.md)), sin instalar paquetes externos.
+5. **Iconos de interfaz sin librerías pesadas:** Los iconos de UI (flechas, menú, sol/luna, cerrar, enlaces) se resuelven mediante SVGs inline inspirados en Lucide ([`ADR-0010`](../07-decisions/0010-inline-svg-icons-over-package.md)), sin instalar paquetes externos. **Pendiente:** ese ADR decidió además un componente `Icon.astro` interno que centralice los vectores; hoy no existe y cada componente escribe el suyo (ver la ficha de `Icon` en [`components/01-ui.md`](components/01-ui.md)).
 
 ---
 
-## 2. Catálogo Maestro por Categoría (~33 Componentes)
+## 2. Catálogo Maestro por Categoría
 
-Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/):
+Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **35 entradas**: **22 implementadas**, **10 planificadas** y **3 retiradas**. En el código hay **27 componentes reales** en `src/components/`.
 
-| Módulo | Cantidad | Descripción | Documento Detallado |
-|---|---|---|---|
-| **UI Base** | 10 | Elementos atómicos de interacción y contenido (botones, cards, chips, badges, callouts, inputs, código, TOC, avatares e iconos). | [`components/01-ui.md`](components/01-ui.md) |
-| **Layout** | 6 | Andamiaje estructural de página (Header, Footer, Nav, ThemeToggle, MobileMenu, Breadcrumbs). | [`components/02-layout.md`](components/02-layout.md) |
-| **Contenido** | 10 | Bloques especializados de presentación de información (PostCard, ProjectCard, grids destacados, timeline de roles, paginación). | [`components/03-content.md`](components/03-content.md) |
-| **Motivos Mayas** | 7 | Ilustraciones vectoriales y separadores culturales con opacidad controlada y `aria-hidden="true"`. | [`components/04-maya.md`](components/04-maya.md) |
+> **Convención de estado.** Cada ficha del catálogo lleva una línea `- **Estado:**` con uno de estos tres valores:
+> - **Implementado** — con su ruta real: existe y se usa.
+> - **Planificado** — con lo que lo exige (una funcionalidad `F##` o una pantalla): no existe todavía y hay una razón concreta para crearlo.
+> - **Retirado** — con el motivo: se especificó y ya no hace falta. La entrada se conserva para que nadie lo reimplemente por error.
+
+| Módulo | Entradas | Implementados | Planificados | Retirados | Documento |
+|---|---|---|---|---|---|
+| **UI Base** | 10 | 6 | 3 | 1 | [`components/01-ui.md`](components/01-ui.md) |
+| **Layout y navegación** | 6 | 6 | 0 | 0 | [`components/02-layout.md`](components/02-layout.md) |
+| **Contenido** | 10 | 8 | 0 | 2 | [`components/03-content.md`](components/03-content.md) |
+| **Motivos Mayas** | 9 | 2 | 7 | 0 | [`components/04-maya.md`](components/04-maya.md) |
+
+> **Componentes reales que aún no tienen ficha (5):** `landing/AboutProject.astro`, `landing/CtaSection.astro`, `landing/Hero.astro`, `landing/Pillars.astro` y la isla `islands/ExperienceTimeline.vue`. Existen y se usan (los cuatro primeros en la portada, el último en `/experiencia`), pero su especificación de diseño está pendiente. No se inventan aquí. La cuenta cierra: **27 reales = 22 con ficha + 5 sin ficha**.
 
 ---
 
@@ -35,4 +42,5 @@ Las especificaciones detalladas de props, variantes, estados y estilos de cada c
 | **Card** | `default`, `hover` (elevación sutil de 4px), `:focus-visible` |
 | **Chip / Badge** | `default`, `hover`, `active`, `selected` |
 | **Input / Field** | `default`, `:focus-visible` (anillo colibrí), `error` (mensaje accesible), `disabled` |
-| **Link** | `default`, `hover`, `:focus-visible`, `active` |
+
+> **La matriz es una especificación, no un inventario:** son los estados mínimos exigibles. `Button` ya implementa todos, incluido `loading`, y los de `Input` aplican cuando se implemente la F15. La fila de `Link` se retiró porque **no es un componente** del catálogo: los enlaces se resuelven con un `<a>` y tokens semánticos, o con `Button` cuando necesitan aspecto de botón.
