@@ -7,12 +7,14 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
   title = 'Samsar | Código, cultura y curiosidad',
   description = 'Sitio web personal, cuaderno de campo y portafolio de Samuel Sarmientos.',
   ogImage = '/og-image.png',
+  ogImageAlt = 'Samsar: logotipo con el lema "Código, cultura y curiosidad" sobre fondo obsidiana, con un marco de grecas mayas.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://samsar-site.pages.dev/');
@@ -39,12 +41,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://samsar-s
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL(ogImage, canonicalURL)} />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(ogImage, canonicalURL)} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- Preload de Fuentes Críticas -->
     <link rel="preload" href="/fonts/space-grotesk/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
