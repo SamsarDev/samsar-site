@@ -51,6 +51,6 @@ Se decidió con evidencia y no con preferencias: antes de comprometerse se insta
 ## 5. Consecuencias y Compromisos
 
 - **Impacto positivo:** la documentación deja de prometer algo falso; `lint` y `check` pasan a ser capas distintas y complementarias; el CI gana una red que atrapa errores reales.
-- **Compromisos asumidos:** más dependencias y tres archivos de configuración que mantener (`eslint.config.mjs`, `.prettierrc`, `.prettierignore`); el primer formateo toca 49 archivos de una sola vez, y se aísla en su propio commit para no enterrar los cambios reales.
-  - **Nota de versión:** `eslint-plugin-astro` 3.2.1 declara Node `^22.22.3 || ^24.16.0 || >=26.3.0`. Instala y funciona en el runtime local (24.15.0), pero conviene alinear `.node-version` con una versión que cumpla ese rango.
+- **Compromisos asumidos:** más dependencias y tres archivos de configuración que mantener (`eslint.config.mjs`, `.prettierrc`, `.prettierignore`); el primer formateo toca 42 archivos de una sola vez, y se aísla en su propio commit para no enterrar los cambios reales.
+  - **Nota de versión:** `eslint-plugin-astro` 3.2.1 declara Node `^22.22.3 || ^24.16.0 || >=26.3.0`, por encima del pin original (`22.14.0`). Al adoptar el linter se actualizó `.node-version` a **24.21.0**, que cumple ese rango y que Cloudflare Pages soporta.
 - **Regla de implementación:** el ruleset se mantiene **mínimo**. Para añadir una regla, primero hay que comprobar que el código actual la cumple o corregirlo; queda prohibido silenciarla con `eslint-disable` para "hacer pasar" un cambio (`AGENTS.md` §9). La documentación se formatea a mano: Prettier ignora `docs/`, `README.md` y el contenido, porque reformatear prosa reflowaría tablas y párrafos enteros.

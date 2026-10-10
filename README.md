@@ -30,7 +30,7 @@ Este repositorio tiene un segundo propósito: es un **proyecto de ejemplo para c
 | Estilos | Tailwind CSS v4 + tokens CSS |
 | Contenido | Markdown / MDX con Content Collections |
 | Hosting | Cloudflare Pages |
-| Runtime y paquetes | Node.js 22.14.0 (fijado en `.node-version`) + [Bun](https://bun.sh) (alternativa: npm) |
+| Runtime y paquetes | Node.js 24.21.0 (fijado en `.node-version`) + [Bun](https://bun.sh) (alternativa: npm) |
 
 Por qué se eligió cada pieza: [`docs/07-decisions/`](docs/07-decisions/).
 
@@ -53,7 +53,7 @@ También hay una fase de mantenimiento abierta, [`docs/05-tasks/07-maintenance/`
 
 ## ⚡ Inicio rápido
 
-**Requisitos:** Node.js 22.14.0 (versión fijada en `.node-version`; Astro 7 exige `>= 22.12.0`) y Git. El gestor de paquetes del proyecto es **[Bun](https://bun.sh)**, con **npm** como alternativa.
+**Requisitos:** Node.js 24.21.0 (versión fijada en `.node-version`; Astro 7 exige `>= 22.12.0` y el linter `^24.16.0`) y Git. El gestor de paquetes del proyecto es **[Bun](https://bun.sh)**, con **npm** como alternativa.
 
 ```bash
 # 1. Clonar el repositorio
