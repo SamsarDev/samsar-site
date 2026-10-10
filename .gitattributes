@@ -1,0 +1,19 @@
+# Normalise line endings so the working copy matches the repository and CI on
+# every platform. Without this file, a Windows checkout with core.autocrlf=true
+# materialises CRLF and `bun run format:check` fails on files the Linux CI
+# considers correctly formatted: 47 false positives the first time it happened.
+* text=auto eol=lf
+
+# Binary assets: git must never normalise their contents.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.avif binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
