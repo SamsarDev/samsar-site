@@ -1,7 +1,7 @@
 # Tarea 07: Cerrar los Huecos que Dejó la Auditoría de Componentes
 
 - **Fase:** 07 — Mantenimiento
-- **Estimación:** variable; son bloques independientes (40 + 60 + 40 + 20 + 10 minutos)
+- **Estimación:** variable; son bloques independientes (40 + 60 + 40 + 20 + 10 + 15 minutos)
 - **Documentos de referencia:** [`docs/03-design/03-components.md`](../../03-design/03-components.md) · [`docs/03-design/components/`](../../03-design/components/) · [`ADR-0010`](../../07-decisions/0010-inline-svg-icons-over-package.md) · [`docs/01-product/02-features.md`](../../01-product/02-features.md)
 
 ---
@@ -81,7 +81,22 @@ Encontradas al redactar esta tarea, no en la auditoría original. Son correccion
 
 ---
 
-## 7. Comprobación y Verificación
+## 7. Bloque F — El linter no miraba los archivos Vue
+
+**Añadido al alcance a petición del mantenedor**, al detectarse mientras se escribía la ficha 15. Como el bloque E, no sale de la auditoría de componentes.
+
+Las tres islas —y el ejemplo de `examples/`— son el código con más JavaScript del sitio y **quedaban fuera del linter**: el cableado de la [tarea 05](05-real-linter.md) cubría `.astro` y TypeScript, pero no `.vue`. No era un riesgo teórico: `ExperienceTimeline.vue` contenía **dos `as any`**, prohibidos por `AGENTS.md` §7.2, que pasaban limpios porque el archivo ni se analizaba.
+
+- [ ] `eslint-plugin-vue` y `vue-eslint-parser` instalados con versión exacta.
+- [ ] El config plano `flat/essential` (85 reglas) activo sobre `.vue`, **no** `recommended`: ese añade reglas de estilo que pelearían con Prettier.
+- [ ] Dentro de `<script setup lang="ts">`, el parser de Vue delega en el de TypeScript; sin ese bloque las reglas no llegan al script.
+- [ ] Los dos `as any` sustituidos por un guard de tipo (`isAreaId`), **sin** silenciar la regla.
+- [ ] Verificado con un probe deliberado: un `any` y una variable sin usar dentro de un `.vue` hacen fallar el lint.
+- [ ] El archivo de ejemplo conserva el sufijo `.example` de la convención del repo desactivando `vue/multi-word-component-names` **solo** en `examples/**`, con el motivo escrito en el config.
+
+---
+
+## 8. Comprobación y Verificación
 
 1. `grep -c "^- \*\*Estado:\*\*" docs/03-design/components/*.md` y cuadra la cuenta con la del índice.
 2. Ninguna ruta de un *Implementado* puede ser inventada: `git ls-files src/components` debe contenerlas todas.
@@ -91,7 +106,7 @@ Encontradas al redactar esta tarea, no en la auditoría original. Son correccion
 
 ---
 
-## 8. Pistas Didácticas y Errores Comunes
+## 9. Pistas Didácticas y Errores Comunes
 
 - **Escribe la ficha leyendo el componente.** El catálogo mentía porque se copió del plan y no del código; si al documentar `Hero.astro` no encuentras una prop que el documento anterior prometía, **gana el código**.
 - **No implementes `Input` antes de su consumidor.** Espera a la F15.
