@@ -1,0 +1,107 @@
+---
+// The code blocks of a post are produced by Astro's markdown pipeline, so they
+// never pass through a component: Astro's `components` mapping is an MDX feature
+// and most posts are plain `.md`. What a component can own is the chrome and the
+// behaviour, so this file holds both and is rendered once, from BlogLayout.
+//
+// It paints no markup of its own. The copy button already required a tiny inline
+// script — it is the progressive-enhancement way: without JavaScript there is no
+// dead button on screen. Adding the language header in that same script costs no
+// extra request and no framework, and it reuses `data-language`, which Shiki
+// already writes on every highlighted block.
+---
+
+<style is:global>
+  .prose-samsar pre {
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-base);
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+  .prose-samsar .code-block-header {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0 -1.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-base);
+    border-bottom: 0;
+    border-radius: 0.75rem 0.75rem 0 0;
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .prose-samsar .code-block-header + pre {
+    margin-top: 0;
+    border-radius: 0 0 0.75rem 0.75rem;
+  }
+  .prose-samsar .copy-code-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-base);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    opacity: 0;
+    transition:
+      opacity 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .prose-samsar pre:hover .copy-code-btn,
+  .prose-samsar pre:focus-within .copy-code-btn {
+    opacity: 1;
+  }
+  .prose-samsar .copy-code-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('.prose-samsar pre').forEach((pre) => {
+    const language = pre.getAttribute('data-language');
+    if (language) {
+      const header = document.createElement('div');
+      header.className = 'code-block-header';
+      const label = document.createElement('span');
+      label.textContent = language;
+      header.appendChild(label);
+      pre.parentNode.insertBefore(header, pre);
+    }
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'copy-code-btn';
+    button.innerText = 'Copiar';
+    button.setAttribute('aria-label', 'Copiar código al portapapeles');
+    button.onclick = async () => {
+      const code = pre.querySelector('code')?.innerText || pre.innerText;
+      try {
+        await navigator.clipboard.writeText(code);
+        button.innerText = '¡Copiado!';
+        setTimeout(() => {
+          button.innerText = 'Copiar';
+        }, 2000);
+      } catch {
+        button.innerText = 'Error';
+        setTimeout(() => {
+          button.innerText = 'Copiar';
+        }, 2000);
+      }
+    };
+    pre.appendChild(button);
+  });
+</script>

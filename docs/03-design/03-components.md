@@ -16,7 +16,7 @@
 
 ## 2. Catálogo Maestro por Categoría
 
-Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **40 entradas**: **28 implementadas**, **9 planificadas** y **3 retiradas**. En el código hay **29 archivos de componente** en `src/components/`, que corresponden a **28 componentes documentados**: `Icon` se reparte en dos renderizadores —`Icon.astro` e `Icon.vue`— porque un componente Astro no puede renderizarse dentro de uno Vue ([`ADR-0012`](../07-decisions/0012-icon-library-shared-between-astro-and-vue.md)). No queda ningún componente real sin ficha.
+Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **40 entradas**: **29 implementadas**, **8 planificadas** y **3 retiradas**. En el código hay **30 archivos de componente** en `src/components/`, que corresponden a **29 componentes documentados**: `Icon` se reparte en dos renderizadores —`Icon.astro` e `Icon.vue`— porque un componente Astro no puede renderizarse dentro de uno Vue ([`ADR-0012`](../07-decisions/0012-icon-library-shared-between-astro-and-vue.md)). No queda ningún componente real sin ficha.
 
 > **Convención de estado.** Cada ficha del catálogo lleva una línea `- **Estado:**` con uno de estos tres valores:
 > - **Implementado** — con su ruta real: existe y se usa.
@@ -25,7 +25,7 @@ Las especificaciones detalladas de props, variantes, estados y estilos de cada c
 
 | Módulo | Entradas | Implementados | Planificados | Retirados | Documento |
 |---|---|---|---|---|---|
-| **UI Base** | 10 | 7 | 2 | 1 | [`components/01-ui.md`](components/01-ui.md) |
+| **UI Base** | 10 | 8 | 1 | 1 | [`components/01-ui.md`](components/01-ui.md) |
 | **Layout y navegación** | 6 | 6 | 0 | 0 | [`components/02-layout.md`](components/02-layout.md) |
 | **Contenido** | 15 | 13 | 0 | 2 | [`components/03-content.md`](components/03-content.md) |
 | **Motivos Mayas** | 9 | 2 | 7 | 0 | [`components/04-maya.md`](components/04-maya.md) |
