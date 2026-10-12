@@ -28,7 +28,7 @@ El script `lint` de `package.json` ejecutaba `astro check`, **idéntico** al scr
 
 ### Opción 1: ESLint 10 + `eslint-plugin-astro` + `typescript-eslint`, con Prettier y `prettier-plugin-astro` (Seleccionada)
 - **Ventajas:** cubre linting **y** formato, que es lo que la documentación prometía; `eslint-plugin-astro` es el plugin de facto y su versión actual se prueba contra Astro 7; Prettier ya estaba en el árbol como dependencia transitiva, así que declararlo no añade peso nuevo; y permite activar 34 reglas de accesibilidad sobre las plantillas, que es una regla no negociable del proyecto.
-- **Desventajas:** seis dependencias directas y decenas transitivas (solo ESLint declara 29) sobre un `node_modules` que ya pesa cientos de megabytes.
+- **Desventajas:** ocho dependencias directas y decenas transitivas (solo ESLint declara 29) sobre un `node_modules` que ya pesa cientos de megabytes.
 
 ### Opción 2: Biome 2.x en solitario
 - **Ventajas:** una sola dependencia; linting y formato en la misma herramienta, muy rápida.
@@ -49,6 +49,8 @@ Se decidió con evidencia y no con preferencias: antes de comprometerse se insta
 La accesibilidad se cubre con `eslint-plugin-jsx-a11y-x`, **no** con el clásico `eslint-plugin-jsx-a11y`: el clásico declara el peer `eslint ^3 … ^9` y por tanto **no admite ESLint 10**. El fork mantenido sí (`^9 || ^10`), pesa menos (267 KB frente a 753 KB) y deja menos dependencias nuevas. Se activa el config `jsx-a11y-recommended` del plugin de Astro, con 34 reglas.
 
 Aquí también se midió antes de decidir: con las 34 reglas activas el sitio actual **no produce ni un solo hallazgo**, y un archivo de prueba con una imagen sin `alt` **falla** con `astro/jsx-a11y/alt-text`. La red existe, el código la cumple y hay prueba de que no está de adorno.
+
+La cobertura se completó después con `eslint-plugin-vue` y `vue-eslint-parser` sobre el config `flat/essential`: los archivos `.vue` quedaban fuera del análisis y por ahí se colaron dos `any` explícitos en la isla más pesada del sitio. Se eligió `essential` (85 reglas) y no `recommended` (118) porque este último incorpora reglas de estilo que competirían con Prettier, que es quien gobierna el formato.
 
 ---
 

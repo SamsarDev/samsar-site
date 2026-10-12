@@ -1,4 +1,6 @@
 ---
+import { profileData } from '../../data/profile';
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -7,7 +9,7 @@ const currentYear = new Date().getFullYear();
     <p class="text-sm">&copy; {currentYear} Samuel Sarmientos. Hecho con cariño en Guatemala.</p>
     <div class="flex items-center gap-6 text-sm">
       <a
-        href="https://github.com"
+        href={profileData.github}
         target="_blank"
         rel="noopener noreferrer"
         class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
@@ -15,7 +17,7 @@ const currentYear = new Date().getFullYear();
         GitHub
       </a>
       <a
-        href="https://linkedin.com"
+        href={profileData.linkedin}
         target="_blank"
         rel="noopener noreferrer"
         class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
@@ -23,7 +25,7 @@ const currentYear = new Date().getFullYear();
         LinkedIn
       </a>
       <a
-        href="mailto:hola@samsar.dev"
+        href={`mailto:${profileData.email}`}
         class="transition-colors hover:text-[var(--accent-primary)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)]"
       >
         Contacto

@@ -19,14 +19,16 @@ Especificación de los 6 componentes de andamiaje estructural y navegación gene
 
 ## 2. `<Footer />` (`Footer.astro`)
 
-- **Propósito:** Pie de página con enlaces institucionales, redes sociales y aviso de derechos.
+- **Propósito:** Pie de página con el aviso de derechos y los enlaces de contacto del autor.
+- **Props:** ninguna. Sus enlaces se alimentan de `src/data/profile.ts` en lugar de literales, para que el perfil tenga una sola fuente de verdad.
 - **Elementos:**
-  - Enlaces secundarios a todas las secciones.
-  - Iconos accesibles a GitHub, LinkedIn y correo directo.
-  - Leyendas de licencias (MIT, CC BY-NC).
-  - Frase conmemorativa: *"Hecho con cariño en Guatemala"*.
+  - Aviso de derechos: *"© {año} Samuel Sarmientos. Hecho con cariño en Guatemala."* El año se calcula durante el build.
+  - Tres enlaces de **texto** —`GitHub`, `LinkedIn` y `Contacto`— a los perfiles reales de `profile.ts` y a `mailto:`.
+  - Los dos enlaces externos llevan `target="_blank"` y `rel="noopener noreferrer"`; los tres tienen anillo de foco visible.
 - **Estilos:** Fondo `--bg-surface`, borde superior `--border-base`, padding vertical `--space-7` (48px).
 - **Estado:** Implementado — `src/components/layout/Footer.astro`
+
+> **Corregido en la [tarea 07 de la Fase 7](../../05-tasks/07-maintenance/07-component-gaps.md):** esta ficha prometía "enlaces secundarios a todas las secciones", "iconos accesibles a GitHub, LinkedIn y correo directo" y "leyendas de licencias (MIT, CC BY-NC)". Nada de eso existía: el componente tiene tres enlaces de texto y no muestra leyendas de licencia (viven en `README.md`). Gana el código. Si algún día se quieren iconos aquí, deben venir de `Icon.astro` ([ADR-0010](../../07-decisions/0010-inline-svg-icons-over-package.md)).
 
 ---
 
