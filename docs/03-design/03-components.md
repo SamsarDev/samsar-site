@@ -10,13 +10,13 @@
 2. **Islas reservadas para reactividad:** Solo los componentes con estado de cliente se crean como islas Vue en `src/components/islands/`. Hoy son tres: `ThemeToggle.vue`, `MobileMenu.vue` y `ExperienceTimeline.vue` (ver [`02-architecture/03-islands.md`](../02-architecture/03-islands.md)).
 3. **Props fuertemente tipadas:** Cada componente Astro exporta su interfaz `Props` en TypeScript; cada componente Vue utiliza `defineProps<Props>()`.
 4. **Cero valores hexadecimales:** Todo color, borde, espaciado y sombra debe aplicar tokens semánticos definidos en `src/styles/theme.css`.
-5. **Iconos de interfaz sin librerías pesadas:** Los iconos de UI (flechas, menú, sol/luna, cerrar, enlaces) se resuelven mediante SVGs inline inspirados en Lucide ([`ADR-0010`](../07-decisions/0010-inline-svg-icons-over-package.md)), sin instalar paquetes externos. **Pendiente:** ese ADR decidió además un componente `Icon.astro` interno que centralice los vectores; hoy no existe y cada componente escribe el suyo (ver la ficha de `Icon` en [`components/01-ui.md`](components/01-ui.md)).
+5. **Iconos de interfaz sin librerías pesadas:** Los iconos de UI (flechas, menú, sol/luna, cerrar, enlaces) se resuelven mediante SVGs inline inspirados en Lucide ([`ADR-0010`](../07-decisions/0010-inline-svg-icons-over-package.md)), sin instalar paquetes externos. El componente central que ese ADR decidió **ya existe** desde la [tarea 07 de la Fase 7](../05-tasks/07-maintenance/07-component-gaps.md): los vectores viven en `src/components/ui/icons.ts` y los consumen `Icon.astro` e `Icon.vue` (ver la ficha de `Icon` en [`components/01-ui.md`](components/01-ui.md) y [`ADR-0012`](../07-decisions/0012-icon-library-shared-between-astro-and-vue.md)).
 
 ---
 
 ## 2. Catálogo Maestro por Categoría
 
-Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **40 entradas**: **27 implementadas**, **10 planificadas** y **3 retiradas**. En el código hay **27 componentes reales** en `src/components/`, y desde la [tarea 07 de la Fase 7](../05-tasks/07-maintenance/07-component-gaps.md) **los 27 tienen ficha**: la cuenta cierra sin excepciones.
+Las especificaciones detalladas de props, variantes, estados y estilos de cada componente se encuentran organizadas en la subcarpeta [`components/`](components/). El catálogo documenta **40 entradas**: **29 implementadas**, **8 planificadas** y **3 retiradas**. En el código hay **30 archivos de componente** en `src/components/`, que corresponden a **29 componentes documentados**: `Icon` se reparte en dos renderizadores —`Icon.astro` e `Icon.vue`— porque un componente Astro no puede renderizarse dentro de uno Vue ([`ADR-0012`](../07-decisions/0012-icon-library-shared-between-astro-and-vue.md)). No queda ningún componente real sin ficha.
 
 > **Convención de estado.** Cada ficha del catálogo lleva una línea `- **Estado:**` con uno de estos tres valores:
 > - **Implementado** — con su ruta real: existe y se usa.
@@ -25,7 +25,7 @@ Las especificaciones detalladas de props, variantes, estados y estilos de cada c
 
 | Módulo | Entradas | Implementados | Planificados | Retirados | Documento |
 |---|---|---|---|---|---|
-| **UI Base** | 10 | 6 | 3 | 1 | [`components/01-ui.md`](components/01-ui.md) |
+| **UI Base** | 10 | 8 | 1 | 1 | [`components/01-ui.md`](components/01-ui.md) |
 | **Layout y navegación** | 6 | 6 | 0 | 0 | [`components/02-layout.md`](components/02-layout.md) |
 | **Contenido** | 15 | 13 | 0 | 2 | [`components/03-content.md`](components/03-content.md) |
 | **Motivos Mayas** | 9 | 2 | 7 | 0 | [`components/04-maya.md`](components/04-maya.md) |
