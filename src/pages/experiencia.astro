@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ExperienceTimeline from '../components/islands/ExperienceTimeline.vue';
 import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
 import { experienceData } from '../data/experience';
 ---
 
@@ -27,14 +28,7 @@ import { experienceData } from '../data/experience';
           download="CV-Samuel-Sarmientos.pdf"
           class="inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-lg bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-semibold text-sm hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] shadow-sm shrink-0"
         >
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-            />
-          </svg>
+          <Icon name="download" class="w-4 h-4" />
           Descargar CV (PDF)
         </a>
       </div>

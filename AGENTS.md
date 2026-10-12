@@ -99,7 +99,7 @@ Antes de dar una tarea por terminada, ejecuta como minimo `bun run lint`, `bun r
 src/
 ├── assets/          # Imágenes importadas por componentes
 ├── components/
-│   ├── ui/          # Button, Card, Chip, Badge, Callout
+│   ├── ui/          # Button, Card, Chip, Badge, Callout, Icon
 │   ├── layout/      # Header, Footer, Nav
 │   ├── blog/        # PostCard, TOC, Breadcrumbs, Pagination, CategoryHero...
 │   ├── landing/     # Hero, Pillars, AboutProject, CtaSection, FeaturedPosts...

@@ -28,6 +28,12 @@ export default [
     languageOptions: {
       parserOptions: { parser: tseslint.parser, extraFileExtensions: ['.vue'] },
     },
+    rules: {
+      // This rule stops a component from colliding with an HTML element name.
+      // `Icon` collides with nothing, and the name is part of the API decided in
+      // ADR-0010, so it is exempted by name instead of renamed.
+      'vue/multi-word-component-names': ['error', { ignores: ['Icon'] }],
+    },
   },
   {
     // The files in examples/ are templates students copy, named with the repo's

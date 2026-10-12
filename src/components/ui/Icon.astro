@@ -1,0 +1,46 @@
+---
+import { icons, isCircleShape, isPathShape, type IconName } from './icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: className = 'h-5 w-5' } = Astro.props;
+const icon = icons[name];
+
+// Split here rather than inside the template so each list keeps its own type.
+const pathShapes = icon.shapes.filter(isPathShape);
+const circleShapes = icon.shapes.filter(isCircleShape);
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={icon.viewBox ?? '0 0 24 24'}
+  fill={icon.filled ? 'currentColor' : 'none'}
+  stroke={icon.filled ? undefined : 'currentColor'}
+  stroke-width={icon.filled ? undefined : (icon.strokeWidth ?? 2)}
+  class={className}
+  aria-hidden="true"
+>
+  {pathShapes.map((shape) => (
+    <path
+      d={shape.d}
+      fill-rule={shape.evenodd ? 'evenodd' : undefined}
+      clip-rule={shape.evenodd ? 'evenodd' : undefined}
+      stroke-width={shape.strokeWidth}
+      stroke-linecap={shape.round ? 'round' : undefined}
+      stroke-linejoin={shape.round ? 'round' : undefined}
+    />
+  ))}
+  {circleShapes.map((shape) => (
+    <circle
+      cx={shape.cx}
+      cy={shape.cy}
+      r={shape.r}
+      fill={shape.filled ? 'currentColor' : undefined}
+      stroke-width={shape.strokeWidth}
+      stroke-dasharray={shape.dashed ? '4 4' : undefined}
+    />
+  ))}
+</svg>

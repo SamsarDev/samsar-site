@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted } from 'vue';
+import Icon from '../ui/Icon.vue';
 
 interface NavItem {
   label: string;
@@ -55,28 +56,8 @@ onUnmounted(() => {
       aria-label="Abrir menú de navegación"
       @click="toggleMenu"
     >
-      <svg
-        v-if="!isOpen"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-      <svg
-        v-else
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+      <Icon v-if="!isOpen" name="menu" class="h-6 w-6" />
+      <Icon v-else name="close" class="h-6 w-6" />
     </button>
 
     <!-- Overlay y Drawer -->
@@ -97,7 +78,7 @@ onUnmounted(() => {
               aria-label="Cerrar menú"
               @click="closeMenu"
             >
-              ✕
+              <Icon name="close" class="h-5 w-5" />
             </button>
           </div>
 
