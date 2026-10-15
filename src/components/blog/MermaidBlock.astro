@@ -1,0 +1,213 @@
+---
+// Renderizador de diagramas Mermaid para artículos del blog.
+// Implementa carga perezosa (lazy-loading condicional con importación dinámica):
+// si el post no contiene bloques mermaid, se transfieren 0 bytes de la librería.
+---
+
+<style is:global>
+  .mermaid-wrapper {
+    margin: 2rem 0;
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-lg, 12px);
+    background-color: var(--bg-surface);
+    overflow: hidden;
+  }
+  .mermaid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--border-base);
+    background-color: var(--bg-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+  .mermaid-viewport {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    overflow-x: auto;
+    min-height: 120px;
+  }
+  .mermaid-viewport svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .mermaid-details {
+    border-top: 1px solid var(--border-base);
+    background-color: var(--bg-surface);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+  .mermaid-details summary {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    user-select: none;
+    transition: color 0.2s ease;
+  }
+  .mermaid-details summary:hover {
+    color: var(--accent-primary);
+  }
+  .mermaid-code-content {
+    margin: 0 !important;
+    padding: 1rem !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background-color: var(--bg-primary) !important;
+  }
+</style>
+
+<script>
+  async function initMermaid() {
+    const mermaidPres = document.querySelectorAll<HTMLElement>('.prose-samsar pre[data-language="mermaid"]');
+    if (!mermaidPres || mermaidPres.length === 0) {
+      return;
+    }
+
+    // Carga perezosa de la biblioteca únicamente cuando hay diagramas
+    const mermaidModule = await import('mermaid');
+    const mermaid = mermaidModule.default;
+
+    function getMermaidConfig(isDark: boolean) {
+      return {
+        startOnLoad: false,
+        securityLevel: 'loose' as const,
+        theme: 'base' as const,
+        themeVariables: isDark
+          ? {
+              darkMode: true,
+              background: '#131916',
+              primaryColor: '#1c2420',
+              primaryTextColor: '#e8e6e1',
+              primaryBorderColor: '#00a86b',
+              lineColor: '#19c3b0',
+              secondaryColor: '#131916',
+              tertiaryColor: '#0a0e0c',
+              fontFamily: 'var(--font-body, system-ui, sans-serif)',
+              fontSize: '14px',
+            }
+          : {
+              darkMode: false,
+              background: '#f5f0e8',
+              primaryColor: '#eae3d5',
+              primaryTextColor: '#2b2927',
+              primaryBorderColor: '#f4a300',
+              lineColor: '#0369a1',
+              secondaryColor: '#f5f0e8',
+              tertiaryColor: '#fffdf7',
+              fontFamily: 'var(--font-body, system-ui, sans-serif)',
+              fontSize: '14px',
+            },
+      };
+    }
+
+    const isDarkMode = () => document.documentElement.getAttribute('data-theme') !== 'light';
+
+    mermaid.initialize(getMermaidConfig(isDarkMode()));
+
+    // Procesar cada bloque pre y convertirlo en contenedor de diagrama
+    mermaidPres.forEach(async (pre, index) => {
+      // Evitar doble inicialización si ya fue procesado
+      if (pre.dataset.mermaidProcessed === 'true') return;
+      pre.dataset.mermaidProcessed = 'true';
+
+      const rawCode = pre.querySelector('code')?.innerText || pre.innerText;
+      const cleanCode = rawCode.trim();
+      const diagramId = `mermaid-svg-${index}-${Date.now()}`;
+
+      // Crear contenedor visual
+      const wrapper = document.createElement('div');
+      wrapper.className = 'mermaid-wrapper';
+
+      // Cabecera accesible con etiqueta y botón de copiar
+      const header = document.createElement('div');
+      header.className = 'mermaid-header';
+      header.innerHTML = `
+        <span class="font-semibold uppercase tracking-wider text-xs">Diagrama</span>
+        <button type="button" class="copy-mermaid-btn hover:text-[var(--accent-primary)] transition-colors" aria-label="Copiar código del diagrama">Copiar código</button>
+      `;
+
+      const copyBtn = header.querySelector<HTMLButtonElement>('.copy-mermaid-btn');
+      if (copyBtn) {
+        copyBtn.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(cleanCode);
+            copyBtn.textContent = '¡Copiado!';
+            setTimeout(() => {
+              copyBtn.textContent = 'Copiar código';
+            }, 2000);
+          } catch {
+            copyBtn.textContent = 'Error';
+          }
+        };
+      }
+
+      // Zona de renderizado SVG
+      const viewport = document.createElement('div');
+      viewport.className = 'mermaid-viewport';
+      viewport.setAttribute('role', 'img');
+      viewport.setAttribute('aria-label', `Diagrama Mermaid interactivo: ${cleanCode.slice(0, 50)}...`);
+
+      // Acordeón colapsable con código fuente para accesibilidad
+      const details = document.createElement('details');
+      details.className = 'mermaid-details';
+      details.innerHTML = `
+        <summary>Ver sintaxis de origen</summary>
+        <pre class="mermaid-code-content"><code>${cleanCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+      `;
+
+      wrapper.appendChild(header);
+      wrapper.appendChild(viewport);
+      wrapper.appendChild(details);
+
+      // Reemplazar el pre original con el nuevo wrapper
+      pre.parentNode?.insertBefore(wrapper, pre);
+      pre.style.display = 'none';
+
+      // Renderizar el diagrama SVG
+      try {
+        const { svg } = await mermaid.render(diagramId, cleanCode);
+        viewport.innerHTML = svg;
+      } catch (err) {
+        console.warn('Error al renderizar diagrama Mermaid:', err);
+        viewport.innerHTML = `<p class="text-sm text-[var(--text-danger)] p-4">No se pudo procesar el diagrama. Podés revisar el código de origen desplegando el bloque inferior.</p>`;
+      }
+    });
+
+    // Observar cambios en el tema para re-renderizar con los colores correspondientes
+    const observer = new MutationObserver(async (mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          mermaid.initialize(getMermaidConfig(isDarkMode()));
+          const wrappers = document.querySelectorAll('.mermaid-wrapper');
+          wrappers.forEach(async (wrap, i) => {
+            const codeEl = wrap.querySelector('.mermaid-code-content code');
+            const viewport = wrap.querySelector('.mermaid-viewport');
+            if (codeEl && viewport) {
+              const code = codeEl.textContent || '';
+              try {
+                const { svg } = await mermaid.render(`mermaid-re-svg-${i}-${Date.now()}`, code);
+                viewport.innerHTML = svg;
+              } catch {
+                // Silencioso en re-render
+              }
+            }
+          });
+        }
+      }
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+  }
+
+  // Inicializar al cargar el DOM o al navegar con transiciones de página
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMermaid);
+  } else {
+    initMermaid();
+  }
+  document.addEventListener('astro:page-load', initMermaid);
+</script>

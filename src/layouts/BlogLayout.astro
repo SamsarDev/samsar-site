@@ -2,6 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumbs from '../components/blog/Breadcrumbs.astro';
 import CodeBlock from '../components/blog/CodeBlock.astro';
+import MermaidBlock from '../components/blog/MermaidBlock.astro';
 import TOC from '../components/blog/TOC.astro';
 import type { MarkdownHeading } from 'astro';
 
@@ -103,4 +104,5 @@ const categoryLabels = {
 
   <!-- Owns the chrome and the behaviour of every code block in the post. -->
   <CodeBlock />
+  <MermaidBlock />
 </BaseLayout>

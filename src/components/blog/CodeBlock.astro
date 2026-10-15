@@ -73,6 +73,7 @@
 <script is:inline>
   document.querySelectorAll('.prose-samsar pre').forEach((pre) => {
     const language = pre.getAttribute('data-language');
+    if (language === 'mermaid') return;
     if (language) {
       const header = document.createElement('div');
       header.className = 'code-block-header';
