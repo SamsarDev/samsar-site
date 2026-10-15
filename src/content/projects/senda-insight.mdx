@@ -1,0 +1,28 @@
+---
+title: 'Senda|Insight: Analítica Segura con IA'
+description: 'Plataforma de inteligencia de negocios Text-to-SQL con validación AST, gobernanza granular en 3 niveles y panel de auditoría.'
+type: 'open-source'
+stack: ['Python', 'FastAPI', 'Vue 3', 'PostgreSQL', 'Docker', 'sqlglot']
+status: 'wip'
+repo: 'https://github.com/SamsarDev/senda-insight'
+demo: 'https://samsar-site.pages.dev/'
+postSlug: 'samsar-ia/de-la-pregunta-al-dato-seguro-ast'
+featured: true
+---
+
+import Callout from '../../components/ui/Callout.astro';
+
+## Contexto y Visión
+
+**Senda|Insight** es el componente de inteligencia de negocios y analítica aumentada de la suite **Senda**. Su objetivo principal es transformar consultas formuladas en lenguaje natural en análisis de datos profundos y visualizaciones interactivas, aplicando estrictas directivas de seguridad corporativa y gobernanza de datos para evitar fugas de información o inyecciones de código.
+
+<Callout type="tip" title="Laboratorio Didáctico de Nivel Corporativo">
+  Diseñado para enseñar a estudiantes de ingeniería los principios de <strong>defensa en profundidad</strong>: nunca confiar ciegamente en las salidas de un modelo de lenguaje cuando interactúa con bases de datos relacionales.
+</Callout>
+
+## Pilares de Arquitectura
+
+- **Validación Sintáctica por AST:** Mediante `sqlglot`, el backend analiza el árbol de sintaxis abstracta de cada consulta SQL generada por el LLM. Solo se autorizan operaciones estrictamente de lectura (`SELECT`), forzando cláusulas `LIMIT` y bloqueando cualquier intento de mutación o acceso a tablas restringidas.
+- **Gobernanza de Datos en 3 Niveles:** Clasificación granular por columna en *Visible*, *Enmascarada (Masked / PII)* y *Bloqueada (Hidden)*. Las columnas bloqueadas son removidas del esquema enviado al LLM antes de formular el prompt.
+- **Asistente Guiado y Secretos Cifrados:** Wizard paso a paso para configurar la base de datos de análisis y proveedores de IA (Claude, Antigravity u Ollama local), persistiendo credenciales cifradas en reposo con AES-256 (Fernet).
+- **Modo Didáctico y Auditoría:** Panel transparente que expone la consulta SQL original, el reporte de validación AST, la latencia y el consumo de tokens para cada análisis generado.

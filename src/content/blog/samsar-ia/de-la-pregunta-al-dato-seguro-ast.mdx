@@ -1,0 +1,84 @@
+---
+title: 'De la Pregunta al Dato Seguro: Validación AST en Text-to-SQL'
+description: 'Por qué no debes confiar la seguridad a un prompt y cómo blindamos consultas generadas por IA usando sqlglot en Senda|Insight.'
+pubDate: 2026-10-14
+category: 'samsar-ia'
+tags: ['ia', 'sql', 'seguridad', 'ast', 'python', 'fastapi']
+draft: false
+featured: true
+series: 'Senda|Insight: Analítica Segura'
+---
+
+import Callout from '../../../components/ui/Callout.astro';
+
+## La falacia de la seguridad por prompt
+
+Uno de los errores más peligrosos al enseñar aplicaciones prácticas de IA en entornos corporativos es creer que el modelo de lenguaje actuará como su propio guardia de seguridad:
+
+> *"Por favor genera solo consultas SELECT y no toques la tabla de usuarios ni la columna de salarios."*
+
+Pedirle a un LLM que se auto-regule a través del *system prompt* ignora la naturaleza no determinista de los modelos y expone el sistema a inyecciones indirectas de prompts (*jailbreaks* o manipulación de datos en lenguaje natural). En ingeniería de software seria, la regla de oro es innegociable: **la seguridad nunca se delega al cliente ni al modelo; se impone en la arquitectura de backend**.
+
+<Callout type="warning" title="Defensa en Profundidad">
+  En Senda|Insight, el LLM es tratado como un componente de entrada no confiable. Toda consulta SQL generada debe atravesar un validador determinista de sintaxis antes de llegar a la base de datos.
+</Callout>
+
+## ¿Qué es la validación por AST (Abstract Syntax Tree)?
+
+En lugar de evaluar la consulta como una cadena de texto mediante expresiones regulares frágiles (que pueden ser eludidas fácilmente con saltos de línea, comentarios `/* */` o aliases creativos), un **Árbol de Sintaxis Abstracta (AST)** descompone la consulta en su estructura gramatical estricta.
+
+En el backend de **Senda|Insight** (FastAPI), utilizamos la biblioteca `sqlglot` para inspeccionar el árbol sintáctico de cada sentencia:
+
+```python
+import sqlglot
+from sqlglot import exp
+from typing import Set
+
+class ASTSecurityValidator:
+    def __init__(self, allowed_tables: Set[str], forbidden_columns: Set[str]):
+        self.allowed_tables = {t.lower() for t in allowed_tables}
+        self.forbidden_columns = {c.lower() for c in forbidden_columns}
+
+    def validate_and_sanitize(self, sql_query: str, max_limit: int = 500) -> str:
+        # 1. Parsear el árbol de sintaxis abstracta
+        try:
+            expression = sqlglot.parse_one(sql_query, read="postgres")
+        except Exception as e:
+            raise ValueError(f"Consulta SQL malformada: {str(e)}")
+
+        # 2. Exigir que sea estrictamente una expresión de lectura (SELECT)
+        if not isinstance(expression, exp.Select):
+            raise PermissionError("Operación denegada: Solo se admiten consultas de tipo SELECT.")
+
+        # 3. Validar que las tablas accedidas estén explícitamente autorizadas
+        for table in expression.find_all(exp.Table):
+            table_name = table.name.lower()
+            if table_name not in self.allowed_tables:
+                raise PermissionError(f"Acceso denegado a la tabla: '{table_name}'.")
+
+        # 4. Asegurar que ninguna columna prohibida o bloqueada sea proyectada o filtrada
+        for column in expression.find_all(exp.Column):
+            col_name = column.name.lower()
+            if col_name in self.forbidden_columns:
+                raise PermissionError(f"Acceso denegado a la columna sensible: '{col_name}'.")
+
+        # 5. Imponer cláusula LIMIT para evitar saturación de memoria
+        current_limit = expression.args.get("limit")
+        if not current_limit or int(current_limit.expression.this) > max_limit:
+            expression = expression.limit(max_limit)
+
+        return expression.sql(dialect="postgres")
+```
+
+## Beneficios clave para estudiantes y entornos reales
+
+1. **Inmunidad a DDL y DML maliciosos:** Intentos de inyectar sentencias compuestas (`SELECT ...; DROP TABLE ventas;`) son neutralizados antes de tocar el motor de base de datos.
+2. **Cumplimiento estricto de gobernanza:** Aunque el LLM "alucine" o intente adivinar columnas privadas, el AST las detecta y aborta la transacción.
+3. **Control de recursos:** La inyección automática de límites de paginación (`LIMIT`) previene denegaciones de servicio accidentales provocadas por consultas no agregadas sobre tablas masivas.
+4. **Conexión de solo lectura en base de datos:** Como última línea de defensa, el usuario de conexión a PostgreSQL solo tiene permisos `GRANT SELECT` sobre las tablas habilitadas.
+
+## El Panel de Auditoría en la Experiencia de Usuario
+
+Para cerrar el ciclo pedagógico, Senda|Insight no oculta este proceso: cada análisis incluye un acordeón de auditoría donde los estudiantes pueden contrastar la consulta en crudo generada por el modelo con la consulta final saniada por el AST, visualizando tiempos de respuesta y tokens consumidos.
+
+En la próxima entrega de la serie, analizaremos el diseño del **Asistente Guiado (Wizard)** y cómo estructurar la **gobernanza de datos en 3 niveles (Visible, Enmascarado y Bloqueado)** para proteger datos personales (PII).

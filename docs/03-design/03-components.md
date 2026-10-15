@@ -32,6 +32,8 @@ Las especificaciones detalladas de props, variantes, estados y estilos de cada c
 
 > **Cuenta cerrada.** Las cinco fichas que faltaban —los cuatro componentes de portada (`Hero`, `Pillars`, `AboutProject`, `CtaSection`) y la isla `ExperienceTimeline`— se escribieron en la [tarea 07 de la Fase 7](../05-tasks/07-maintenance/07-component-gaps.md) leyendo el código, no el plan. Ya no hay componentes reales sin especificación: **27 reales = 27 con ficha**.
 
+> **Auditoría periódica automatizada:** Para garantizar que las fichas no se desincronicen del código cuando cambien las props o variantes, el proyecto cuenta con el script `.sweep-fichas.py` (`bun run audit:components`), que parsea las fichas de `components/` y las contrasta contra las interfaces TypeScript reales en `src/components/`.
+
 ---
 
 ## 3. Matriz de Estados Estándar

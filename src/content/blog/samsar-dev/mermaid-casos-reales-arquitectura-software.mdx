@@ -1,0 +1,142 @@
+---
+title: 'Mermaid en la Práctica: Modelando Arquitectura de Software y Datos'
+description: 'Guía práctica con casos de uso reales: flujogramas de seguridad, diagramas de secuencia Text-to-SQL y mapas de arquitectura.'
+pubDate: 2026-10-18
+category: 'samsar-dev'
+tags: ['mermaid', 'arquitectura', 'diagramas', 'uml', 'clean-code']
+draft: false
+featured: true
+---
+
+import Callout from '../../../components/ui/Callout.astro';
+
+## La arquitectura debe comunicarse con claridad
+
+Escribir código limpio es solo la mitad del trabajo de un ingeniero de software; la otra mitad es **comunicar las decisiones de diseño a su equipo**.
+
+En el artículo anterior ([Diagramas como Código: Integrando Mermaid en Astro con Alto Rendimiento](/blog/samsar-dev/guia-mermaid-astro-alto-rendimiento)) vimos cómo preparar nuestro sitio para renderizar diagramas vectoriales interactivos. En esta guía, exploraremos cómo utilizar la sintaxis de **Mermaid** para resolver casos reales de documentación arquitectónica, tomando como base nuestra plataforma de analítica segura **Senda|Insight**.
+
+---
+
+## 1. Flujogramas: Modelando tuberías de validación y seguridad
+
+Los flujogramas (`flowchart`) son ideales para representar canales de procesamiento donde intervienen compuertas lógicas y filtros de seguridad deterministas.
+
+Veamos cómo representamos la **defensa en profundidad** frente a consultas generadas por IA:
+
+```mermaid
+flowchart TD
+    Pregunta([Pregunta del Usuario]) --> Prompt[Inyección de Prompt con Schema Filtrado]
+    Prompt --> LLM[Proveedor de IA - Claude / Antigravity / Ollama]
+    LLM --> SQLCrudo[SQL Crudo Generado]
+    SQLCrudo --> AST{Validador AST sqlglot}
+    
+    AST -->|Contiene DDL/DML o Tablas Prohibidas| Rechazo[Rechazo Inmediato - Código E_NOT_SELECT]
+    AST -->|Solo SELECT y Columnas Autorizadas| InyeccionLimit[Inyección Forzada de LIMIT]
+    
+    InyeccionLimit --> DB[(PostgreSQL Objetivo - Rol Read Only)]
+    DB --> DatosCrudos[Dataset Tabular]
+    DatosCrudos --> Enmascaramiento[Enmascarador de PII]
+    Enmascaramiento --> UI[Vista Analítica e Historial de Auditoría]
+```
+
+<Callout type="tip" title="Consejo de Estilo">
+  Utilizá subgrafos y formas diferenciadas: paréntesis para eventos de usuario <code>([ ... ])</code>, rombos para bifurcaciones condicionales <code>{'{ ... }'}</code> y cilindros para persistencia <code>[( ... )]</code>.
+</Callout>
+
+---
+
+## 2. Diagramas de Secuencia: Protocolos y llamadas asíncronas
+
+Cuando necesitás ilustrar el orden cronológico de mensajes entre múltiples sistemas distribuidos, un diagrama de secuencia (`sequenceDiagram`) es la herramienta adecuada.
+
+Este es el ciclo de vida de una consulta en **Senda|Insight**:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Estudiante as Usuario / Estudiante
+    participant UI as Frontend (Vue 3)
+    participant API as Backend (FastAPI)
+    participant IA as Adaptador LLM
+    participant DB as PostgreSQL Objetivo
+
+    Estudiante->>UI: Formula pregunta analítica
+    UI->>API: POST /api/analysis/query
+    API->>IA: Envía prompt con esquema sanitizado
+    IA-->>API: Retorna consulta SQL sugerida
+    API->>API: Parsea AST y valida políticas de acceso
+    alt Consulta Inválida o Insegura
+        API-->>UI: 403 Forbidden + Detalle en Panel de Auditoría
+    else Consulta Aprobada
+        API->>DB: Ejecuta SELECT con transacción READ ONLY
+        DB-->>API: Retorna filas de datos
+        API->>API: Aplica enmascaramiento de PII en backend
+        API-->>UI: 200 OK (Datos + Gráfico + Auditoría)
+        UI-->>Estudiante: Renderiza Dashboard y Acordeón Técnico
+    end
+```
+
+---
+
+## 3. Diagramas de Estado: El ciclo de vida de una consulta
+
+Para modelar máquinas de estado finito o estados reactivos en el frontend, `stateDiagram-v2` permite mapear transiciones sin ambigüedad:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle: Esperando pregunta
+    Idle --> GeneratingSQL: Usuario envía formulario
+    GeneratingSQL --> ValidatingAST: LLM responde
+    ValidatingAST --> ExecutingQuery: Consulta aprobada
+    ValidatingAST --> Rejected: Fallo de seguridad (E_*)
+    ExecutingQuery --> SanitizingData: Filas recibidas
+    ExecutingQuery --> TimeoutError: Excede statement_timeout
+    SanitizingData --> Rendered: Visualización completa
+    Rejected --> Idle: Reintento didáctico
+    TimeoutError --> Idle: Reintentar con filtros
+    Rendered --> [*]
+```
+
+---
+
+## 4. Diagramas de Clases: El Patrón Adapter para Proveedores de IA
+
+Para documentar patrones de diseño orientados a objetos, como el desacoplamiento de motores de IA mediante el patrón Adapter:
+
+```mermaid
+classDiagram
+    class LLMProvider {
+        <<interface>>
+        +generate_sql(prompt: str, schema: dict) str
+        +generate_insights(data: list) str
+        +test_connection() bool
+    }
+    class ClaudeProvider {
+        -api_key: str
+        -model_name: str
+        +generate_sql(...) str
+    }
+    class AntigravityProvider {
+        -credentials: dict
+        -project_id: str
+        +generate_sql(...) str
+    }
+    class OllamaProvider {
+        -base_url: str
+        -model_tag: str
+        +generate_sql(...) str
+    }
+
+    LLMProvider <|.. ClaudeProvider
+    LLMProvider <|.. AntigravityProvider
+    LLMProvider <|.. OllamaProvider
+```
+
+---
+
+## Buenas Prácticas al Escribir Diagramas con Mermaid
+
+1. **Priorizá la legibilidad sobre la exhaustividad:** Un diagrama que intenta modelar cada línea de código se vuelve incomprensible. Mostrá las fronteras de responsabilidad, no los detalles triviales.
+2. **Utilizá identificadores semánticos:** Nombres como `API`, `LLM`, `DB` en los nodos facilitan la lectura del código fuente en Markdown sin necesidad de mirar la vista previa a cada instante.
+3. **Mantené los diagramas cerca del código:** Al vivir directamente en tus archivos `.md` o `.mdx`, cualquier cambio en la arquitectura puede ser actualizado en el mismo commit que modifica el backend o frontend.

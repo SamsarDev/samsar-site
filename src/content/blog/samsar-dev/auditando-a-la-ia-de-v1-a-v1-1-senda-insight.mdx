@@ -1,0 +1,103 @@
+---
+title: 'Auditando a la IA: De la v1.0 a la v1.1 en Senda|Insight'
+description: 'Desglose técnico de las inconsistencias detectadas en la especificación inicial de Senda|Insight y cómo blindamos la v1.1.'
+pubDate: 2026-10-15
+category: 'samsar-dev'
+tags: ['arquitectura', 'seguridad', 'sql', 'criptografia', 'senda']
+draft: false
+featured: true
+series: 'Senda|Insight: Analítica Segura'
+---
+
+import Callout from '../../../components/ui/Callout.astro';
+
+## Cuando una especificación generada por IA parece perfecta
+
+En el [Preludio de esta serie](/blog/samsar-ia/senda-insight-preludio-concepcion-arquitectura-ia), vimos cómo utilizamos una sesión de interrogatorio guiado con IA (`/grill-me`) para definir las bases de **Senda|Insight**. El resultado inicial —la versión v1.0— lucía completo, profesional y bien estructurado.
+
+Sin embargo, en ingeniería de software seria, la apariencia no sustituye la verificación formal. Al someter la especificación v1.0 a una **revisión técnica humana adversarial**, emergieron inconsistencias sutiles pero críticas.
+
+A continuación, analizamos las cuatro correcciones de bloqueo más importantes que transformaron la especificación inicial en la **v1.1**.
+
+<Callout type="warning" title="Ataque del Oráculo (Hallazgo B1)">
+  El fallo más peligroso de la v1.0 era permitir que la IA filtrara por columnas enmascaradas en el WHERE. Parecía inofensivo, pero abría la puerta a la extracción completa de datos privados mediante inferencia booleana.
+</Callout>
+
+---
+
+## 1. El ataque del oráculo en columnas enmascaradas (B1)
+
+En la v1.0 se propuso que una columna *Enmascarada* pudiera utilizarse en cláusulas `WHERE`, bajo la premisa de que "el valor devuelto en la tabla final estaría ofuscado".
+
+### La falla:
+Si un atacante formula la pregunta:  
+> *"¿Existe algún cliente con salario > 50000 cuyo correo empiece con 'a'?"*  
+
+La consulta generada ejecuta:
+```sql
+SELECT count(*) FROM clientes WHERE email LIKE 'a%' AND salario > 50000;
+```
+Aunque la columna `email` se enmascare al mostrarla, el resultado del conteo (`count(*)`) actúa como un **oráculo booleano**. Letra por letra, es posible reconstruir correos o números de documento privados sin ver jamás la celda desnuda.
+
+### La solución en v1.1:
+Se estableció una regla estricta: las columnas enmascaradas **quedan terminantemente prohibidas** en `WHERE`, `JOIN ON`, `ORDER BY`, `HAVING` y funciones agregadas de valor (`MIN`/`MAX`). Solo se autoriza su proyección como columnas directas para ser ofuscadas en el backend.
+
+---
+
+## 2. Precisión criptográfica: Fernet no es "AES-256" (B5)
+
+En la v1.0, el modelo redactó con total naturalidad que los secretos se almacenarían *"cifrados en reposo utilizando AES-256 (Fernet)"*.
+
+### La falla:
+La especificación de la biblioteca estándar de Python `cryptography.fernet` utiliza internamente **AES-128 en modo CBC con autenticación HMAC-SHA256**. No es AES-256. 
+
+Aceptar esa afirmación sin contrastarla con el estándar de la librería no solo es un error conceptual, sino que falsea la documentación de seguridad del sistema.
+
+### La solución en v1.1:
+Se corrigió la descripción criptográfica formal y se incorporó el soporte para `MultiFernet` con rotación obligatoria de claves maestras y política de arranque con fallo cerrado (*fail-closed* si falta la clave).
+
+---
+
+## 3. Defensa real en la Base de Datos (B3)
+
+La v1.0 descansaba casi toda la seguridad en el validador AST de Python.
+
+### La falla:
+Si el validador AST presenta un bug, una regresión de versión o una colisión gramatical (*parser differential*), la base de datos no tenía defensas secundarias para rechazar la operación.
+
+### La solución en v1.1:
+Se aplicó el principio de **defensa en profundidad real**:
+1. **Permisos granulares en PostgreSQL:** El rol `insight_reader` solo recibe `GRANT SELECT (col1, col2)` sobre las columnas autorizadas. Incluso si el validador se desactivara, PostgreSQL aborta la consulta por falta de privilegios.
+2. **Transacciones `READ ONLY` obligatorias:** Cada consulta se ejecuta bajo una transacción explícita de solo lectura con `statement_timeout` forzado.
+
+---
+
+## 4. Racionalización de dependencias: Polars vs. Pandas (P4)
+
+La v1.0 mencionaba alegremente `polars` y `pandas` en el stack del backend.
+
+### La falla:
+Incluir dos bibliotecas masivas de dataframes que cumplen el mismo propósito añade peso innecesario a la imagen de Docker, complica el tipado y fragmenta el código.
+
+### La solución en v1.1:
+Se eliminó `pandas` por completo y se estandarizó toda la manipulación tabular y preparación de esquemas en **`polars`**.
+
+---
+
+## Comparativa de Versiones
+
+| Aspecto | Versión v1.0 (Generada por IA) | Versión v1.1 (Auditada por Arquitecto) |
+|---|---|---|
+| **Columnas enmascaradas** | Permitidas en `WHERE` y `GROUP BY` | Prohibidas en `WHERE`, `JOIN`, `ORDER BY` y agregaciones |
+| **Criptografía** | Declarada falsamente como "AES-256" | Corregida a AES-128-CBC + HMAC (`Fernet`), con `MultiFernet` |
+| **Permisos de BD** | Conexión genérica read-only | `GRANT SELECT` a nivel de columna con verificación en arranque |
+| **Dataframes** | `polars` y `pandas` superpuestos | Estandarizado exclusivamente en `polars` |
+| **Límites de tiempo** | Teórico en el validador | `statement_timeout` forzado a nivel de conexión en PostgreSQL |
+
+<Callout type="note" title="Documentación Viva">
+  Podés revisar la evolución completa en el repositorio:  
+  📄 <code>docs/specs/senda-insight-spec-v1.1.md</code>  
+  📄 <code>docs/specs/senda-insight-suggestions.md</code> (banco de mejoras no bloqueantes)
+</Callout>
+
+Para una reflexión metodológica sobre cómo gestionar la interacción con asistentes de IA en equipos de ingeniería, no dejes de leer nuestro artículo complementario: [La Ilusión de Certeza: Por qué un Arquitecto Debe Auditar Cada Línea de la IA](/blog/samsar-ia/la-ilusion-de-certeza-auditoria-humana-ia).

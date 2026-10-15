@@ -1,0 +1,69 @@
+---
+title: 'La Ilusión de Certeza: Por qué Auditar Cada Línea de la IA'
+description: 'Por qué los modelos de lenguaje redactan con autoridad impecable pero introducen fallas críticas de diseño y cómo aplicar revisión adversarial.'
+pubDate: 2026-10-16
+category: 'samsar-ia'
+tags: ['ia', 'arquitectura', 'auditoria', 'metodologia', 'senda']
+draft: false
+featured: true
+---
+
+import Callout from '../../../components/ui/Callout.astro';
+
+## La elocuencia no es corrección
+
+Los modelos de lenguaje actuales poseen una habilidad extraordinaria: **redactar con un tono de absoluta certeza técnica**. Formatean markdown con elegancia, generan diagramas de arquitectura convincentes y citan bibliotecas populares con la naturalidad de un desarrollador experimentado.
+
+Esta elocuencia genera un fenómeno psicológico peligroso en equipos de desarrollo: **la ilusión de certeza**. Cuando una respuesta de IA suena profesional y bien articulada, el cerebro humano tiende a bajar la guardia y omitir el escrutinio crítico.
+
+En la enseñanza de ingeniería de software, repito una máxima innegociable a mis estudiantes:
+> **La IA no reemplaza el criterio arquitectónico; amplifica la capacidad de quien sabe, y acelera el desastre de quien no comprende los fundamentos.**
+
+<Callout type="tip" title="La Regla de Oro del Liderazgo Técnico">
+  Nosotros dirigimos, la IA ejecuta. Todo artefacto producido por un modelo de lenguaje debe tratarse como un borrador emitido por un colaborador no verificado hasta que un humano lo audite línea por línea.
+</Callout>
+
+---
+
+## El caso real: ¿Cómo la IA casi introdujo una fuga de datos en Senda|Insight?
+
+Durante la concepción de nuestro proyecto **Senda|Insight**, trabajamos junto a la IA en una sesión interactiva de diseño (`/grill-me`). El modelo generó la especificación técnica inicial (**v1.0**). El documento era visualmente impecable: diagramas, tablas de flujo y código modular.
+
+Pero al someter esa especificación a una **auditoría técnica adversarial humana**, encontramos fallas que habrían comprometido la seguridad del producto:
+
+1. **Un oráculo de inferencia indetectable para la IA:**  
+   La IA propuso permitir que columnas enmascaradas (como correos o salarios) pudieran filtrarse en el `WHERE`. Sonaba razonable porque "la tabla final ofuscaba el dato". Un arquitecto humano de inmediato detectó el vector de ataque: mediante consultas de conteo booleanas (`SELECT count(*) WHERE email LIKE 'a%'`), un usuario malicioso podía extraer correos carácter por carácter.
+2. **Alucinaciones en detalles criptográficos:**  
+   El modelo afirmó que la librería `Fernet` de Python utiliza "cifrado AES-256". En realidad, la especificación oficial de Fernet utiliza **AES-128-CBC autenticado con HMAC-SHA256**. Un error conceptual que, de no haberse detectado, habría quedado en la documentación oficial del sistema.
+3. **Falsa sensación de seguridad en una sola capa:**  
+   La IA confió ciegamente en el validador AST de Python sin configurar permisos a nivel de columna (`GRANT SELECT`) ni transacciones de solo lectura en PostgreSQL.
+
+Los detalles específicos de código y las soluciones aplicadas podés leerlos en nuestro post técnico de `Samsar|Dev`:  
+👉 [Auditando a la IA: De la v1.0 a la v1.1 en Senda|Insight](/blog/samsar-dev/auditando-a-la-ia-de-v1-a-v1-1-senda-insight).
+
+---
+
+## Checklist de Revisión Adversarial para Artefactos de IA
+
+Cuando trabajes con asistentes de IA en la planificación o codificación de tus proyectos, utilizá este checklist antes de dar por buena una especificación:
+
+### 1. Duda de las afirmaciones normativas y criptográficas
+Verificá siempre la documentación oficial de las librerías mencionadas. Si la IA dice *"utiliza el algoritmo X"* o *"cumple con el estándar Y"*, comprobalo en el código fuente.
+
+### 2. Busca vectores de inferencia y oráculos de datos
+No pienses solo en accesos directos (*"¿puede leer la tabla?"*), sino en accesos indirectos: ¿puede un usuario deducir información privada mediante filtros, agrupaciones, tiempos de respuesta o mensajes de error?
+
+### 3. Exige defensa en profundidad real
+Si la IA te propone una solución basada en una sola capa de validación (por ejemplo, validar solo en backend o en el prompt), forzala a responder:  
+*¿Qué sucede si esta capa falla o tiene un bug? ¿Cómo responde la base de datos o el sistema operativo?*
+
+### 4. Poda las dependencias superfluas
+Los modelos tienden a acumular bibliotecas *"por si acaso"* (como sugerir Pandas y Polars en simultáneo). Un arquitecto cuida la sobriedad del stack: cada paquete nuevo es superficie de ataque y costo de mantenimiento.
+
+---
+
+## Conclusión didáctica
+
+El valor de un ingeniero de software en la era de la inteligencia artificial ya no radica en escribir sintaxis a gran velocidad, sino en **su capacidad de juicio, verificación y diseño de sistemas robustos**.
+
+La IA es un copiloto extraordinario para explorar alternativas y acelerar borradores, pero el timón de la arquitectura, la seguridad y la ética siempre debe pertenecer al profesional humano.

@@ -20,5 +20,8 @@ export default defineConfig({
   integrations: [vue(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      chunkSizeWarningLimit: 2500,
+    },
   },
 });
