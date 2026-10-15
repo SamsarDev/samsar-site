@@ -22,6 +22,14 @@
     font-family: var(--font-mono);
     font-size: 0.875rem;
     line-height: 1.6;
+    background-color: var(--bg-surface);
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+  .prose-samsar pre:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
   }
   .prose-samsar .code-block-header {
     display: flex;
@@ -29,17 +37,21 @@
     margin: 1.5rem 0 -1.5rem;
     padding: 0.4rem 1rem;
     border: 1px solid var(--border-base);
-    border-bottom: 0;
+    border-bottom: 1px solid var(--border-base);
     border-radius: 0.75rem 0.75rem 0 0;
-    background-color: var(--bg-surface);
+    background-color: var(--bg-subtle);
     color: var(--text-muted);
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
   }
   .prose-samsar .code-block-header + pre {
     margin-top: 0;
+    border-top: 0;
     border-radius: 0 0 0.75rem 0.75rem;
   }
   .prose-samsar .copy-code-btn {

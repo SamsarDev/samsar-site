@@ -92,3 +92,30 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Soporte Shiki Dual-Theme para bloques de código */
+:root:not([data-theme='light']) .astro-code,
+html[data-theme='dark'] .astro-code {
+  color: var(--shiki-dark) !important;
+  background-color: var(--bg-surface) !important;
+}
+
+:root:not([data-theme='light']) .astro-code span,
+html[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style, inherit) !important;
+  font-weight: var(--shiki-dark-font-weight, inherit) !important;
+  text-decoration: var(--shiki-dark-text-decoration, inherit) !important;
+}
+
+html[data-theme='light'] .astro-code {
+  background-color: var(--bg-surface) !important;
+  color: var(--shiki-light, inherit) !important;
+}
+
+html[data-theme='light'] .astro-code span {
+  color: var(--shiki-light, inherit) !important;
+  font-style: var(--shiki-light-font-style, inherit) !important;
+  font-weight: var(--shiki-light-font-weight, inherit) !important;
+  text-decoration: var(--shiki-light-text-decoration, inherit) !important;
+}
