@@ -80,6 +80,7 @@ El sitio quedará disponible en `http://localhost:4321`.
 | **Linter** | `bun run lint` | `npm run lint` | ESLint sobre `.astro`, TypeScript y `.vue`: errores reales y 34 reglas de accesibilidad. Bloquea el CI |
 | **Formato** | `bun run format` | `npm run format` | Prettier: formatea el código (`.astro`, TypeScript, CSS, JSON) |
 | **Formato (verificar)** | `bun run format:check` | `npm run format:check` | Comprueba el formato sin escribir nada, igual que el CI |
+| **Auditoría de componentes** | `bun run audit:components` | `npm run audit:components` | Compara las fichas documentadas en `docs/03-design/components/` contra el código real (`.sweep-fichas.py`) |
 
 ---
 
@@ -143,7 +144,7 @@ Este repositorio combina varias licencias, según el tipo de material:
 ## 👤 Autor
 
 **Samuel Sarmientos / Samsar** · Guatemala  
-[GitHub](https://github.com/SamsarDev) · [LinkedIn](#) · samsar.dev@gmail.com
+[GitHub](https://github.com/SamsarDev) · [LinkedIn](https://www.linkedin.com/in/samsar-dev/) · samsar.dev@gmail.com
 
 ---
 

@@ -86,9 +86,10 @@ Ejecuta el chequeo estático y la compilación:
 ```bash
 bun run check
 bun run build
+bun run audit:components  # Valida que la ficha en docs/03-design/components/ coincida con las props reales
 ```
 
-Ambos comandos deben reportar **0 errores y 0 warnings**.
+Todos los comandos deben reportar **0 errores y 0 warnings**.
 
 Prueba manual:
 1. Importa el componente en una página de prueba.

@@ -77,3 +77,9 @@ Dos hallazgos de la auditoría no eran correcciones de documentación, y se deci
 - El script `lint` hace lo que su nombre promete, o la documentación deja de prometer un linter.
 - La imagen Open Graph por defecto existe, y `og:image` y `twitter:image` dejan de apuntar a un 404.
 - El catálogo de componentes no solo es honesto: no le quedan fichas pendientes, ni componentes prometidos sin implementar, ni decisiones de arquitectura aceptadas sin ejecutar.
+
+---
+
+## 7. Cierre de Fase y Herramientas Preservadas
+
+La Fase 7 concluyó con todos sus objetivos alcanzados y verificados. Para prevenir regresiones en el catálogo, el script `.sweep-fichas.py` se preservó de forma permanente en la raíz del repositorio, ejecutable a través de `bun run audit:components` (o `npm run audit:components`), permitiendo auditar en cualquier momento que las fichas de componentes coincidan con la realidad del código.
