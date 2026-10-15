@@ -119,4 +119,3 @@ html[data-theme='light'] .astro-code span {
   font-weight: var(--shiki-light-font-weight, inherit) !important;
   text-decoration: var(--shiki-light-text-decoration, inherit) !important;
 }
-
