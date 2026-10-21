@@ -1,0 +1,169 @@
+---
+title: 'Guía Práctica: Cómo Solucionar el Fondo Blanco de Shiki en Modo Oscuro con Tokens de Diseño'
+description: 'Receta directa en tres pasos para erradicar el fondo blanco en bloques de código de Astro, conectar tokens semánticos y asegurar accesibilidad WCAG AAA.'
+pubDate: 2026-10-21
+category: 'samsar-dev'
+tags: ['astro', 'shiki', 'css', 'modo-oscuro', 'a11y', 'frontend']
+draft: false
+featured: false
+series: 'Shiki y Modo Oscuro en Astro'
+---
+
+import Callout from '../../../components/ui/Callout.astro';
+
+## El síntoma: El bloque de código que desentona
+
+Configuraste tu blog o sitio en Astro con soporte para modo oscuro mediante un atributo como `data-theme="dark"` o una clase `.dark`. Todo el diseño se ve impecable: las tarjetas son oscuras, la tipografía tiene un contraste confortable y el selector de tema funciona sin parpadeos.
+
+Pero cuando entrás a un artículo con código, te encontrás con esto:
+
+* El cuerpo del post está en tema oscuro.
+* La cabecera del bloque de código dice `typescript` sobre fondo oscuro.
+* **El código en sí aparece dentro de una caja blanca brillante**, deslumbrando al lector y rompiendo por completo la armonía visual de la interfaz.
+
+En esta guía práctica resolvemos este problema en **tres pasos definitivos**, conectando el motor Shiki de Astro con los tokens semánticos de tu sistema de diseño y asegurando accesibilidad completa para navegación con teclado.
+
+---
+
+## Paso 1: Habilitar temas duales en Astro (`astro.config.mjs`)
+
+Por defecto, si no especificás temas duales, Astro genera el código con un solo tema claro o utiliza la media query del sistema operativo. Si tu sitio cuenta con un selector manual de tema (*theme toggle*), el primer paso es declarar los temas claro y oscuro en tu configuración de Markdown:
+
+```javascript
+// astro.config.mjs
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      wrap: true,
+    },
+  },
+});
+```
+
+Con esta configuración, Shiki inyecta los colores del tema claro como estilos inline y expone los colores del tema oscuro en variables CSS con prefijo `--shiki-dark`.
+
+---
+
+## Paso 2: Dominar la cascada en tu CSS global (`src/styles/global.css`)
+
+El motivo por el cual el bloque no se oscurece automáticamente es que los estilos inline tienen mayor especificidad que las clases CSS normales. Para resolverlo, añadimos las siguientes reglas a nuestra hoja de estilos global:
+
+```css
+/* src/styles/global.css */
+
+/* 1. Contenedor del código en modo oscuro */
+:root:not([data-theme='light']) .astro-code,
+html[data-theme='dark'] .astro-code {
+  color: var(--shiki-dark) !important;
+  background-color: var(--bg-surface) !important;
+}
+
+/* 2. Tokens de sintaxis (palabras clave, cadenas, comentarios) */
+:root:not([data-theme='light']) .astro-code span,
+html[data-theme='dark'] .astro-code span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style, inherit) !important;
+  font-weight: var(--shiki-dark-font-weight, inherit) !important;
+  text-decoration: var(--shiki-dark-text-decoration, inherit) !important;
+}
+
+/* 3. Armonización en modo claro */
+html[data-theme='light'] .astro-code {
+  background-color: var(--bg-surface) !important;
+  color: var(--shiki-light, inherit) !important;
+}
+
+html[data-theme='light'] .astro-code span {
+  color: var(--shiki-light, inherit) !important;
+  font-style: var(--shiki-light-font-style, inherit) !important;
+  font-weight: var(--shiki-light-font-weight, inherit) !important;
+  text-decoration: var(--shiki-light-text-decoration, inherit) !important;
+}
+```
+
+<Callout type="note" title="¿Por qué usar --bg-surface en lugar de --shiki-dark-bg?">
+  Shiki provee <code>var(--shiki-dark-bg)</code>, cuyo valor en <code>github-dark</code> es <code>#24292e</code> (un gris azulado frío). Si tu sistema de diseño utiliza una paleta propia (como nuestra identidad Obsidiana en <code>#131916</code>), usar tu propio token garantiza que los bloques de código pertenezcan a tu marca y no a la de GitHub.
+</Callout>
+
+---
+
+## Paso 3: Pulir la interfaz y la accesibilidad (`CodeBlock.astro`)
+
+Un bloque de código no es solo texto coloreado: es una interfaz interactiva de lectura. Para darle un acabado profesional tipo editor de código y cumplir con el estándar **WCAG AA**, aplicamos tres mejoras en nuestro componente de chrome:
+
+```css
+/* src/components/blog/CodeBlock.astro */
+
+/* El bloque contenedor */
+.prose-samsar pre {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-base);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  background-color: var(--bg-surface);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* ♿ Anillo accesible para navegación con teclado */
+.prose-samsar pre:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* La cabecera superior con el lenguaje */
+.prose-samsar .code-block-header {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0 -1.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border-base);
+  border-bottom: 1px solid var(--border-base);
+  border-radius: 0.75rem 0.75rem 0 0;
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Unificación: eliminamos el borde superior del pre para ensamblar la ventana */
+.prose-samsar .code-block-header + pre {
+  margin-top: 0;
+  border-top: 0;
+  border-radius: 0 0 0.75rem 0.75rem;
+}
+```
+
+### ¿Por qué es fundamental el `:focus-visible`?
+Astro añade automáticamente `tabindex="0"` a los elementos `<pre>`. Esto es crucial para accesibilidad: permite que usuarios que navegan exclusivamente con teclado puedan hacer scroll horizontal cuando una línea de código es muy larga. Sin un anillo de foco visible (`:focus-visible`), el usuario no sabe qué elemento tiene el foco activo.
+
+---
+
+## Checklist de Verificación (Definition of Done)
+
+Antes de dar por cerrado el cambio en tu repositorio, verificá estos cuatro puntos:
+
+- [ ] **Tema Oscuro:** El fondo de `<pre>` adopta el token semántico `--bg-surface` (`#131916` en nuestro caso) y las palabras clave tienen los colores de `github-dark`.
+- [ ] **Tema Claro:** Al alternar el tema, el fondo cambia suavemente a `--bg-surface` (`#f5f0e8`) sin saltos de color ni texto invisible.
+- [ ] **Cabecera IDE:** La etiqueta de lenguaje utiliza `--bg-subtle` y una sutil línea divisoria que la separa del cuerpo del código.
+- [ ] **Navegación con Teclado:** Al presionar `Tab` hasta seleccionar el bloque, aparece el anillo de foco (`:focus-visible`) con contraste suficiente sobre el fondo.
+
+---
+
+<Callout type="tip" title="¿Querés entender a fondo la arquitectura detrás de esto?">
+  Si querés profundizar en cómo Shiki compila con gramáticas TextMate en build time y por qué se produce el choque de especificidad a nivel del estándar W3C, leé la primera parte de esta serie:  
+  👉 **[Anatomía de Shiki en Astro: Gramáticas TextMate y la Batalla de Especificidad en Modo Oscuro](/blog/samsar-dev/como-funciona-shiki-astro-especificidad-css-modo-oscuro)**.
+</Callout>
