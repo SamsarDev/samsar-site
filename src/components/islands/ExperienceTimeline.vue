@@ -92,7 +92,7 @@ const areaBadgeLabels: Record<string, string> = {
       <span> Mostrando {{ filteredExperiences.length }} de {{ experiences.length }} experiencias </span>
       <span v-if="activeFilter !== 'all'">
         Filtro activo:
-        <strong class="text-[var(--accent-primary)] font-semibold">
+        <strong class="text-[var(--accent-primary)] font-medium">
           {{ filters.find((f) => f.id === activeFilter)?.label }}
         </strong>
       </span>
@@ -113,7 +113,7 @@ const areaBadgeLabels: Record<string, string> = {
         >
           <!-- Cabecera del hito -->
           <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-2">
-            <span class="font-mono text-xs font-semibold text-[var(--accent-primary)] tracking-wide">
+            <span class="font-mono text-xs font-medium text-[var(--accent-primary)] tracking-wide">
               {{ item.period }}
             </span>
             <span class="font-mono text-xs text-[var(--text-secondary)]">
@@ -125,7 +125,7 @@ const areaBadgeLabels: Record<string, string> = {
             {{ item.role }}
           </h3>
 
-          <p class="text-sm sm:text-base font-semibold text-[var(--text-secondary)] font-sans mt-0.5 mb-3">
+          <p class="text-sm sm:text-base font-medium text-[var(--text-secondary)] font-sans mt-0.5 mb-3">
             {{ item.company }}
           </p>
 
@@ -151,7 +151,9 @@ const areaBadgeLabels: Record<string, string> = {
           <!-- Stack de tecnologías utilizadas -->
           <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50">
             <div class="flex flex-wrap gap-1.5 items-center">
-              <span class="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider mr-1"> Stack: </span>
+              <span class="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider mr-1">
+                Stack:
+              </span>
               <span
                 v-for="tech in item.stack"
                 :key="tech"
