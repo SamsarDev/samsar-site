@@ -79,7 +79,7 @@ const areaBadgeLabels: Record<string, string> = {
             'text-[10px] px-1.5 py-0.2 rounded-full font-mono',
             activeFilter === filter.id
               ? 'bg-black/20 text-[var(--text-on-accent)]'
-              : 'bg-[var(--bg-subtle)] text-[var(--text-muted)]',
+              : 'bg-[var(--bg-subtle)] text-[var(--text-secondary)]',
           ]"
         >
           {{ getFilterCount(filter.id) }}
@@ -88,7 +88,7 @@ const areaBadgeLabels: Record<string, string> = {
     </div>
 
     <!-- Indicador de total filtrado -->
-    <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] px-1">
+    <div class="flex items-center justify-between text-xs font-mono text-[var(--text-secondary)] px-1">
       <span> Mostrando {{ filteredExperiences.length }} de {{ experiences.length }} experiencias </span>
       <span v-if="activeFilter !== 'all'">
         Filtro activo:
@@ -103,7 +103,7 @@ const areaBadgeLabels: Record<string, string> = {
       <article v-for="item in filteredExperiences" :key="item.id" class="relative group">
         <!-- Nodo del timeline -->
         <div
-          class="absolute -left-[31px] sm:-left-[39px] top-5 w-3.5 h-3.5 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--bg-surface)] ring-4 ring-[var(--bg-base)] group-hover:scale-125 group-hover:bg-[var(--accent-primary)] transition-all duration-200"
+          class="absolute -left-[31px] sm:-left-[39px] top-5 w-3.5 h-3.5 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--bg-surface)] ring-4 ring-[var(--bg-primary)] group-hover:scale-125 group-hover:bg-[var(--accent-primary)] transition-all duration-200"
           aria-hidden="true"
         />
 
@@ -116,7 +116,7 @@ const areaBadgeLabels: Record<string, string> = {
             <span class="font-mono text-xs font-semibold text-[var(--accent-primary)] tracking-wide">
               {{ item.period }}
             </span>
-            <span class="font-mono text-xs text-[var(--text-muted)]">
+            <span class="font-mono text-xs text-[var(--text-secondary)]">
               {{ item.location }}
             </span>
           </div>
@@ -151,11 +151,11 @@ const areaBadgeLabels: Record<string, string> = {
           <!-- Stack de tecnologías utilizadas -->
           <div class="mt-6 pt-4 border-t border-[var(--border-base)]/50">
             <div class="flex flex-wrap gap-1.5 items-center">
-              <span class="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mr-1"> Stack: </span>
+              <span class="text-[10px] font-mono text-[var(--text-secondary)] uppercase tracking-wider mr-1"> Stack: </span>
               <span
                 v-for="tech in item.stack"
                 :key="tech"
-                class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-[var(--bg-surface-elevated)] text-[var(--text-primary)] border border-[var(--border-base)]"
+                class="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono bg-[var(--bg-subtle)] text-[var(--text-primary)] border border-[var(--border-base)]"
               >
                 {{ tech }}
               </span>

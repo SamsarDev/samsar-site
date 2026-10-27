@@ -25,7 +25,7 @@ const label = typeLabels[type] || type;
   <div>
     <div class="flex items-center justify-between gap-2 mb-3">
       <Badge status={status} />
-      <span class="text-xs font-mono text-[var(--text-muted)]">{label}</span>
+      <span class="text-xs font-mono text-[var(--text-secondary)]">{label}</span>
     </div>
 
     <h3 class="font-display text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors mb-2">
@@ -43,7 +43,7 @@ const label = typeLabels[type] || type;
         <Chip variant="stack">{tech}</Chip>
       ))}
       {stack.length > 4 && (
-        <span class="text-xs font-mono text-[var(--text-muted)] self-center">+{stack.length - 4}</span>
+        <span class="text-xs font-mono text-[var(--text-secondary)] self-center">+{stack.length - 4}</span>
       )}
     </div>
 

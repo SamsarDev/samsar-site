@@ -70,7 +70,7 @@ import { experienceData } from '../data/experience';
               <p class="text-sm text-[var(--text-secondary)] font-sans">{item.institution}</p>
             </div>
             {item.details && (
-              <p class="mt-4 pt-3 border-t border-[var(--border-base)]/50 text-xs text-[var(--text-muted)] font-sans">
+              <p class="mt-4 pt-3 border-t border-[var(--border-base)]/50 text-xs text-[var(--text-secondary)] font-sans">
                 {item.details}
               </p>
             )}
@@ -98,7 +98,7 @@ import { experienceData } from '../data/experience';
               <h3 class="font-display text-base font-bold text-[var(--text-primary)]">{cert.name}</h3>
               <p class="text-xs text-[var(--text-secondary)] font-sans mt-0.5">{cert.issuer}</p>
             </div>
-            <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-[var(--bg-surface-elevated)] border border-[var(--border-base)] text-[var(--text-muted)] shrink-0">
+            <span class="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-[var(--bg-subtle)] border border-[var(--border-base)] text-[var(--text-secondary)] shrink-0">
               {cert.year}
             </span>
           </div>

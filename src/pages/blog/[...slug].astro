@@ -62,7 +62,7 @@ const categoryMeta = {
 
 <BlogLayout title={title} description={description} headings={headings} category={category} pubDate={pubDate}>
   <header class="mb-10 pb-8 border-b border-[var(--border-base)]">
-    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-[var(--text-muted)] mb-4">
+    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-[var(--text-secondary)] mb-4">
       <span class:list={['px-2.5 py-0.5 rounded-full font-medium border', categoryMeta.colorClass]}>
         {categoryMeta.label}
       </span>
@@ -85,7 +85,7 @@ const categoryMeta = {
 
   <footer class="mt-12 pt-6 border-t border-[var(--border-base)]">
     <div class="flex flex-wrap items-center gap-2">
-      <span class="text-xs font-mono text-[var(--text-muted)]">Etiquetas:</span>
+      <span class="text-xs font-mono text-[var(--text-secondary)]">Etiquetas:</span>
       {tags.map((tag) => (
         <a href={`/blog/tags/${tag}`} class="focus-visible:outline-none">
           <Chip variant="stack">#{tag}</Chip>
