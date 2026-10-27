@@ -248,7 +248,7 @@ const currentYear = new Date().getFullYear();
     <div class="flex items-center gap-6 text-sm">
       <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent-primary)]">GitHub</a>
       <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent-primary)]">LinkedIn</a>
-      <a href="mailto:hola@samsar.dev" class="hover:text-[var(--accent-primary)]">Contacto</a>
+      <a href="mailto:contact@samsar.fyi" class="hover:text-[var(--accent-primary)]">Contacto</a>
     </div>
   </div>
 </footer>

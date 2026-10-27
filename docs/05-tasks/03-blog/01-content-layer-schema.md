@@ -45,7 +45,7 @@ import vue from '@astrojs/vue';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://samsar-site.pages.dev/',
+  site: 'https://samsar.fyi/',
   vite: {
     plugins: [tailwindcss()],
   },

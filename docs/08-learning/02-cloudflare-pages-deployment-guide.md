@@ -92,11 +92,11 @@ Baja hasta la sección colapsable **Environment variables** y añade las siguien
 
 ## 8. Paso 6: Dominio Personalizado y Certificado SSL
 
-Para asociar tu dominio propio (por ejemplo, `samsar.dev`). El sitio funciona hoy en el dominio temporal `https://samsar-site.pages.dev/`; este paso se hace cuando el dominio esté listo:
+Para asociar tu dominio propio (en este proyecto, `samsar.fyi`). Mientras no lo tengas, el sitio funciona en el subdominio gratuito `https://<proyecto>.pages.dev/`:
 
 1. En el panel de tu proyecto en Pages, ve a la pestaña **Custom domains**.
 2. Haz clic en **Set up a custom domain**.
-3. Escribe tu dominio: `samsar.dev`.
+3. Escribe tu dominio: `samsar.fyi`.
 4. Si tu dominio ya está gestionado en los DNS de Cloudflare, la plataforma creará automáticamente el registro CNAME necesario.
 5. Cloudflare emitirá y renovará un certificado SSL/TLS de forma gratuita y automática.
 6. En la configuración SSL de Cloudflare, asegúrate de activar el modo **Full (Strict)** para cifrado de extremo a extremo.

@@ -92,7 +92,7 @@ type: 'ai-experiment'
 stack: ['TypeScript', 'LangGraph', 'Node.js', 'Model Context Protocol', 'Azure OpenAI']
 status: 'active'
 repo: 'https://github.com/SamsarDev'
-demo: 'https://samsar-site.pages.dev/'
+demo: 'https://samsar.fyi/'
 postSlug: 'samsar-ia/primeros-pasos-sistemas-multi-agente'
 featured: true
 ---
