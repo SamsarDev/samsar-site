@@ -1,5 +1,4 @@
-# Temporary Cloudflare Pages domain; switch to samsar.dev when the custom domain is live.
 User-agent: *
 Allow: /
 
-Sitemap: https://samsar-site.pages.dev/sitemap-index.xml
+Sitemap: https://samsar.fyi/sitemap-index.xml

@@ -5,7 +5,7 @@ type: 'open-source'
 stack: ['C#', '.NET Core', 'FastEndpoints', 'Docker', 'FluentValidation']
 status: 'active'
 repo: 'https://github.com/SamsarDev'
-demo: 'https://samsar-site.pages.dev/'
+demo: 'https://samsar.fyi/'
 featured: true
 ---
 
