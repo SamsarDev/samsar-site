@@ -38,4 +38,4 @@ Si clonas o haces fork de este repositorio:
 
 ## Contacto
 
-Para solicitar permisos: samsar.dev@gmail.com
+Para solicitar permisos: me@samsar.fyi

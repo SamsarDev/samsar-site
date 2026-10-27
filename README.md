@@ -144,7 +144,7 @@ Este repositorio combina varias licencias, según el tipo de material:
 ## 👤 Autor
 
 **Samuel Sarmientos / Samsar** · Guatemala  
-[GitHub](https://github.com/SamsarDev) · [LinkedIn](https://www.linkedin.com/in/samsar-dev/) · samsar.dev@gmail.com
+[GitHub](https://github.com/SamsarDev) · [LinkedIn](https://www.linkedin.com/in/samsar-dev/) · contact@samsar.fyi
 
 ---
 

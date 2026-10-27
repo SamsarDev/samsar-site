@@ -18,7 +18,7 @@ La seguridad de este repositorio y de los estudiantes que interactúan con él e
 Si descubres una vulnerabilidad de seguridad o un vector de ataque potencial (fuga de credenciales, inyecciones, dependencias comprometidas):
 
 1. **NO abras un Issue público.**
-2. Envía un correo directo a: **`samsar.dev@gmail.com`** con el asunto `[SEGURIDAD] Reporte en SamsarSite`.
+2. Envía un correo directo a: **`support@samsar.fyi`** con el asunto `[SEGURIDAD] Reporte en SamsarSite`.
 3. Incluye:
    - Descripción detallada del vector de vulnerabilidad.
    - Pasos para reproducir el fallo de forma segura.
