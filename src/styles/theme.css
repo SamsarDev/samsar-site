@@ -12,6 +12,7 @@
   --color-hummingbird: #19c3b0;
   --color-blood: #b22222;
   --color-blood-text: #ef6b63;
+  --color-sun: #f4a300;
   --color-text: #e8e6e1;
   --color-text-muted: #9aa39e;
   --color-text-subtle: #5c6660;
@@ -23,6 +24,7 @@
   --text-primary: var(--color-text);
   --text-secondary: var(--color-text-muted);
   --text-danger: var(--color-blood-text);
+  --text-warning: var(--color-sun);
   --text-link: var(--color-hummingbird);
   --accent-primary: var(--color-jade);
   --accent-primary-hover: var(--color-jade-light);
@@ -74,6 +76,7 @@
   --text-primary: var(--color-text);
   --text-secondary: var(--color-text-muted);
   --text-danger: var(--color-blood);
+  --text-warning: var(--color-sun-text);
   --text-link: var(--color-link);
   --accent-primary: var(--color-sun);
   --accent-primary-hover: var(--color-sun-light);

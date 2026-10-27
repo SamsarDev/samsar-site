@@ -19,6 +19,7 @@ Tema por defecto del sitio (`data-theme="dark"`). Calibrado para suprimir la fat
 | `--color-hummingbird` | `#19C3B0` | Colibrí Turquesa | Foco, procesos activos, acentos de IA |
 | `--color-blood` | `#B22222` | Cinabrio Ceremonial | Fondos y bordes de peligro (no para texto) |
 | `--color-blood-text` | `#EF6B63` | Cinabrio Claro | Texto de error accesible sobre fondo oscuro |
+| `--color-sun` | `#F4A300` | Amarillo Sol | Avisos e icono de sol (9.3:1 sobre `bg`) |
 | `--color-text` | `#E8E6E1` | Blanco Hueso | Texto principal (alto contraste sin brillo) |
 | `--color-text-muted` | `#9AA39E` | Ceniza Caliza | Metadata, comentarios, placeholders |
 | `--color-text-subtle` | `#5C6660` | Basalto Apagado | Elementos deshabilitados y decorativos |
@@ -60,6 +61,7 @@ Los componentes **nunca** consumen tokens primitivos directos. Consumen variable
 | `--text-primary` | `--color-text` | `--color-text` | Títulos, párrafos principales |
 | `--text-secondary` | `--color-text-muted` | `--color-text-muted` | Fechas, tiempo de lectura, tags |
 | `--text-danger` | `--color-blood-text` | `--color-blood` | Mensajes de error accesibles |
+| `--text-warning` | `--color-sun` | `--color-sun-text` | Callout de aviso, badge «En desarrollo» |
 | `--text-link` | `--color-hummingbird` | `--color-link` | Enlaces dentro de párrafos |
 | `--accent-primary` | `--color-jade` | `--color-sun` | Fondo de botón o CTA primario |
 | `--accent-primary-hover`| `--color-jade-light` | `--color-sun-light` | Hover de acción primaria |

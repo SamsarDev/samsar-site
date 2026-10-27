@@ -11,7 +11,7 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav aria-label="Migas de pan" class="text-xs font-mono text-[var(--text-muted)] mb-8">
+<nav aria-label="Migas de pan" class="text-xs font-mono text-[var(--text-secondary)] mb-8">
   <ol class="flex flex-wrap items-center gap-1.5">
     <li>
       <a
@@ -23,7 +23,7 @@ const { items } = Astro.props;
     </li>
     {items.map((item, idx) => (
       <li class="flex items-center gap-1.5">
-        <span aria-hidden="true" class="text-[var(--text-muted)]/60">
+        <span aria-hidden="true" class="text-[var(--text-secondary)]/60">
           /
         </span>
         {item.href && idx < items.length - 1 ? (

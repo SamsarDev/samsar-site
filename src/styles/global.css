@@ -17,6 +17,8 @@
 
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Manrope', system-ui, sans-serif;
+  /* Tailwind's preflight applies --font-sans to <html>, so this makes Manrope the site-wide default */
+  --font-sans: var(--font-body);
   --font-mono: 'JetBrains Mono', monospace;
 }
 

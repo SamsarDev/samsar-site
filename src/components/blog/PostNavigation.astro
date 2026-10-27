@@ -19,7 +19,7 @@ const { prevPost, nextPost } = Astro.props;
       {prevPost ? (
         <a href={`/blog/${prevPost.id}`} class="block group h-full focus-visible:outline-none">
           <Card variant="interactive" class="h-full">
-            <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">← Artículo anterior</span>
+            <span class="text-xs font-mono text-[var(--text-secondary)] block mb-1">← Artículo anterior</span>
             <span class="font-display font-bold text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
               {prevPost.data.title}
             </span>
@@ -33,7 +33,7 @@ const { prevPost, nextPost } = Astro.props;
       {nextPost ? (
         <a href={`/blog/${nextPost.id}`} class="block group h-full text-right sm:text-left focus-visible:outline-none">
           <Card variant="interactive" class="h-full">
-            <span class="text-xs font-mono text-[var(--text-muted)] block mb-1">Siguiente artículo →</span>
+            <span class="text-xs font-mono text-[var(--text-secondary)] block mb-1">Siguiente artículo →</span>
             <span class="font-display font-bold text-sm text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
               {nextPost.data.title}
             </span>

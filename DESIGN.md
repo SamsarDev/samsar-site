@@ -2,7 +2,7 @@
 
 Sistema visual de **Samsar | Sitio web personal**. Versión condensada: lo mínimo que todo agente y estudiante debe respetar. El detalle completo está en [`docs/03-design/`](docs/03-design/00-INDEX.md).
 
-**Versión:** 1.2 · **Octubre 2026** · Licencia: [CC BY-NC 4.0](LICENSE-DOCS)
+**Versión:** 1.3 · **Octubre 2026** · Licencia: [CC BY-NC 4.0](LICENSE-DOCS)
 
 ---
 
@@ -67,6 +67,7 @@ Reglas:
 | `--color-hummingbird` | `#19C3B0` | Foco, acentos IA |
 | `--color-blood` | `#B22222` | Fondos y bordes de peligro. **No para texto** |
 | `--color-blood-text` | `#EF6B63` | **Nuevo.** Texto de error sobre fondo oscuro |
+| `--color-sun` | `#F4A300` | **Nuevo en oscuro (v1.3).** Aviso e icono de sol; mismo valor que en claro |
 | `--color-text` | `#E8E6E1` | Texto principal |
 | `--color-text-muted` | `#9AA39E` | Metadata, placeholders |
 | `--color-text-subtle` | `#5C6660` | Solo elementos deshabilitados y decorativos |
@@ -98,6 +99,7 @@ Reglas:
 | `--text-primary` | `--color-text` | `--color-text` |
 | `--text-secondary` | `--color-text-muted` | `--color-text-muted` |
 | `--text-danger` | `--color-blood-text` | `--color-blood` |
+| `--text-warning` | `--color-sun` | `--color-sun-text` |
 | `--text-link` | `--color-hummingbird` | `--color-link` |
 | `--accent-primary` | `--color-jade` | `--color-sun` |
 | `--accent-primary-hover` | `--color-jade-light` | `--color-sun-light` |
@@ -125,6 +127,8 @@ Calculado en octubre 2026 con la fórmula de luminancia relativa de WCAG. Mínim
 | `bg` sobre `jade-light` (hover) | 8.2 | AAA |
 | `text` sobre `blood` (botón de peligro) | 5.4 | AA |
 | `blood-text` sobre `bg` / `bg-elevated` | 6.4 / 5.9 | AA |
+| `sun` (`--text-warning`) sobre `bg` / `bg-elevated` | 9.3 / 8.6 | AAA |
+| `sun` sobre su tinte del 10 % (callout, badge) | 8.1 / 7.2 | AAA |
 | `jade-muted` sobre `bg` (borde) | 3.7 | UI OK |
 | `blood` sobre `bg` como texto | **2.9** | **No usar para texto** |
 | `text-subtle` sobre `bg` | **3.3** | Solo deshabilitado/decorativo |
@@ -137,7 +141,9 @@ Calculado en octubre 2026 con la fórmula de luminancia relativa de WCAG. Mínim
 | `text-muted` (`#5B6370`) sobre `bg` / `bg-elevated` | 6.0 / 5.3 | AA |
 | `link` sobre `bg` / `bg-elevated` | 5.8 / 5.2 | AA |
 | `text` sobre `sun` (texto del CTA) | 6.8 | AA |
-| `sun-text` sobre `bg` | 5.8 | AA |
+| `sun-text` (`--text-warning`) sobre `bg` / `bg-elevated` | 5.8 / 5.2 | AA |
+| `sun-text` sobre su tinte del 10 % en `bg` / `bg-elevated` | 5.1 / 4.6 | AA |
+| `sun-text` sobre su tinte del 10 % en `bg-highlight` | **4.1** | **No usar** |
 | `blood` sobre `bg` | 6.6 | AA |
 | `sun` sobre `bg` como texto o borde | **2.1** | **No usar** |
 | `sky-deep` sobre `bg` | **1.7** | **Solo decorativo** |
@@ -147,6 +153,7 @@ Calculado en octubre 2026 con la fórmula de luminancia relativa de WCAG. Mínim
 - Ámbar, celeste y verde milpa **nunca** como texto, enlace, anillo de foco ni borde funcional en tema claro.
 - El borde de `input` usa `--border-input`, no `--bg-subtle` (que no llega a 3:1).
 - Los placeholders usan `--text-secondary`.
+- Los avisos (callout `warning`, badge `wip`) usan `--text-warning` y se colocan sobre `--bg-primary` o `--bg-surface`, nunca sobre `--bg-subtle`.
 - Cada token nuevo se calcula antes de entrar a esta tabla.
 
 ---
@@ -276,7 +283,14 @@ La meta de ≤ 30 KB de JS del documento anterior era una estimación. Vue más 
 
 ---
 
-## 14. Cambios en v1.2
+## 14. Cambios en v1.3
+
+| Cambio | Motivo |
+|---|---|
+| `--color-sun` (`#F4A300`) también en tema oscuro | Solo existía en claro; el icono de sol del toggle y el badge `wip` quedaban sin color en oscuro |
+| Nuevo semántico `--text-warning` | El callout `warning` usaba `--color-sun-gold`, que nunca existió, y el badge `wip` usaba `sun` como texto en claro (2.1:1) |
+
+## 15. Cambios en v1.2
 
 Esta versión corrige la v1.1 tras recalcular los contrastes.
 

@@ -71,7 +71,7 @@ onUnmounted(() => {
           class="relative ml-auto flex h-full w-3/4 max-w-xs flex-col border-l border-[var(--border-base)] bg-[var(--bg-surface)] p-6 shadow-xl"
         >
           <div class="flex items-center justify-between pb-6 border-b border-[var(--border-base)]">
-            <span class="font-['Space_Grotesk'] font-bold text-lg text-[var(--text-primary)]">Menú</span>
+            <span class="font-display font-bold text-lg text-[var(--text-primary)]">Menú</span>
             <button
               type="button"
               class="rounded p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] cursor-pointer"
@@ -90,7 +90,7 @@ onUnmounted(() => {
               :class="[
                 'text-base font-medium transition-colors hover:text-[var(--accent-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--border-focus)] rounded px-2 py-1',
                 props.currentPath === item.href
-                  ? 'text-[var(--accent-primary)] font-semibold'
+                  ? 'text-[var(--accent-primary)] font-medium'
                   : 'text-[var(--text-primary)]',
               ]"
               @click="closeMenu"
