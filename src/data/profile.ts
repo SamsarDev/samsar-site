@@ -33,7 +33,7 @@ export const profileData: ProfileData = {
   name: 'Samuel Sarmientos',
   tagline: 'AI Architect & Technical Lead | Senior Full-Stack Developer',
   location: 'Guatemala City, Guatemala',
-  email: 'samsar.dev@gmail.com',
+  email: 'contact@samsar.fyi',
   linkedin: 'https://linkedin.com/in/samsar-dev',
   github: 'https://github.com/SamsarDev',
   bioParagraphs: [

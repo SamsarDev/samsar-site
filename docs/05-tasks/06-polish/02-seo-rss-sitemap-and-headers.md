@@ -46,7 +46,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://samsar-site.pages.dev/',
+  site: 'https://samsar.fyi/',
   output: 'static',
   integrations: [vue(), mdx(), sitemap()],
   // ...
@@ -71,7 +71,7 @@ export async function GET(context: APIContext) {
   return rss({
     title: 'Samsar | Código, cultura y curiosidad',
     description: 'Cuaderno técnico sobre arquitectura limpia, inteligencia artificial agéntica y pedagogía.',
-    site: context.site?.toString() || 'https://samsar-site.pages.dev/',
+    site: context.site?.toString() || 'https://samsar.fyi/',
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.pubDate,
@@ -91,7 +91,7 @@ Crea `public/robots.txt`:
 User-agent: *
 Allow: /
 
-Sitemap: https://samsar-site.pages.dev/sitemap-index.xml
+Sitemap: https://samsar.fyi/sitemap-index.xml
 ```
 
 Crea `public/_headers` con las reglas de caché de borde de Cloudflare Pages:

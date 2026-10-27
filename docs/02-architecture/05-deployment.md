@@ -59,17 +59,17 @@ Para aprovechar al máximo la red Edge de Cloudflare y optimizar las métricas W
 
 ## 4. Dominio Personalizado y SSL
 
-> ⚠️ **Estado actual: dominio temporal.** El sitio se publica hoy en `https://samsar-site.pages.dev/`, el subdominio que asigna Cloudflare Pages. `samsar.dev` es el **dominio final** y todavía no está activo, así que `astro.config.mjs` apunta al temporal a propósito. Al activar el dominio propio hay que recorrer la lista de la sección 5.
+> ✅ **Estado actual: dominio propio activo.** El sitio se publica en `https://samsar.fyi/`. El subdominio de Cloudflare Pages (`samsar-site.pages.dev`) sigue existiendo, pero `astro.config.mjs` declara `samsar.fyi` como dominio canónico. La migración siguió la lista de la sección 5.
 
-1. **Dominio principal:** El dominio personalizado `samsar.dev` se gestiona a través de los servidores de nombres (DNS) de Cloudflare.
+1. **Dominio principal:** El dominio personalizado `samsar.fyi` se gestiona a través de los servidores de nombres (DNS) de Cloudflare.
 2. **Cifrado SSL/TLS:** Configurado en modo **Full (Strict)**, con renovación automática de certificados SSL sin intervención manual.
-3. **Redirecciones:** Forzar HTTPS de forma estricta y redirigir `www.samsar.dev` al dominio raíz `samsar.dev`.
+3. **Redirecciones:** Forzar HTTPS de forma estricta y redirigir `www.samsar.fyi` al dominio raíz `samsar.fyi`.
 
 ---
 
 ## 5. Lista de Verificación al Activar el Dominio Propio
 
-Cuando `samsar.dev` esté activo, sustituye la URL temporal por la final **en estos lugares**. Es la lista completa; si añades otro archivo donde se declare el dominio, súmalo aquí.
+Al cambiar el dominio, sustituye la URL anterior por la nueva **en estos lugares**. Es la lista completa; si añades otro archivo donde se declare el dominio, súmalo aquí.
 
 | Archivo | Qué cambiar |
 |---|---|
@@ -81,6 +81,8 @@ Cuando `samsar.dev` esté activo, sustituye la URL temporal por la final **en es
 | `docs/05-tasks/**` | las tareas que muestran `site:`, el respaldo de canónicas o `robots.txt` como ejemplo |
 | `docs/02-architecture/05-deployment.md` y `docs/08-learning/02-cloudflare-pages-deployment-guide.md` | las referencias al dominio y esta misma nota de estado |
 
-> **No cambian al mover el dominio:** los correos (`samsar.dev@gmail.com`, `hola@samsar.dev`), las URL de GitHub y LinkedIn, ni el aviso de licencia de `src/components/maya/NOTICE.md`, que delimita el alcance legal de los SVG y no la dirección del despliegue.
+> **Correos del dominio:** `contact@samsar.fyi` (contacto público: `src/data/profile.ts`, `README.md`), `support@samsar.fyi` (`SECURITY.md`) y `me@samsar.fyi` (permisos de licencia: `LICENSE-CONTENT`, `LICENSE-DOCS`, `src/components/maya/NOTICE.md`). Son redirecciones de correo configuradas en Cloudflare.
+>
+> **No cambian al mover el dominio:** las URL de GitHub y LinkedIn, ni el aviso de licencia de `src/components/maya/NOTICE.md`, que delimita el alcance legal de los SVG y no la dirección del despliegue.
 >
 > `docs/99-reference/` conserva las referencias antiguas a propósito: es archivo histórico y no se edita.

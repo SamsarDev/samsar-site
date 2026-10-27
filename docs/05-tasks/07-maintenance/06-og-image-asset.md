@@ -58,7 +58,7 @@ Usa la herramienta de diseño que prefieras (editor gráfico o el generador de i
 
 ### Paso 4: Colocarla en su sitio
 
-Guarda el archivo como `public/og-image.png`. La ruta del `meta` es absoluta (`/og-image.png`), así que se resolverá contra el dominio que declare `site` en `astro.config.mjs` — hoy el temporal `samsar-site.pages.dev`, mañana `samsar.dev`. **No hay nada que cambiar aquí** cuando llegue el dominio propio.
+Guarda el archivo como `public/og-image.png`. La ruta del `meta` es absoluta (`/og-image.png`), así que se resolverá contra el dominio que declare `site` en `astro.config.mjs` — antes el temporal `samsar-site.pages.dev`, hoy `samsar.fyi`. **No hay nada que cambiar aquí** cuando llegue el dominio propio.
 
 ### Paso 5: Cuadrar el árbol de estructura
 

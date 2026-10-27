@@ -5,8 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  // Temporary Cloudflare Pages URL; switch to https://samsar.dev/ when the custom domain is live.
-  site: 'https://samsar-site.pages.dev/',
+  site: 'https://samsar.fyi/',
   output: 'static',
   markdown: {
     shikiConfig: {
