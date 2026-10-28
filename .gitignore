@@ -24,3 +24,6 @@ pnpm-debug.log*
 # system files
 .DS_Store
 Thumbs.db
+
+# private CV sources (personal data: phone numbers, private versions)
+/cv/
