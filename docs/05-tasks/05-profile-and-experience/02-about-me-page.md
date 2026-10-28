@@ -39,7 +39,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/ui/Card.astro';
 import Chip from '../components/ui/Chip.astro';
 import Button from '../components/ui/Button.astro';
-import avatarImg from '../assets/avatar.png';
+import avatarImg from '../assets/avatar.jpg';
 import { profileData } from '../data/profile';
 ---
 

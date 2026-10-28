@@ -15,7 +15,7 @@ Aprender a diseñar modelos de datos inmutables y fuertemente tipados en TypeScr
 ## 2. Criterios de Aceptación (DoD)
 
 - [ ] Recurso `public/cv-samuel-sarmientos.pdf` disponible para descarga pública directa.
-- [ ] Imagen de avatar personal copiada a `src/assets/avatar.png`.
+- [ ] Imagen de avatar personal copiada a `src/assets/avatar.jpg`.
 - [ ] Archivo `src/data/profile.ts` creado con interfaces TypeScript (`ProfileData`, `InterestArea`, `Principle`, `SkillCategory`) y datos reales de Samuel Sarmientos.
 - [ ] Archivo `src/data/experience.ts` creado con interfaces TypeScript (`ExperienceItem`, `EducationItem`, `CertificationItem`, `LanguageItem`) y trayectoria laboral real de Samuel.
 - [ ] Ambos módulos exportan constantes fuertemente tipadas sin uso de `any`.
@@ -31,7 +31,7 @@ Copia el PDF del currículum al directorio `public/` para permitir su descarga d
 - `public/cv-samuel-sarmientos.pdf`
 
 Copia el avatar a `src/assets/` para que Astro pueda optimizar su formato y dimensiones con la etiqueta `<Image />`:
-- `src/assets/avatar.png`
+- `src/assets/avatar.jpg`
 
 ### Paso 2: Crear el modelo y datos de perfil en `src/data/profile.ts`
 
@@ -139,7 +139,7 @@ export const experienceData: {
 
 ## 4. Comprobación y Verificación
 
-1. Verifica que los archivos `public/cv-samuel-sarmientos.pdf` y `src/assets/avatar.png` existan en disco.
+1. Verifica que los archivos `public/cv-samuel-sarmientos.pdf` y `src/assets/avatar.jpg` existan en disco.
 2. Ejecuta el verificador de tipos de TypeScript y Astro:
    ```bash
    bun run check
