@@ -39,21 +39,22 @@ export interface ExperienceData {
   languages: LanguageItem[];
 }
 
+// Derived from the private master profile (cv/perfil-maestro.md): keep roles, dates and figures identical to the CV.
 export const experienceData: ExperienceData = {
   summary:
-    'Ingeniero de Software y Technical Lead con cerca de 10 años de experiencia consolidada en el ciclo completo de desarrollo Full-Stack, diseño de sistemas distribuidos y modernización de plataformas empresariales (Banca, Retail, Logística, EdTech). Desde 2023, enfocado estratégicamente en la arquitectura y despliegue de soluciones de Inteligencia Artificial (Agentic AI, MCP, RAG), integrando modelos generativos en operativas core de negocio sobre Microsoft Azure.',
+    'Technical Lead y arquitecto de software con cerca de 10 años de experiencia en el ciclo completo de desarrollo full-stack, el diseño de sistemas distribuidos y la modernización de plataformas empresariales para banca, retail, logística y edtech. Desde 2023 me enfoco en llevar la IA generativa y agéntica (RAG, Model Context Protocol, LangGraph) a las operaciones centrales del negocio de forma segura y gobernada sobre Microsoft Azure.',
   experiences: [
     {
       id: 'talkin-heads',
-      role: 'Jefe de Tecnología (AI Architect & Hands-on Tech Lead)',
+      role: 'Jefe de Tecnología',
       company: "Talkin'Heads",
       period: 'May 2026 – Presente',
       location: 'Guatemala (Presencial)',
       area: ['ai', 'leadership', 'backend', 'cloud'],
       achievements: [
-        'Orquestación Agéntica con LangGraph: Diseñé e implementé la capa de orquestación para flujos autónomos utilizando nodos de Retrieval, Agent, Tool y Validator (Circuit Breaker), aplicando enrutamiento condicional y el patrón Supervisor/HITL.',
-        'Protocolos de Contexto (MCP): Desarrollé servidores MCP en Node.js/TypeScript para exponer herramientas operativas de forma segura a modelos LLM, con transporte stdio y validación estricta de esquemas.',
-        'Estandarización Full-Stack: Dirección del ciclo de desarrollo en .NET Core, Node.js y Vue.js, gobernando infraestructura como código mediante Docker y Terraform en Azure.',
+        'Orquestación Agéntica con LangGraph: Diseñé e implementé la capa de orquestación para flujos autónomos con nodos de Retrieval, Agent, Tool y Validator (Circuit Breaker), aplicando enrutamiento condicional y el patrón Supervisor/HITL.',
+        'Servidores MCP: Desarrollé servidores Model Context Protocol en Node.js/TypeScript para exponer herramientas operativas de forma segura a los modelos LLM, con transporte stdio y validación estricta de esquemas de entrada/salida.',
+        'Estandarización Full-Stack: Dirijo el ciclo de desarrollo en .NET Core, Node.js y Vue.js, gobernando la infraestructura como código con Docker y Terraform en Azure.',
       ],
       stack: [
         'LangGraph',
@@ -68,53 +69,30 @@ export const experienceData: ExperienceData = {
       ],
     },
     {
-      id: 'digital-geko-promerica',
-      role: 'Principal Cloud & AI Architect (Consultor)',
-      company: 'Digital Geko — Banco Promerica / Cemaco',
-      period: 'Dic 2021 – Abr 2026',
-      location: 'Centroamérica (Remoto)',
-      area: ['backend', 'cloud', 'ai'],
-      achievements: [
-        'Modernización Core Bancario (Banco Promerica): Migración de servicios SOAP legacy a microservicios .NET Core aplicando Strangler Fig, Minimal APIs y Clean Architecture, reduciendo la latencia transaccional en un 75% (de 20s a 5s).',
-        'Pasarela de Transferencias: Diseño de arquitectura orientada a eventos en Azure con .NET Core, FastEndpoints y Apache Kafka para la integración asíncrona y resiliente con Mastercard/Neonet.',
-        'Logística & IA (Cemaco): Plataforma logística Full-Stack (C#/Vue.js) integrada con Azure OpenAI y canalizaciones RAG para consultas de inventarios y aprobaciones en lenguaje natural.',
-      ],
-      stack: [
-        '.NET Core',
-        'Minimal APIs',
-        'FastEndpoints',
-        'Apache Kafka',
-        'Azure',
-        'Vue.js',
-        'Clean Architecture',
-        'Azure OpenAI',
-        'SQL Server',
-      ],
-    },
-    {
       id: 'walmart-cam',
       role: 'DevSecOps Maturity Lead',
-      company: 'Walmart CAM (vía Consultoría Independiente)',
+      company: 'Walmart CAM',
       period: 'Sep 2025 – Abr 2026',
-      location: 'Centroamérica (Remoto)',
+      location: 'Centroamérica (Remoto, contrato independiente)',
       area: ['cloud', 'leadership'],
       achievements: [
-        'Seguridad & CI/CD: Diseño e implementación de arquitectura de pipelines de integración continua multi-repositorio, incorporando análisis estático SAST/DAST para mitigación de vulnerabilidades críticas.',
-        'Modernización Legacy: Dirección en la refactorización profunda de componentes legacy para elevar los estándares de resiliencia y estabilidad del software.',
+        'Seguridad & CI/CD: Diseñé la arquitectura de pipelines de integración continua estandarizados para múltiples repositorios, incorporando análisis SAST/DAST para bloquear vulnerabilidades críticas.',
+        'Modernización Legacy: Dirigí la refactorización de componentes legacy para elevar su resiliencia y mitigar vulnerabilidades críticas.',
       ],
-      stack: ['Azure DevOps', 'Pipelines CI/CD', 'SAST/DAST', 'Docker', 'Bash', 'Terraform', 'Security Governance'],
+      stack: ['Azure DevOps', 'Pipelines CI/CD', 'SAST/DAST', 'Docker', 'Bash', 'Terraform'],
     },
     {
       id: 'saul-e-mendez',
-      role: 'Lead Solutions Architect / Senior Full Stack',
+      role: 'Senior Full-Stack Developer',
       company: 'Saúl E. Méndez',
       period: 'Feb 2023 – Jun 2025',
-      location: 'Guatemala (Remoto)',
-      area: ['frontend', 'backend', 'cloud'],
+      location: 'Guatemala (Remoto, contrato independiente)',
+      area: ['frontend', 'backend', 'cloud', 'ai'],
       achievements: [
-        'Logística & Orquestación IA: Plataforma logística en TypeScript/Vue.js con documentación arquitectónica (ADRs), integración Azure y RAG para manuales operativos.',
-        'Sistemas Financieros: SPA de presupuestos dinámicos en Vue.js bajo Arquitectura Hexagonal y Microsoft Graph API, reduciendo el ciclo de iteraciones corporativas en un 50%.',
-        'Telemetría ERP: Integración Cloud (Azure SQL, Cosmos DB, Redis) conectada a SAP HANA para rastreo satelital de transportes en tiempo real.',
+        'Consulta de Manuales Operativos con IA: Desarrollé una plataforma logística en TypeScript/Vue.js; diseñé y documenté (ADRs) su integración con Azure y orquestación RAG para consultar manuales operativos en lenguaje natural.',
+        'Presupuestos Dinámicos: Construí una SPA en Vue.js/TypeScript con Arquitectura Hexagonal y Microsoft Graph API, reduciendo el ciclo de iteraciones presupuestarias de 6 a 3 sesiones.',
+        'Telemetría ERP: Coordiné la integración cloud (Azure SQL, Cosmos DB, Redis) conectada a SAP HANA para rastreo satelital de transportes en tiempo real.',
+        'Onboarding Técnico: Construí un portal de autogestión sobre microservicios que redujo el tiempo de alta de 8 horas a 1 hora.',
       ],
       stack: [
         'Vue.js',
@@ -128,6 +106,32 @@ export const experienceData: ExperienceData = {
       ],
     },
     {
+      id: 'digital-geko',
+      role: 'Socio Industrial (Arquitectura Cloud y Desarrollo de Software)',
+      company: 'Digital Geko',
+      period: 'Dic 2021 – Abr 2026',
+      location: 'Centroamérica (Remoto)',
+      area: ['backend', 'cloud', 'ai'],
+      achievements: [
+        'Modernización Core Bancario (Banco Promerica): Migré servicios SOAP legacy a microservicios .NET Core con el patrón Strangler Fig (transición inicial a monolito modular con Minimal APIs y Clean Architecture), reduciendo la latencia transaccional en un 75% (de 20s a 5s).',
+        'Pasarela de Transferencias (Banco Promerica): Diseñé la arquitectura orientada a eventos en Azure con .NET Core, FastEndpoints y Apache Kafka para la integración asíncrona y resiliente con terceros (Mastercard/Neonet).',
+        'Logística tipo WMS con IA (Cemaco): Construí una plataforma logística full-stack (C#/Vue.js) e integré Azure OpenAI con canalizaciones RAG para consultar inventarios, traslados de bodega y aprobaciones de compra en lenguaje natural.',
+        'Desarrollo e Integración (Prosperus): Desarrollo full-stack e integración de sistemas core.',
+      ],
+      stack: [
+        '.NET Core',
+        'Minimal APIs',
+        'FastEndpoints',
+        'Apache Kafka',
+        'Azure',
+        'Vue.js',
+        'Clean Architecture',
+        'Azure OpenAI',
+        'SQL Server',
+        'Oracle',
+      ],
+    },
+    {
       id: 'progrentis',
       role: 'Semi-Senior Full-Stack Developer',
       company: 'Progrentis (EdTech)',
@@ -135,8 +139,8 @@ export const experienceData: ExperienceData = {
       location: 'Guatemala (Remoto)',
       area: ['frontend', 'backend'],
       achievements: [
-        'Modernización Frontend: Desacoplamiento de plataformas administrativas backend .NET MVC hacia componentes modulares interactivos en Vue.js.',
-        'Experiencias Gamificadas 3D: Diseño y desarrollo de entornos lúdicos interactivos en Three.js con enfoque Mobile-First para más de 50,000 estudiantes activos.',
+        'Modernización Frontend: Guié la modernización de servicios backend .NET MVC hacia componentes modulares desacoplados con Vue.js.',
+        'Experiencias Gamificadas 3D: Diseñé e implementé experiencias interactivas en Three.js con enfoque Mobile-First para más de 50,000 usuarios activos.',
       ],
       stack: ['Vue.js', '.NET MVC', 'Three.js', 'JavaScript', 'CSS3', 'Mobile-First UI'],
     },
@@ -145,11 +149,11 @@ export const experienceData: ExperienceData = {
       role: '.NET Developer',
       company: 'Unión S.A.',
       period: 'Ago 2019 – Ene 2020',
-      location: 'Guatemala (Presencial)',
+      location: 'Guatemala (Temporal)',
       area: ['backend'],
       achievements: [
-        'Integración ERP: Flujos de sincronización mediante APIs REST entre la tienda de comercio electrónico y Microsoft Dynamics NAV sin acoplamiento a base de datos legacy.',
-        'API Logística & BI: Creación de API para orquestación de traslados y módulo de inteligencia de negocios para monitoreo en tiempo casi real de ventas e inventario.',
+        'Integración de Sistemas ERP: Diseñé la sincronización mediante APIs REST entre la tienda virtual y Microsoft Dynamics NAV, sin depender de una base de datos integrada en el aplicativo legacy ASP.NET Web Forms.',
+        'API Logística y Reportería: Desarrollé una API para orquestar traslados de mercadería y un módulo de Business Intelligence para el monitoreo en tiempo casi real de KPIs operativos y de ventas.',
       ],
       stack: ['C#', 'ASP.NET Web Forms', 'REST APIs', 'Microsoft Dynamics NAV', 'SQL Server'],
     },
@@ -158,33 +162,45 @@ export const experienceData: ExperienceData = {
       role: 'Analista de Estrategia',
       company: 'BAC Credomatic',
       period: 'Feb 2018 – Jul 2019',
-      location: 'Guatemala (Presencial)',
+      location: 'Guatemala',
       area: ['backend', 'cloud'],
       achievements: [
-        'Ingeniería de Datos y ETLs: Extracción, transformación y carga masiva de datos en entornos heterogéneos (SQL Server, Data Warehouses, AS400).',
-        'Automatización de BI: Consolidación y orquestación de reportería gerencial en SAS, automatizando el 85% de reportes manuales con estricto SLA de entrega estratégica.',
+        'Ingeniería de Datos y ETLs: Fui responsable de los procesos ETL de datos masivos provenientes de fuentes fragmentadas (SQL Server, Data Warehouses, AS400).',
+        'Automatización de Business Intelligence: Orquesté la reportería operativa y gerencial con SAS, automatizando el 85% de la reportería manual del área de Canales Comerciales.',
       ],
       stack: ['SQL Server', 'ETL Pipelines', 'SAS Enterprise', 'Data Warehouses', 'AS400'],
+    },
+    {
+      id: 'agc-centroamerica',
+      role: 'Asesor de Tecnología',
+      company: 'AGC Centroamérica',
+      period: 'Jun 2017 – Ene 2018',
+      location: 'Guatemala (Tiempo parcial)',
+      area: ['backend'],
+      achievements: [
+        'Automatización de Workflows ERP: Lideré la parametrización de módulos de Odoo para automatizar la firma digital de contratos y la gestión documental.',
+        'Integración VoIP: Desarrollé flujos para el aprovisionamiento automático de clientes en telefonía PBX VoIP.',
+      ],
+      stack: ['Odoo', 'PBX VoIP', 'Firma Digital'],
     },
     {
       id: 'galich-docencia',
       role: 'Profesor de Tecnología',
       company: 'Corporación Galich',
       period: 'Ene 2017 – Ene 2018',
-      location: 'Guatemala (Presencial)',
+      location: 'Guatemala (Tiempo parcial)',
       area: ['leadership'],
       achievements: [
-        'Docencia Técnica: Diseño y facilitación de cursos formativos en fundamentos de programación, algoritmos, estructuras de datos y lógica computacional para nivel diversificado.',
+        'Docencia Técnica: Diseñé e impartí cursos de fundamentos de programación, estructuras de datos y lógica computacional para nivel diversificado.',
       ],
       stack: ['Fundamentos de Programación', 'Algoritmos', 'Estructuras de Datos', 'Pedagogía'],
     },
   ],
   education: [
     {
-      degree: 'Ingeniería en Sistemas (Pensum cerrado / Incompleta)',
+      degree: 'Ingeniería en Sistemas (Incompleta)',
       institution: 'Universidad Galileo, Guatemala',
       period: '2017 – 2020',
-      details: 'Énfasis en ciencias de la computación, estructuras de datos y arquitectura de software.',
     },
     {
       degree: 'Perito en Informática y Computación',
@@ -197,18 +213,8 @@ export const experienceData: ExperienceData = {
       period: '2012 – 2016',
     },
   ],
-  certifications: [
-    {
-      name: 'Agentic AI & LangGraph Architect',
-      issuer: 'Especialización en Sistemas Multi-Agente',
-      year: '2024',
-    },
-    {
-      name: 'DevSecOps & Cloud Architecture Specialist',
-      issuer: 'Microsoft Azure Ecosystem',
-      year: '2023',
-    },
-  ],
+  // Only verifiable credentials (real issuer and verification link) belong here.
+  certifications: [],
   languages: [
     {
       language: 'Español',

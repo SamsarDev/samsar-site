@@ -31,13 +31,13 @@ export interface ProfileData {
 
 export const profileData: ProfileData = {
   name: 'Samuel Sarmientos',
-  tagline: 'AI Architect & Technical Lead | Senior Full-Stack Developer',
+  tagline: 'Technical Lead & Software Architect | IA agéntica (MCP, RAG) · .NET · TypeScript · Azure · DevSecOps',
   location: 'Guatemala City, Guatemala',
   email: 'contact@samsar.fyi',
   linkedin: 'https://linkedin.com/in/samsar-dev',
   github: 'https://github.com/SamsarDev',
   bioParagraphs: [
-    'Ingeniero de Software y Technical Lead con cerca de una década de experiencia en el ciclo completo de desarrollo full-stack, diseño de sistemas distribuidos y modernización de plataformas empresariales críticas en banca, retail masivo, logística y edtech.',
+    "Soy Technical Lead y arquitecto de software, con cerca de 10 años en el ciclo completo de desarrollo full-stack, el diseño de sistemas distribuidos y la modernización de plataformas empresariales para banca, retail, logística y edtech. Hoy dirijo el área técnica de Talkin'Heads como Jefe de Tecnología.",
     'Desde 2023, enfoco mi práctica estratégica en la arquitectura e implementación de soluciones de Inteligencia Artificial agéntica (Agentic AI, Model Context Protocol y RAG), integrando modelos generativos de forma segura y gobernada en los flujos operativos centrales del negocio.',
     'Creo firmemente en los fundamentos por encima de las modas tecnológicas: Clean Architecture, Domain-Driven Design y DevSecOps automatizado para construir software resiliente, escalable y mantenible a largo plazo.',
     'Paralelamente, cultivo una profunda vocación docente y pedagógica, impartiendo mentoría a jóvenes profesionales y diseñando experiencias educativas que demuestran que la tecnología cobra su verdadero valor cuando empodera a las personas.',
