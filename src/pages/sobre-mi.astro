@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/ui/Card.astro';
 import Chip from '../components/ui/Chip.astro';
 import Button from '../components/ui/Button.astro';
-import avatarImg from '../assets/avatar.png';
+import avatarImg from '../assets/avatar.jpg';
 import { profileData } from '../data/profile';
 ---
 
@@ -17,7 +17,15 @@ import { profileData } from '../data/profile';
     <div class="mx-auto max-w-4xl px-4 sm:px-6 flex flex-col sm:flex-row items-center sm:items-start gap-8 sm:gap-12">
       <div class="relative shrink-0">
         <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-2 border-[var(--accent-primary)]/40 shadow-xl bg-[var(--bg-subtle)] p-1">
-          <Image src={avatarImg} alt={profileData.name} class="w-full h-full object-cover rounded-xl" loading="eager" />
+          <Image
+            src={avatarImg}
+            alt={`Retrato de ${profileData.name}`}
+            widths={[144, 176, 288, 352]}
+            sizes="(min-width: 640px) 176px, 144px"
+            class="w-full h-full object-cover rounded-xl"
+            loading="eager"
+            fetchpriority="high"
+          />
         </div>
         <div class="absolute -bottom-2 -right-2 px-2.5 py-1 rounded-full bg-[var(--bg-surface)] border border-[var(--border-base)] shadow-sm text-[10px] font-mono font-medium text-[var(--accent-primary)]">
           Senior Lead
