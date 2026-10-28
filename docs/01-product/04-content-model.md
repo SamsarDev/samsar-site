@@ -10,6 +10,8 @@ El contenido del sitio se divide en dos estrategias:
 1. **Content Collections (Markdown/MDX con Zod):** Para contenidos editoriales extensos y versionados de alta frecuencia (`blog` y `projects`).
 2. **Archivos de datos tipados (`src/data/*.ts`):** Para información estructurada curricular y de perfil que evoluciona con baja frecuencia (`experience.ts`).
 
+> **Fuente de verdad del perfil profesional:** `profile.ts`, `experience.ts` y `public/cv-samuel-sarmientos.pdf` se derivan de un *perfil maestro* privado del autor (fuera del repositorio, en la carpeta ignorada `cv/`). El titular, los cargos, las fechas y las cifras deben coincidir exactamente con el CV, con LinkedIn y con el README de GitHub; las versiones solo cambian el énfasis, nunca los hechos.
+
 ---
 
 ## 2. Colección: Blog (`src/content/blog/`)
