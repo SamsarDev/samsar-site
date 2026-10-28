@@ -20,7 +20,7 @@ samsar-site/
 │       └── jetbrains-mono/   # 400, 500
 ├── src/
 │   ├── assets/               # Imágenes importadas por componentes
-│   │   └── avatar.png        # Avatar de /sobre-mi
+│   │   └── avatar.jpg        # Retrato de /sobre-mi (recorte 800×800)
 │   ├── components/           # Componentes reutilizables
 │   │   ├── ui/               # Button, Card, Chip, Badge, Callout
 │   │   ├── layout/           # Header, Footer, Nav
