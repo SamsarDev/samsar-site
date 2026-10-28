@@ -13,7 +13,7 @@ Presentación personal, filosófica y humana. Espacio para comunicar motivacione
 
 | # | Sección | Elementos y Contenido |
 |---|---|---|
-| **2.1** | **Hero Personal** | Avatar/foto con marco sobrio, nombre completo (*Samuel Sarmientos*), tagline (*"Ingeniero de Software, Arquitecto IA, educador y aprendiz eterno"*), ubicación geográfica (*Guatemala*). |
+| **2.1** | **Hero Personal** | Avatar/foto con marco sobrio, nombre completo (*Samuel Sarmientos*), tagline (*"Technical Lead & Software Architect | IA agéntica (MCP, RAG) · .NET · TypeScript · Azure · DevSecOps"*, el titular canónico del perfil profesional), ubicación geográfica (*Guatemala*). |
 | **2.2** | **Biografía Narrativa** | 3 a 4 párrafos profundos sobre origen, evolución profesional, pasión por la arquitectura limpia y la enseñanza comunitaria. |
 | **2.3** | **Áreas de Interés** | Cuadrícula de 6 bloques temáticos: Desarrollo de Software, Arquitectura de Sistemas, Inteligencia Artificial / Agentes, Videojuegos, Educación & Voluntariado, Cultura Maya. |
 | **2.4** | **Valores y Filosofía** | Lista estructurada de 5 principios: Aprendizaje continuo, Open Source ético, Mentoría y docencia, Rigor técnico sin dogma, Equilibrio vital. |

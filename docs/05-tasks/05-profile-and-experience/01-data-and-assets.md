@@ -69,7 +69,7 @@ export interface ProfileData {
 
 export const profileData: ProfileData = {
   name: 'Samuel Sarmientos',
-  tagline: 'Ingeniero de Software, Arquitecto IA, educador y aprendiz eterno',
+  tagline: 'Technical Lead & Software Architect | IA agéntica (MCP, RAG) · .NET · TypeScript · Azure · DevSecOps',
   location: 'Guatemala',
   bioParagraphs: [
     // Párrafos biográficos narrativos
