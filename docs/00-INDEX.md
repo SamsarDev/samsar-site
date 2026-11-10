@@ -68,13 +68,13 @@ Lee estos documentos **en orden**. Los pasos 1 a 6 son lectura (aproximadamente 
 | Sección | Estado |
 |---|---|
 | `README.md`, `AGENTS.md`, `CLAUDE.md` | Listo |
-| `DESIGN.md` (raíz, condensado v1.2) | Listo |
+| `DESIGN.md` (raíz, condensado v1.3) | Listo |
 | `SKILL.md` | Listo |
 | `01-product/` | Listo |
 | `02-architecture/` | Listo |
 | `03-design/` | Listo |
 | `04-process/` | Listo |
-| `05-tasks/` | Fases 1 a 6 listas (MVP completo); Fase 7 (mantenimiento) planificada |
+| `05-tasks/` | Fases 1 a 7 listas (MVP completo y mantenimiento concluido) |
 | `06-playbooks/` | Listo |
 | `07-decisions/` | Listo |
 | `08-learning/` | Listo |
