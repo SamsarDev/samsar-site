@@ -136,7 +136,7 @@ export const experienceData: ExperienceData = {
       role: 'Semi-Senior Full-Stack Developer',
       company: 'Progrentis (EdTech)',
       period: 'Feb 2020 – Dic 2021',
-      location: 'Guatemala (Remoto)',
+      location: 'Guatemala (Remoto, contrato independiente)',
       area: ['frontend', 'backend'],
       achievements: [
         'Modernización Frontend: Guié la modernización de servicios backend .NET MVC hacia componentes modulares desacoplados con Vue.js.',
